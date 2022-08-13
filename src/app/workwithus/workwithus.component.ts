@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttprequestService } from '../commonservices/httprequest.service'
@@ -9,7 +10,7 @@ import { HttprequestService } from '../commonservices/httprequest.service'
 })
 export class WorkwithusComponent implements OnInit {
 
-  constructor(private http : HttprequestService) { 
+  constructor(private httprequest : HttprequestService,private http: HttpClient,) { 
     this.workapply = new FormGroup({
       firstname: new FormControl(''),
       middlename:new FormControl(''),
@@ -30,6 +31,6 @@ export class WorkwithusComponent implements OnInit {
 
   workapply:any = FormGroup
   apply(){
-    this.http.postrequest('/jobapply',this.workapply.value)
+    this.httprequest.postrequest('/jobapply',this.workapply.value)
   }
 }
