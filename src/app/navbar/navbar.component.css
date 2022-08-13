@@ -5,33 +5,37 @@
     background: linear-gradient(118deg, rgba(1, 9, 71, 1) 19%, rgba(23, 164, 209, 1) 77%);
     color: white;
     padding: 0.7rem;
-    padding-left: 7vw;
+    padding-left: 7.5vw;
     font-family: 'Poppins', sans-serif;
 }
 
 .nav-item {
-    margin-right: 1rem;
+    margin-right: 1.2rem;
     cursor: pointer;
     /* font: bold; */
 }
 
 .topNav {
-    padding: 1rem;
-    max-height: 5vh;
+    padding: 0.9rem;
+    max-height: 10vh;
     display: flex;
     align-items: center;
-    margin-left:2vw;
-
+    padding-left:1.7vw;
+    background-color: white;
 }
 
 .logo_name {
     font-family: 'Montserrat';
     font-weight: 900 !important;
-    font-size: 1.7rem;
+    font-size: 1.4rem;
     background: rgb(1, 9, 71);
     background: linear-gradient(118deg, rgba(1, 9, 71, 1) 19%, rgba(23, 164, 209, 1) 77%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    
-
 }
+.navbar{ 
+        position: sticky;
+        top: 0px;
+}
+
+
