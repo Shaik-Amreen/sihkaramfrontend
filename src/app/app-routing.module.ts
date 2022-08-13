@@ -11,10 +11,10 @@ import { MainpageComponent } from './mainpage/mainpage.component';
 import { MapsComponent } from './maps/maps.component';
 
 const routes: Routes = [
-  {path:"",redirectTo:'/Homepage',pathMatch:'full'},
-  {path:'Homepage',component:MainpageComponent,pathMatch:'full',
+  {path:"",redirectTo:'/homepage',pathMatch:'full'},
+  {path:'homepage',component:MainpageComponent,
   children:[
-    {path:'',component:HomepageComponent},
+    {path:'',component:HomepageComponent,pathMatch:'full'},
     {path:'services',component:AppservicesComponent},
     {path:'contactus',component:ContactusComponent},
     {path:'feedback',component:FeedbackComponent},

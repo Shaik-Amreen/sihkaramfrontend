@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap');
+.backgroundColor {
+    background: rgb(1, 9, 71);
+    background: linear-gradient(118deg, rgba(1, 9, 71, 1) 19%, rgba(23, 164, 209, 1) 77%);
+    color: white;
+    padding: 0.7rem;
+    padding-left: 7vw;
+    font-family: 'Poppins', sans-serif;
+}
+
+.nav-item {
+    margin-right: 1rem;
+    cursor: pointer;
+}
+
+.topNav {
+    padding: 1rem;
+    max-height: 5vh;
+    display: flex;
+    align-items: center;
+    margin-left:2vw;
+
+}
+
+.logo_name {
+    font-family: 'Montserrat';
+    font-weight: 900 !important;
+    font-size: 1.7rem;
+    background: rgb(1, 9, 71);
+    background: linear-gradient(118deg, rgba(1, 9, 71, 1) 19%, rgba(23, 164, 209, 1) 77%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
+
+}
