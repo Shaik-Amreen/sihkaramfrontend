@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +14,7 @@ import { ContactusComponent } from './contactus/contactus.component';
 import { WorkwithusComponent } from './workwithus/workwithus.component';
 import { FeedbackComponent } from './feedback/feedback.component';
 import { DonationsComponent } from './donations/donations.component';
+// import { CarouselModule } from '@coreui/angular';
 
 @NgModule({
   declarations: [
@@ -34,7 +34,8 @@ import { DonationsComponent } from './donations/donations.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    // CarouselModule
   ],
   providers: [],
   bootstrap: [AppComponent]
