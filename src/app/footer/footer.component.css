@@ -1,0 +1,12 @@
+.footer{
+
+}
+
+.backgroundColor {
+    background: rgb(1, 9, 71);
+    background: linear-gradient(128deg, rgba(1, 9, 71, 1) 19%, rgba(23, 164, 209, 1) 100%);
+    color: white;
+    padding: 0.7rem;
+    padding-left: 7vw;
+    font-family: 'Poppins', sans-serif;
+}
