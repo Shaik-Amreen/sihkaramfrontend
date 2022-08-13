@@ -9,15 +9,16 @@ import { InfrastructuremodelsComponent } from './infrastructuremodels/infrastruc
 import { LocalanalysisComponent } from './localanalysis/localanalysis.component';
 import { MainpageComponent } from './mainpage/mainpage.component';
 import { MapsComponent } from './maps/maps.component';
+import { WorkwithusComponent } from './workwithus/workwithus.component';
 
 const routes: Routes = [
-  {path:"",redirectTo:'/Homepage',pathMatch:'full'},
-  {path:'Homepage',component:MainpageComponent,pathMatch:'full',
+  {path:"",redirectTo:'/homepage',pathMatch:'full'},
+  {path:'homepage',component:MainpageComponent,
   children:[
     {path:'',component:HomepageComponent},
     {path:'services',component:AppservicesComponent},
     {path:'contactus',component:ContactusComponent},
-    {path:'feedback',component:FeedbackComponent},
+    {path:'workwithus',component:WorkwithusComponent},
     {path:'donations',component:DonationsComponent},
     {path:'feedback',component:FeedbackComponent},
     {path:'infrastructure',component:InfrastructuremodelsComponent},
