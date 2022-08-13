@@ -14,6 +14,7 @@ import { ContactusComponent } from './contactus/contactus.component';
 import { WorkwithusComponent } from './workwithus/workwithus.component';
 import { FeedbackComponent } from './feedback/feedback.component';
 import { DonationsComponent } from './donations/donations.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // import { CarouselModule } from '@coreui/angular';
 
 @NgModule({
@@ -35,6 +36,8 @@ import { DonationsComponent } from './donations/donations.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule, 
+    ReactiveFormsModule
     // CarouselModule
   ],
   providers: [],

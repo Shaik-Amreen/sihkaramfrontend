@@ -13,7 +13,7 @@ export class HttprequestService {
   postrequest(url:any,data:any){
     const body = window.btoa(unescape(encodeURIComponent(JSON.stringify(data))));
     return ()=>(
-      this.http.post(this.baseurl+url, { data: body }).pipe(map((res: any) => {
+      this.http.post(this.baseurl+url, { data: body }).pipe(((res: any) => {
         let response: any = window.atob(res.data);
         response = JSON.parse(response);
         return response;
