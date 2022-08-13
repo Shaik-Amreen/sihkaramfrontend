@@ -20,7 +20,6 @@ const routes: Routes = [
     {path:'contactus',component:ContactusComponent},
     {path:'workwithus',component:WorkwithusComponent},
     {path:'donations',component:DonationsComponent},
-    {path:'feedback',component:FeedbackComponent},
     {path:'infrastructure',component:InfrastructuremodelsComponent},
     {path:'localanalysis',component:LocalanalysisComponent},
     {path:'maps',component:MapsComponent},
