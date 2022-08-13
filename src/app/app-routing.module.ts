@@ -15,7 +15,7 @@ const routes: Routes = [
   {path:"",redirectTo:'/homepage',pathMatch:'full'},
   {path:'homepage',component:MainpageComponent,
   children:[
-    {path:'',component:HomepageComponent},
+    {path:'',component:HomepageComponent,pathMatch:'full'},
     {path:'services',component:AppservicesComponent},
     {path:'contactus',component:ContactusComponent},
     {path:'workwithus',component:WorkwithusComponent},
