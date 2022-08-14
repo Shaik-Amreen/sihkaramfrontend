@@ -12,18 +12,20 @@ import { MapsComponent } from './maps/maps.component';
 import { WorkwithusComponent } from './workwithus/workwithus.component';
 
 const routes: Routes = [
-  {path:"",redirectTo:'/homepage',pathMatch:'full'},
-  {path:'homepage',component:MainpageComponent,
-  children:[
-    {path:'',component:HomepageComponent,pathMatch:'full'},
-    {path:'services',component:AppservicesComponent},
-    {path:'contactus',component:ContactusComponent},
-    {path:'workwithus',component:WorkwithusComponent},
-    {path:'donations',component:DonationsComponent},
-    {path:'infrastructure',component:InfrastructuremodelsComponent},
-    {path:'localanalysis',component:LocalanalysisComponent},
-    {path:'maps',component:MapsComponent},
-  ]
+  { path: "", redirectTo: '/sih/homepage', pathMatch: 'full' },
+  {
+    path: 'sih', component: MainpageComponent,
+    children: [
+      { path: "", redirectTo: 'homepage', pathMatch: 'full' },
+      { path: 'homepage', component: HomepageComponent, pathMatch: 'full' },
+      { path: 'services', component: AppservicesComponent, pathMatch: "full" },
+      { path: 'contactus', component: ContactusComponent, pathMatch: "full" },
+      { path: 'workwithus', component: WorkwithusComponent, pathMatch: "full" },
+      { path: 'donations', component: DonationsComponent, pathMatch: "full" },
+      { path: 'infrastructure', component: InfrastructuremodelsComponent, pathMatch: "full" },
+      { path: 'localanalysis', component: LocalanalysisComponent, pathMatch: "full" },
+      { path: 'maps', component: MapsComponent, pathMatch: "full" },
+    ]
   }
 ];
 

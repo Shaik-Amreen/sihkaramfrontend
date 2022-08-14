@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomepageComponent implements OnInit {
 
-  images: any = ['assets/homeone.jpg', 'assets/hometwo.jpg', 'assets/homefou.jpg']
+  images: any = ['assets/slum.png', 'assets/homethr.jpg', 'assets/homefou.jpg', 'assets/homeone.jpeg', 'assets/homehalf.jpg']
   imageSource: any = this.images[0]
   i: any = 0
   constructor() {

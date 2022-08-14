@@ -1,75 +1,91 @@
+<div class="row" style="height: 85vh;margin:0rem;padding:0rem">
+    <div class="col-5" style="background-color: rgba(1, 9, 71, 1);color: white;padding-left: 9vw;padding-top: 20vh;">
+        <div>
+            <h1>Work , <br />with us .</h1>
+        </div>
+    </div>
+    <form class="col" [formGroup]="workapply" (ngSubmit)="apply()">
+        <div style="padding: 5rem;">
 
-<div style="display: flex;justify-content:center;align-items:center;">
-    <form [formGroup]="workapply" (ngSubmit)="apply()">
-        <div class="card" style="padding: 1rem;background-color: whitesmoke;">
-            <h4>Work With Us</h4>
             <br>
             <div class="row">
                 <div class="col">
-                    <label>First Name</label><br>
-                    <input style="border: none;" placeholder="Enter Your First Name" formControlName="firstname">
+                    <label>First Name <sup style="color:crimson"><strong>*</strong></sup></label><br>
+                    <input class="form-control shadow-none" placeholder="Enter  First Name"
+                        formControlName="firstname">
                 </div>
                 <div class="col">
-                    <label>Middle Name</label><br>
-                    <input style="border: none;" placeholder="Enter Your Middle Name" formControlName="middlename">
+                    <label>Middle Name <sup style="color:crimson"><strong>*</strong></sup></label><br>
+                    <input class="form-control shadow-none" placeholder="Enter  Middle Name"
+                        formControlName="middlename">
                 </div>
                 <div class="col">
-                    <label>Last Name</label><br>
-                    <input style="border: none;" placeholder="Enter Your Last Name" formControlName="lastname">
+                    <label>Last Name <sup style="color:crimson"><strong>*</strong></sup></label><br>
+                    <input class="form-control shadow-none" placeholder="Enter  Last Name"
+                        formControlName="lastname">
                 </div>
             </div>
             <br>
             <div class="row">
                 <div class="col">
-                    <label>Email</label><br>
-                    <input style="border: none;" placeholder="Enter Your Email" type="email" formControlName="email">
+                    <label>Email <sup style="color:crimson"><strong>*</strong></sup></label><br>
+                    <input class="form-control shadow-none" placeholder="Enter  Email" type="email"
+                        formControlName="email">
                 </div>
                 <div class="col">
-                    <label>Mobile Number</label><br>
-                    <input style="border: none;" placeholder="Enter Your Mobile Numnber" type="number" formControlName="mobileno">
+                    <label>Mobile Number <sup style="color:crimson"><strong>*</strong></sup></label><br>
+                    <input class="form-control shadow-none" placeholder="Enter  Mobile Numnber" type="number"
+                        formControlName="mobileno">
                 </div>
                 <div class="col">
-                    <label>Alternative Mobile Number</label><br>
-                    <input style="border: none;" placeholder="Enter Your Alternative Mobile Number" type="number" formControlName="altmobileno">
+                    <label>Alternative Mobile Number <sup style="color:crimson"><strong>*</strong></sup></label><br>
+                    <input class="form-control shadow-none" placeholder="Enter  Alternative Mobile "
+                        type="number" formControlName="altmobileno">
                 </div>
             </div>
             <br>
             <div class="row">
                 <div class="col">
-                    <label>Applying Post</label><br>
-                    <select class="form-select shadow-none" style="padding: 12px 15px;margin: 8px 0;border: none;" formControlName="jobpost">
-                    <option value="" disabled selected>select a post</option>
-                    <option value="contractor">Contractor</option>
-                    <option value="construction engineer">Construction Engineer</option>
-                    <option value="supervisor">Supervisor</option>
-                    <option value="daily labour">Daily Labour</option>
-                    <option value="any post">Any Post</option>
-                </select>
+                    <label>Applying Post <sup style="color:crimson"><strong>*</strong></sup></label><br>
+                    <select class="form-select shadow-none" 
+                        formControlName="jobpost">
+                        <option value="" disabled selected>select a post</option>
+                        <option value="contractor">Contractor</option>
+                        <option value="construction engineer">Construction Engineer</option>
+                        <option value="supervisor">Supervisor</option>
+                        <option value="daily labour">Daily Labour</option>
+                        <option value="any post">Any Post</option>
+                    </select>
                 </div>
                 <div class="col">
-                    <label>Previous Experience</label><br>
-                    <select class="form-select shadow-none" style="padding: 12px 15px;margin: 8px 0;border: none;" formControlName="prevexperience">
+                    <label>Previous Experience <sup style="color:crimson"><strong>*</strong></sup></label><br>
+                    <select class="form-select shadow-none" 
+                        formControlName="prevexperience">
                         <option value="" disabled selected>Experience Status</option>
                         <option value="yes">Yes</option>
                         <option value="no">No</option>
                     </select>
                 </div>
                 <div class="col">
-                    <label>Previous Work Place</label><br>
-                    <input style="border: none;" placeholder="Enter Name of Your Previous Work Place" formControlName="prevworkplace">
+                    <label>Previous Work Place <sup style="color:crimson"><strong>*</strong></sup></label><br>
+                    <input class="form-control shadow-none" placeholder="Enter Previous Work Place"
+                        formControlName="prevworkplace">
                 </div>
-            </div>
+            </div><br/>
             <div class="row">
-                <div >
-                    <label>Address</label><br>
-                    <input  placeholder="Enter Your Address" formControlName="address" style="width: 100%;">
+                <div>
+                    <label>Address <sup style="color:crimson"><strong>*</strong></sup></label><br>
+                    <textarea class="form-control shadow-none" placeholder="Enter  Address" formControlName="address"
+                        style="width: 100%;"></textarea>
                 </div>
-            </div><br>
-            <div class="row" >
-                <div style="display: flex;justify-content: center;align-items: center;" >
-                    <button class="btn btn" type="submit" style="background-color: rgba(1, 9, 71, 1);color: white;padding: 0.6rem 2rem; font-weight: bold;">Apply</button>
+            </div><br><br/>
+            <div class="row">
+                <div style="display: flex;justify-content: center;align-items: center;">
+                    <button class="btn btn" type="submit"
+                        style="background-color: rgba(1, 9, 71, 1);color: white;padding: 0.6rem 2rem; font-weight: bold;">Apply</button>
                 </div>
             </div>
         </div>
     </form>
+
 </div>

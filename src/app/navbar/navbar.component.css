@@ -16,6 +16,11 @@
     cursor: pointer;
     /* font: bold; */
 }
+.active{
+    font-weight: 900;
+    letter-spacing: 1px;
+   
+}
 
 .topNav {
     padding: 1rem !important;

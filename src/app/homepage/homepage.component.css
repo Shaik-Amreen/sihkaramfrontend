@@ -1,1 +1,29 @@
 /* @import "~@coreui/coreui-pro/scss/coreui"; */
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap');
+
+p {
+    font-family: 'poppins';
+}
+
+h1 {
+    font-family: 'Montserrat';
+    font-size: 4rem;
+
+}
+
+li {
+   color:  rgba(23, 164, 209, 1);
+   font-family: 'poppins';
+   font-weight: 900;
+   line-height: 40px;
+   font-size: 1.2rem;
+}
+
+.halfback {
+    background: linear-gradient(to right,
+        rgba(1, 9, 71, 1) 0%,
+        rgba(1, 9, 71, 1) 70%,
+        rgba(23, 164, 209, 1) 100%,
+        rgba(23, 164, 209, 1) 50%);
+  }
