@@ -6,49 +6,56 @@
     </div>
     <form class="col" [formGroup]="workapply" (ngSubmit)="apply()">
         <div style="padding: 5rem;">
-
+            <div style="color:green" *ngIf="successMsg!=''"><strong><i style="color:green"  class='bx bxs-check-circle'></i> {{successMsg}}</strong></div>
             <br>
             <div class="row">
                 <div class="col">
                     <label>First Name <sup style="color:crimson"><strong>*</strong></sup></label><br>
-                    <input class="form-control shadow-none" placeholder="Enter  First Name"
+                    <input (click)="showerr=false" class="form-control shadow-none" placeholder="Enter  First Name"
                         formControlName="firstname">
-                </div>
+                <span *ngIf="showerr" style="color:crimson;font-size: 0.8rem;">Enter valid text</span>
+                    </div>
                 <div class="col">
                     <label>Middle Name <sup style="color:crimson"><strong>*</strong></sup></label><br>
-                    <input class="form-control shadow-none" placeholder="Enter  Middle Name"
+                    <input (click)="showerr=false" class="form-control shadow-none" placeholder="Enter  Middle Name"
                         formControlName="middlename">
-                </div>
+                <span *ngIf="showerr" style="color:crimson;font-size: 0.8rem;">Enter valid text</span>
+                    </div>
                 <div class="col">
                     <label>Last Name <sup style="color:crimson"><strong>*</strong></sup></label><br>
-                    <input class="form-control shadow-none" placeholder="Enter  Last Name"
+                    <input (click)="showerr=false" class="form-control shadow-none" placeholder="Enter  Last Name"
                         formControlName="lastname">
+                        <span *ngIf="showerr" style="color:crimson;font-size: 0.8rem;">Enter valid text</span>
+                    
                 </div>
             </div>
             <br>
             <div class="row">
                 <div class="col">
                     <label>Email <sup style="color:crimson"><strong>*</strong></sup></label><br>
-                    <input class="form-control shadow-none" placeholder="Enter  Email" type="email"
-                        formControlName="email">
-                </div>
+                    <input (click)="showerr=false" class="form-control shadow-none" placeholder="Enter  Email"
+                        type="email" formControlName="email">
+                <span *ngIf="showerr" style="color:crimson;font-size: 0.8rem;">Enter valid text</span>
+                    </div>
                 <div class="col">
                     <label>Mobile Number <sup style="color:crimson"><strong>*</strong></sup></label><br>
-                    <input class="form-control shadow-none" placeholder="Enter  Mobile Numnber" type="number"
-                        formControlName="mobileno">
-                </div>
+                    <input (click)="showerr=false" class="form-control shadow-none" placeholder="Enter  Mobile Numnber"
+                        type="number" formControlName="mobileno">
+                <span *ngIf="showerr" style="color:crimson;font-size: 0.8rem;">Enter valid text</span>
+                    </div>
                 <div class="col">
                     <label>Alternative Mobile Number <sup style="color:crimson"><strong>*</strong></sup></label><br>
-                    <input class="form-control shadow-none" placeholder="Enter  Alternative Mobile "
-                        type="number" formControlName="altmobileno">
-                </div>
+                    <input (click)="showerr=false" class="form-control shadow-none"
+                        placeholder="Enter  Alternative Mobile " type="number" formControlName="altmobileno">
+                        <span *ngIf="showerr" style="color:crimson;font-size: 0.8rem;">Enter valid text</span>
+                    
+                    </div>
             </div>
             <br>
             <div class="row">
                 <div class="col">
                     <label>Applying Post <sup style="color:crimson"><strong>*</strong></sup></label><br>
-                    <select class="form-select shadow-none" 
-                        formControlName="jobpost">
+                    <select class="form-select shadow-none" formControlName="jobpost">
                         <option value="" disabled selected>select a post</option>
                         <option value="contractor">Contractor</option>
                         <option value="construction engineer">Construction Engineer</option>
@@ -56,29 +63,34 @@
                         <option value="daily labour">Daily Labour</option>
                         <option value="any post">Any Post</option>
                     </select>
+                <span *ngIf="showerr" style="color:crimson;font-size: 0.8rem;">Enter valid text</span>
                 </div>
                 <div class="col">
                     <label>Previous Experience <sup style="color:crimson"><strong>*</strong></sup></label><br>
-                    <select class="form-select shadow-none" 
-                        formControlName="prevexperience">
+                    <select class="form-select shadow-none" formControlName="prevexperience">
                         <option value="" disabled selected>Experience Status</option>
                         <option value="yes">Yes</option>
                         <option value="no">No</option>
                     </select>
+                <span *ngIf="showerr" style="color:crimson;font-size: 0.8rem;">Enter valid text</span>
                 </div>
                 <div class="col">
                     <label>Previous Work Place <sup style="color:crimson"><strong>*</strong></sup></label><br>
-                    <input class="form-control shadow-none" placeholder="Enter Previous Work Place"
-                        formControlName="prevworkplace">
+                    <input (click)="showerr=false" class="form-control shadow-none"
+                        placeholder="Enter Previous Work Place" formControlName="prevworkplace">
+                        <span *ngIf="showerr" style="color:crimson;font-size: 0.8rem;">Enter valid text</span>
+                    
                 </div>
-            </div><br/>
+            </div><br />
             <div class="row">
                 <div>
                     <label>Address <sup style="color:crimson"><strong>*</strong></sup></label><br>
                     <textarea class="form-control shadow-none" placeholder="Enter  Address" formControlName="address"
                         style="width: 100%;"></textarea>
+                        <span *ngIf="showerr" style="color:crimson;font-size: 0.8rem;">Enter valid address</span>
+                    
                 </div>
-            </div><br><br/>
+            </div><br/>
             <div class="row">
                 <div style="display: flex;justify-content: center;align-items: center;">
                     <button class="btn btn" type="submit"

@@ -10,27 +10,35 @@ import { HttprequestService } from '../commonservices/httprequest.service'
 })
 export class WorkwithusComponent implements OnInit {
 
-  constructor(private httprequest : HttprequestService,private http: HttpClient,) { 
+
+  successMsg = '';showerr:any=false
+  constructor(private httprequest: HttprequestService, private http: HttpClient,) {
     this.workapply = new FormGroup({
-      firstname: new FormControl(''),
-      middlename:new FormControl(''),
-      lastname:new FormControl(''),
-      email:new FormControl(''),
-      mobileno:new FormControl(''),
-      altmobileno:new FormControl(''),
-      jobpost:new FormControl(''),
-      prevexperience:new FormControl(''),
-      prevworkplace:new FormControl(''),
-      address:new FormControl(''),
-      approve:new FormControl('')
+      firstname: new FormControl('', Validators.required),
+      middlename: new FormControl('', Validators.required),
+      lastname: new FormControl('', Validators.required),
+      email: new FormControl('', Validators.required),
+      mobileno: new FormControl('', Validators.required),
+      altmobileno: new FormControl('', Validators.required),
+      jobpost: new FormControl('', Validators.required),
+      prevexperience: new FormControl('', Validators.required),
+      prevworkplace: new FormControl('', Validators.required),
+      address: new FormControl('', Validators.required),
+      approve: new FormControl('', Validators.required)
     })
   }
 
   ngOnInit(): void {
   }
 
-  workapply:any = FormGroup
-  apply(){
-    this.httprequest.postrequest('/jobapply',this.workapply.value)
+  workapply: any = FormGroup
+  apply() {
+    if (this.workapply.status == 'VALID') {
+      this.httprequest.postrequest('/postuser', this.workapply.value)
+      this.successMsg = 'Sucessfully submitted'
+    }
+    else{
+      this.showerr=true
+    }
   }
 }
