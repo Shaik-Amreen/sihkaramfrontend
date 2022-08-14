@@ -1,11 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap');
+
 .backgroundColor {
     background: rgb(1, 9, 71);
     background: linear-gradient(118deg, rgba(1, 9, 71, 1) 19%, rgba(23, 164, 209, 1) 77%);
     color: white;
     padding: 0.7rem;
-    padding-left: 7.5vw;
+    padding-left: 8vw;
     font-family: 'Poppins', sans-serif;
     width: 100%;
 }
@@ -17,11 +18,11 @@
 }
 
 .topNav {
-    padding: 0.9rem;
-    max-height: 10vh;
+    padding: 1rem !important;
+    max-height: 12vh;
     display: flex;
     align-items: center;
-    padding-left:1.7vw;
+    padding-left: 2vw !important;
     background-color: white;
 }
 
@@ -33,11 +34,16 @@
     background: linear-gradient(118deg, rgba(1, 9, 71, 1) 19%, rgba(23, 164, 209, 1) 77%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+
 }
-.navbar{ 
+.navbar_karthik{ 
         position: sticky;
         top: -0.5rem;
         z-index: 10;
 }
 
-
+.navbar {
+    position: sticky;
+    top: 0px;
+    padding: 0;
+}

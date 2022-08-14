@@ -42,6 +42,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
     ReactiveFormsModule,
     HttpClientModule
     // CarouselModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
