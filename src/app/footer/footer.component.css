@@ -17,3 +17,9 @@
     padding-left: 7vw;
     font-family: 'Poppins', sans-serif;
 }
+
+.active{
+    font-weight: 900;
+    letter-spacing: 1px;
+   
+}

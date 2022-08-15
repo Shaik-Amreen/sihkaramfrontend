@@ -20,6 +20,7 @@ const routes: Routes = [
       { path: 'homepage', component: HomepageComponent, pathMatch: 'full' },
       { path: 'services', component: AppservicesComponent, pathMatch: "full" },
       { path: 'contactus', component: ContactusComponent, pathMatch: "full" },
+      { path: 'feedback', component: FeedbackComponent, pathMatch: "full" },
       { path: 'workwithus', component: WorkwithusComponent, pathMatch: "full" },
       { path: 'donations', component: DonationsComponent, pathMatch: "full" },
       { path: 'infrastructure', component: InfrastructuremodelsComponent, pathMatch: "full" },

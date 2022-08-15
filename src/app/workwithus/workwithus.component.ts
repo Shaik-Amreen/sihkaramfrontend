@@ -15,7 +15,7 @@ export class WorkwithusComponent implements OnInit {
   constructor(private httprequest: HttprequestService, private http: HttpClient,) {
     this.workapply = new FormGroup({
       firstname: new FormControl('', Validators.required),
-      middlename: new FormControl('', Validators.required),
+      middlename: new FormControl(''),
       lastname: new FormControl('', Validators.required),
       email: new FormControl('', Validators.required),
       mobileno: new FormControl('', Validators.required),
@@ -24,7 +24,7 @@ export class WorkwithusComponent implements OnInit {
       prevexperience: new FormControl('', Validators.required),
       prevworkplace: new FormControl('', Validators.required),
       address: new FormControl('', Validators.required),
-      approve: new FormControl('', Validators.required)
+      approve: new FormControl('')
     })
   }
 
@@ -34,8 +34,10 @@ export class WorkwithusComponent implements OnInit {
   workapply: any = FormGroup
   apply() {
     if (this.workapply.status == 'VALID') {
-      this.httprequest.postrequest('/postuser', this.workapply.value)
-      this.successMsg = 'Sucessfully submitted'
+      this.httprequest.postrequest('/postapplications', this.workapply.value).subscribe(
+        (res)=>{
+          this.successMsg = 'Sucessfully submitted'
+        })
     }
     else{
       this.showerr=true
