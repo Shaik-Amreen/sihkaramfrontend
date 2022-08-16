@@ -16,7 +16,8 @@ import { FeedbackComponent } from './feedback/feedback.component';
 import { DonationsComponent } from './donations/donations.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-
+import { MdbModalModule } from 'mdb-angular-ui-kit/modal';
+import { ModalComponent } from './modal/modal.component';
 // import { CarouselModule } from '@coreui/angular';
 
 @NgModule({
@@ -34,14 +35,16 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
     WorkwithusComponent,
     FeedbackComponent,
     DonationsComponent,
+    ModalComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule, 
     ReactiveFormsModule,
-    HttpClientModule
-    // CarouselModule
+    HttpClientModule,
+    // CarouselModule,
+    MdbModalModule
 
   ],
   providers: [],
