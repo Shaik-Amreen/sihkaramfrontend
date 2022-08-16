@@ -12,4 +12,10 @@ export class MainpageComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  background:any=""
+
+  bgstyle(){
+    this.background = 'rgba(0, 0, 0, .5)'
+    console.log(this.background)
+  }
 }

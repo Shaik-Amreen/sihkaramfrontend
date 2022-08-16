@@ -1,49 +1,51 @@
-<div class="row" style="height: 77vh;margin:0rem;padding:0rem">
+
+<div  #top id="top" class="row" style="height: 100vh;margin:0rem;padding:0rem">
     <div class="col-6" style="background-color: rgba(1, 9, 71, 1);color: white;padding-left: 9vw;padding-top: 25vh;">
         <div>
-            <h1>Feedback</h1>
+            <h1>Feedback .</h1>
         </div>
     </div>
     <form class="col" [formGroup]="workapply" (ngSubmit)="submit()">
         <div style="padding: 2rem 5rem;">
-            <div style="color:green" *ngIf="successMsg!=''"><strong><i style="color:green"  class='bx bxs-check-circle'></i> {{successMsg}}</strong></div>
+            <div style="color:green" *ngIf="successMsg!=''"><strong><i style="color:green" class='bx bxs-check-circle'></i>
+                    {{successMsg}}</strong></div>
             <br>
             <div class="row">
                 <div class="col-6">
                     <label>Full Name <sup style="color:crimson"><strong>*</strong></sup></label><br>
                     <input (click)="showerr=false" class="form-control shadow-none" placeholder="Enter  First Name"
                         formControlName="fullname">
-                <span *ngIf="showerr" style="color:crimson;font-size: 0.8rem;">Enter valid text</span>
-                <!-- <span *ngIf="!showerr" style="color:crimson;font-size: 0.8rem;">k</span> -->
-                    </div>
+                    <span *ngIf="showerr" style="color:crimson;font-size: 0.8rem;">Enter valid text</span>
+                    <!-- <span *ngIf="!showerr" style="color:crimson;font-size: 0.8rem;">k</span> -->
+                </div>
             </div>
             <br>
             <div class="row">
                 <div class="col-6">
                     <label>Email <sup style="color:crimson"><strong></strong></sup></label><br>
-                    <input (click)="showerr=false" class="form-control shadow-none" placeholder="Enter  Email"
-                        type="email" formControlName="email">
-                <!-- <span *ngIf="showerr" style="color:crimson;font-size: 0.8rem;">Enter valid text</span> -->
-                    </div>
+                    <input (click)="showerr=false" class="form-control shadow-none" placeholder="Enter  Email" type="email"
+                        formControlName="email">
+                    <!-- <span *ngIf="showerr" style="color:crimson;font-size: 0.8rem;">Enter valid text</span> -->
+                </div>
             </div>
             <br>
             <div class="row">
                 <div class="col-6">
                     <label>Suggestions<sup style="color:crimson"><strong>*</strong></sup></label><br>
                     <textarea style="font-size: 0.8rem;" (click)="showerr=false" class="form-control shadow-none"
-                    placeholder="Enter Your Valuable Feedback" formControlName="suggestions" ></textarea>
-                        <span *ngIf="showerr" style="color:crimson;font-size: 0.8rem;">Enter valid text</span>
+                        placeholder="Enter Your Valuable Feedback" formControlName="suggestions"></textarea>
+                    <span *ngIf="showerr" style="color:crimson;font-size: 0.8rem;">Enter valid text</span>
                 </div>
             </div><br />
             <div class="row">
                 <div class="col-6">
                     <label>Feedback Message<sup style="color:crimson"><strong>*</strong></sup></label><br>
-                    <textarea  style="font-size: 0.8rem;"  class="form-control shadow-none" placeholder="Enter  Address" formControlName="feedbackmsg"
-                       ></textarea>
-                        <span *ngIf="showerr" style="color:crimson;font-size: 0.8rem;">Enter valid address</span>
-                    
+                    <textarea style="font-size: 0.8rem;" class="form-control shadow-none" placeholder="Enter  Address"
+                        formControlName="feedbackmsg"></textarea>
+                    <span *ngIf="showerr" style="color:crimson;font-size: 0.8rem;">Enter valid address</span>
+    
                 </div>
-            </div><br/>
+            </div><br />
             <div class="row">
                 <div class="col-6" style="display: flex;justify-content: center;align-items: center;">
                     <button class="btn btn" type="submit"
