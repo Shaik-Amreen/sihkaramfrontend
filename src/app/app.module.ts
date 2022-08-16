@@ -16,6 +16,10 @@ import { FeedbackComponent } from './feedback/feedback.component';
 import { DonationsComponent } from './donations/donations.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ContractsComponent } from './adminfolder/contracts/contracts.component';
+import { AdmindonationsComponent } from './adminfolder/admindonations/admindonations.component';
+import { AdminfeedbackComponent } from './adminfolder/adminfeedback/adminfeedback.component';
+import { JobapplicationsComponent } from './adminfolder/jobapplications/jobapplications.component';
 
 // import { CarouselModule } from '@coreui/angular';
 
@@ -34,6 +38,10 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
     WorkwithusComponent,
     FeedbackComponent,
     DonationsComponent,
+    ContractsComponent,
+    AdmindonationsComponent,
+    AdminfeedbackComponent,
+    JobapplicationsComponent,
   ],
   imports: [
     BrowserModule,

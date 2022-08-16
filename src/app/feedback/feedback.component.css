@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap');
+
+div {
+	font-family: 'poppins';
+}
+
+label{
+	color:rgba(1, 9, 71, 1);
+	font-size: 0.9rem;
+}
+input , select {
+	font-size: 0.8rem !important;
+    border-radius: 3px !important;
+}
+
+h1{
+	font-family: 'Montserrat';
+	font-size: 5rem;
+}
