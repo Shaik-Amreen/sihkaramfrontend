@@ -21,6 +21,8 @@ import { AdmindonationsComponent } from './adminfolder/admindonations/admindonat
 import { AdminfeedbackComponent } from './adminfolder/adminfeedback/adminfeedback.component';
 import { JobapplicationsComponent } from './adminfolder/jobapplications/jobapplications.component';
 
+import { MdbModalModule } from 'mdb-angular-ui-kit/modal';
+import { ModalComponent } from './modal/modal.component';
 // import { CarouselModule } from '@coreui/angular';
 
 @NgModule({
@@ -42,14 +44,16 @@ import { JobapplicationsComponent } from './adminfolder/jobapplications/jobappli
     AdmindonationsComponent,
     AdminfeedbackComponent,
     JobapplicationsComponent,
+    ModalComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule, 
     ReactiveFormsModule,
-    HttpClientModule
-    // CarouselModule
+    HttpClientModule,
+    // CarouselModule,
+    MdbModalModule
 
   ],
   providers: [],
