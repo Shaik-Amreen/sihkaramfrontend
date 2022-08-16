@@ -3,19 +3,19 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-mainpage',
   templateUrl: './mainpage.component.html',
-  styleUrls: ['./mainpage.component.css']
+  styleUrls: ['./mainpage.component.css'],
 })
 export class MainpageComponent implements OnInit {
-
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
+    document.getElementById('top')?.scrollIntoView({ behavior: 'smooth' });
   }
 
-  background:any=""
+  background: any = '';
 
-  bgstyle(){
-    this.background = 'rgba(0, 0, 0, .5)'
-    console.log(this.background)
+  bgstyle() {
+    this.background = 'rgba(0, 0, 0, .5)';
+    console.log(this.background);
   }
 }

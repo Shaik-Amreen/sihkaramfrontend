@@ -1,1 +1,100 @@
-<p>donations works!</p>
+<div id="top" class="row" style="height: auto;margin:0rem;padding:0rem">
+    <div class="col-6" style="background-color: rgba(1, 9, 71, 1);color: white;padding-left: 9vw;padding-top: 25vh;">
+        <div>
+            <h1>Making a donation is the ultimate sign of solidarity .</h1>
+        </div>
+    </div>
+    <form class="col" [formGroup]="workapply" (ngSubmit)="submit()">
+        <div style="padding: 2rem 0rem;padding-left: 30%;">
+            <div style="color:green" *ngIf="successMsg!=''"><strong><i style="color:green"
+                        class='bx bxs-check-circle'></i>
+                    {{successMsg}}</strong></div>
+            <br>
+            <div class="row">
+                <div class="col-9">
+                    <label>Full Name <sup style="color:crimson"><strong>*</strong></sup></label><br>
+                    <input (click)="showerr=false" class="form-control shadow-none" placeholder="Enter  First Name"
+                        formControlName="fullname">
+                    <span *ngIf="showerr" style="color:crimson;font-size: 0.8rem;">Enter valid text</span>
+                    <!-- <span *ngIf="!showerr" style="color:crimson;font-size: 0.8rem;">k</span> -->
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-9">
+                    <label>Company Name (optional)</label><br>
+                    <input (click)="showerr=false" class="form-control shadow-none" placeholder="Enter Company Name"
+                        type="email" formControlName="email">
+                    <!-- <span *ngIf="showerr" style="color:crimson;font-size: 0.8rem;">Enter valid text</span> -->
+                </div>
+            </div><br>
+            <div class="row">
+                <div class="col-9">
+                    <label>Email <sup style="color:crimson"><strong></strong></sup></label><br>
+                    <input (click)="showerr=false" class="form-control shadow-none" placeholder="Enter  Email"
+                        type="email" formControlName="email">
+                    <span *ngIf="showerr" style="color:crimson;font-size: 0.8rem;">Enter valid text</span>
+                </div>
+            </div><br>
+            <div class="row">
+                <div class="col-9">
+                    <label>Contact Number<sup style="color:crimson"><strong></strong></sup></label><br>
+                    <input (click)="showerr=false" class="form-control shadow-none"
+                        placeholder="Enter Your Contact Number" formControlName="contact" type="number">
+                    <span *ngIf="showerr" style="color:crimson;font-size: 0.8rem;">Enter valid text</span>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-9">
+                    <label>Country/Region<sup style="color:crimson"><strong>*</strong></sup></label><br>
+                    <input style="font-size: 0.8rem;" (click)="showerr=false" class="form-control shadow-none"
+                        placeholder="Enter Your Country/Region" formControlName="Enter Your Country/Region"/>
+                    <span *ngIf="showerr" style="color:crimson;font-size: 0.8rem;">Enter valid text</span>
+                </div>
+            </div><br />
+            <div class="row">
+                <div class="col-9">
+                    <label>Street Address<sup style="color:crimson"><strong>*</strong></sup></label><br>
+                    <input style="font-size: 0.8rem;" class="form-control shadow-none"
+                        placeholder="House Number And Street Name" formControlName="feedbackmsg" /><br>
+                    <input style="font-size: 0.8rem;" class="form-control shadow-none"
+                        placeholder="Apartment, Suite, Unit, etc.(optional)" formControlName="feedbackmsg" />
+                    <span *ngIf="showerr" style="color:crimson;font-size: 0.8rem;">Enter valid address</span>
+
+                </div>
+            </div><br />
+            <div class="row">
+                <div class="col-9">
+                    <label>Town/City<sup style="color:crimson"><strong>*</strong></sup></label><br>
+                    <input style="font-size: 0.8rem;" class="form-control shadow-none"
+                        placeholder="Enter Your Town or City" formControlName="feedbackmsg" />
+                    <span *ngIf="showerr" style="color:crimson;font-size: 0.8rem;">Enter valid address</span>
+                </div>
+            </div><br>
+            <div class="row">
+                <div class="col-9">
+                    <label>State<sup style="color:crimson"><strong>*</strong></sup></label><br>
+                    <input style="font-size: 0.8rem;" class="form-control shadow-none"
+                        placeholder="Enter Your State Name" formControlName="feedbackmsg" />
+                    <span *ngIf="showerr" style="color:crimson;font-size: 0.8rem;">Enter valid address</span>
+                </div>
+            </div><br />
+            <div class="row">
+                <div class="col-9">
+                    <label>PIN Code<sup style="color:crimson"><strong>*</strong></sup></label><br>
+                    <input style="font-size: 0.8rem;" class="form-control shadow-none" placeholder="Enter Your Pin Code"
+                        formControlName="feedbackmsg" />
+                    <span *ngIf="showerr" style="color:crimson;font-size: 0.8rem;">Enter valid address</span>
+                </div>
+            </div><br>
+            <div class="row">
+                <div class="col-9" style="display: flex;justify-content: center;align-items: center;">
+                    <button class="btn btn" type="submit"
+                        style="background-color: rgba(1, 9, 71, 1);color: white;padding: 0.6rem 2rem; font-weight: bold;">Donate</button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+</div>

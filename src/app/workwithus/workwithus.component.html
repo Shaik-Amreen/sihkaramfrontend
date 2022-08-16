@@ -1,4 +1,4 @@
-<div class="row" style="height: 92vh;margin:0rem;padding:0rem">
+<div id="top" class="row" style="height: 92vh;margin:0rem;padding:0rem">
     <div class="col-5" style="background-color: rgba(1, 9, 71, 1);color: white;padding-left: 9vw;padding-top: 20vh;">
         <div>
             <h1>Work , <br />with us .</h1>
@@ -17,10 +17,10 @@
                 <!-- <span *ngIf="!showerr" style="color:crimson;font-size: 0.8rem;">k</span> -->
                     </div>
                 <div class="col">
-                    <label>Middle Name <sup style="color:crimson"><strong>*</strong></sup></label><br>
+                    <label>Middle Name </label><br>
                     <input (click)="showerr=false" class="form-control shadow-none" placeholder="Enter  Middle Name"
                         formControlName="middlename">
-                <span *ngIf="showerr" style="color:crimson;font-size: 0.8rem;">Enter valid text</span>
+                <!-- <span *ngIf="showerr" style="color:crimson;font-size: 0.8rem;">Enter valid text</span> -->
                     </div>
                 <div class="col">
                     <label>Last Name <sup style="color:crimson"><strong>*</strong></sup></label><br>

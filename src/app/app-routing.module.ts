@@ -14,7 +14,8 @@ import { WorkwithusComponent } from './workwithus/workwithus.component';
 const routes: Routes = [
   { path: "", redirectTo: '/sih/homepage', pathMatch: 'full' },
   {
-    path: 'sih', component: MainpageComponent,
+    path: 'sih', 
+    component: MainpageComponent,
     children: [
       { path: "", redirectTo: 'homepage', pathMatch: 'full' },
       { path: 'homepage', component: HomepageComponent, pathMatch: 'full' },
@@ -27,7 +28,10 @@ const routes: Routes = [
       { path: 'localanalysis', component: LocalanalysisComponent, pathMatch: "full" },
       { path: 'maps', component: MapsComponent, pathMatch: "full" },
     ]
-  }
+  },
+  // {
+  //   path:'sih'
+  // }
 ];
 
 @NgModule({

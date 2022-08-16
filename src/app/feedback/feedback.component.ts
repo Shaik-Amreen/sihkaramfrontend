@@ -27,8 +27,6 @@ export class FeedbackComponent implements OnInit {
 
   ngOnInit() {
     document.getElementById('top')?.scrollIntoView({ behavior: 'smooth' });
-
-    // window.scroll(0, 0);
   }
 
   workapply: any = FormGroup;

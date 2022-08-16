@@ -3,13 +3,12 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-admindonations',
   templateUrl: './admindonations.component.html',
-  styleUrls: ['./admindonations.component.css']
+  styleUrls: ['./admindonations.component.css'],
 })
 export class AdmindonationsComponent implements OnInit {
-
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
+    document.getElementById('top')?.scrollIntoView({ behavior: 'smooth' });
   }
-
 }

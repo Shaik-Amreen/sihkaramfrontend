@@ -9,7 +9,9 @@ import { Router } from '@angular/router';
 export class ContactusComponent implements OnInit {
   constructor(private Router: Router) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    document.getElementById('top')?.scrollIntoView({ behavior: 'smooth' });
+  }
 
   contact() {
     this.Router.navigate(['/sih/feedback']);

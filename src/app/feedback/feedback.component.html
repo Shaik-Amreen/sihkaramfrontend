@@ -1,12 +1,12 @@
 
-<div  #top id="top" class="row" style="height: 77vh;margin:0rem;padding:0rem">
+<div id="top" class="row" style="height: 88vh;margin:0rem;padding:0rem">
     <div class="col-6" style="background-color: rgba(1, 9, 71, 1);color: white;padding-left: 9vw;padding-top: 25vh;">
         <div>
             <h1>Feedback .</h1>
         </div>
     </div>
     <form class="col" [formGroup]="workapply" (ngSubmit)="submit()">
-        <div style="padding: 2rem 5rem;">
+        <div style="padding: 2rem 0rem;padding-left: 30%;">
             <div style="color:green" *ngIf="successMsg!=''"><strong><i style="color:green" class='bx bxs-check-circle'></i>
                     {{successMsg}}</strong></div>
             <br>
