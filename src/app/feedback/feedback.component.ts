@@ -19,6 +19,7 @@ export class FeedbackComponent implements OnInit {
     this.workapply = new FormGroup({
       fullname: new FormControl('', Validators.required),
       email: new FormControl(''),
+      contact: new FormControl(''),
       suggestions: new FormControl('', Validators.required),
       feedbackmsg: new FormControl('', Validators.required),
     });

@@ -33,10 +33,10 @@
             <br>
             <div class="row">
                 <div class="col">
-                    <label>Email <sup style="color:crimson"><strong>*</strong></sup></label><br>
+                    <label>Email </label><br>
                     <input (click)="showerr=false" class="form-control shadow-none" placeholder="Enter  Email"
                         type="email" formControlName="email">
-                <span *ngIf="showerr" style="color:crimson;font-size: 0.8rem;">Enter valid text</span>
+                <!-- <span *ngIf="showerr" style="color:crimson;font-size: 0.8rem;">Enter valid text</span> -->
                     </div>
                 <div class="col">
                     <label>Mobile Number <sup style="color:crimson"><strong>*</strong></sup></label><br>
@@ -45,10 +45,10 @@
                 <span *ngIf="showerr" style="color:crimson;font-size: 0.8rem;">Enter valid text</span>
                     </div>
                 <div class="col">
-                    <label>Alternative Mobile Number <sup style="color:crimson"><strong>*</strong></sup></label><br>
+                    <label>Alternative Mobile Number </label><br>
                     <input (click)="showerr=false" class="form-control shadow-none"
                         placeholder="Enter  Alternative Mobile " type="number" formControlName="altmobileno">
-                        <span *ngIf="showerr" style="color:crimson;font-size: 0.8rem;">Enter valid text</span>
+                        <!-- <span *ngIf="showerr" style="color:crimson;font-size: 0.8rem;">Enter valid text</span> -->
                     
                     </div>
             </div>
