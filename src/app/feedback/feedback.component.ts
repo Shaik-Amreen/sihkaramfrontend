@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttprequestService } from '../commonservices/httprequest.service';
-import { Router, NavigationEnd } from '@angular/router';
+// import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-feedback',
@@ -13,11 +13,9 @@ export class FeedbackComponent implements OnInit {
   successMsg = '';
   showerr: any = false;
   constructor(
-    private router: Router,
     private httprequest: HttprequestService,
     private http: HttpClient
   ) {
-    document.getElementById('top')?.scrollIntoView({ behavior: 'smooth' });
     this.workapply = new FormGroup({
       fullname: new FormControl('', Validators.required),
       email: new FormControl(''),
@@ -27,12 +25,9 @@ export class FeedbackComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.router.events.subscribe((evt) => {
-      if (!(evt instanceof NavigationEnd)) {
-        return;
-      }
-      window.scrollTo(0, 0);
-    });
+    document.getElementById('top')?.scrollIntoView({ behavior: 'smooth' });
+
+    // window.scroll(0, 0);
   }
 
   workapply: any = FormGroup;
