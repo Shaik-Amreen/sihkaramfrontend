@@ -12,10 +12,10 @@ import { HttprequestService } from '../commonservices/httprequest.service';
 export class FeedbackComponent implements OnInit {
   successMsg = '';
   showerr: any = false;
-  constructor(
-    private httprequest: HttprequestService,
-    private http: HttpClient
-  ) {
+  scrollToTopBtn: any = document.getElementById("scrollToTopBtn")
+  rootElement: any = document.documentElement
+
+  constructor(private httprequest: HttprequestService, private http: HttpClient) {
     this.workapply = new FormGroup({
       fullname: new FormControl('', Validators.required),
       email: new FormControl(''),
@@ -27,6 +27,14 @@ export class FeedbackComponent implements OnInit {
 
   ngOnInit() {
     document.getElementById('top')?.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  scrollToTop() {
+    // Scroll to top logic
+    this.rootElement.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    })
   }
 
   workapply: any = FormGroup;

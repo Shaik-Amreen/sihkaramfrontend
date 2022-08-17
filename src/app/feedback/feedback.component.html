@@ -1,13 +1,16 @@
 
-<div id="top" class="row" style="height: 88vh;margin:0rem;padding:0rem">
+<div #top id="top" class="row" style="height: 100vh;margin:0rem;padding:0rem">
     <div class="col-6" style="background-color: rgba(1, 9, 71, 1);color: white;padding-left: 9vw;padding-top: 25vh;">
         <div>
             <h1>Feedback .</h1>
         </div>
     </div>
     <form class="col" [formGroup]="workapply" (ngSubmit)="submit()">
-        <div style="padding: 2rem 0rem;padding-left: 30%;">
-            <div style="color:green" *ngIf="successMsg!=''"><strong><i style="color:green" class='bx bxs-check-circle'></i>
+
+        <div style="padding: 2rem 5rem;">
+            <div style="color:green" *ngIf="successMsg!=''"><strong><i style="color:green"
+                        class='bx bxs-check-circle'></i>
+
                     {{successMsg}}</strong></div>
             <br>
             <div class="row">
@@ -23,8 +26,8 @@
             <div class="row">
                 <div class="col-6">
                     <label>Email <sup style="color:crimson"><strong></strong></sup></label><br>
-                    <input (click)="showerr=false" class="form-control shadow-none" placeholder="Enter  Email" type="email"
-                        formControlName="email">
+                    <input (click)="showerr=false" class="form-control shadow-none" placeholder="Enter  Email"
+                        type="email" formControlName="email">
                     <!-- <span *ngIf="showerr" style="color:crimson;font-size: 0.8rem;">Enter valid text</span> -->
                 </div>
             </div><br>
@@ -51,7 +54,7 @@
                     <textarea style="font-size: 0.8rem;" class="form-control shadow-none" placeholder="Enter  Address"
                         formControlName="feedbackmsg"></textarea>
                     <span *ngIf="showerr" style="color:crimson;font-size: 0.8rem;">Enter valid address</span>
-    
+
                 </div>
             </div><br />
             <div class="row">
