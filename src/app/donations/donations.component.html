@@ -49,7 +49,7 @@
                 <div class="col-9">
                     <label>Country/Region<sup style="color:crimson"><strong>*</strong></sup></label><br>
                     <input style="font-size: 0.8rem;" (click)="showerr=false" class="form-control shadow-none"
-                        placeholder="Enter Your Country/Region" formControlName="Enter Your Country/Region"/>
+                        placeholder="Enter Your Country/Region" formControlName="contact"/>
                     <span *ngIf="showerr" style="color:crimson;font-size: 0.8rem;">Enter valid text</span>
                 </div>
             </div><br />
@@ -95,7 +95,6 @@
                 </div>
             </div><br>
             <div class="col-9" *ngIf="pay" style="display: flex;justify-content: center;align-items: center;">
-                <!-- ghwhuhvbhyigbuvbyuhvbuh -->
                 <app-payment-gateway [appdata]="workapply"></app-payment-gateway>
             </div>
         </div>
