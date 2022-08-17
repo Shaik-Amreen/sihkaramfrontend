@@ -11,6 +11,8 @@ import { HttprequestService } from '../commonservices/httprequest.service';
 export class DonationsComponent implements OnInit {
   successMsg = '';
   showerr: any = false;
+  pay: any = false;
+  workapply: any = FormGroup;
   constructor(
     private httprequest: HttprequestService,
     private http: HttpClient
@@ -28,20 +30,22 @@ export class DonationsComponent implements OnInit {
     document.getElementById('top')?.scrollIntoView({ behavior: 'smooth' });
   }
 
-  workapply: any = FormGroup;
   submit() {
-    if (this.workapply.status == 'VALID') {
-      this.httprequest
-        .postrequest('/postfeedback', this.workapply.value)
-        .subscribe((res) => {
-          this.successMsg = 'Sucessfully submitted';
-          this.workapply.reset();
-          setTimeout(() => {
-            this.successMsg = '';
-          }, 2000);
-        });
-    } else {
-      this.showerr = true;
-    }
+    history.state.amount = 1500
+    this.pay = true;
+  //   if (this.workapply.status == 'VALID') {
+  //     this.pay = true;
+  //     this.httprequest
+  //       .postrequest('/postfeedback', this.workapply.value)
+  //       .subscribe((res) => {
+  //         this.successMsg = 'Sucessfully submitted';
+  //         this.workapply.reset();
+  //         setTimeout(() => {
+  //           this.successMsg = '';
+  //         }, 2000);
+  //       });
+  //   } else {
+  //     this.showerr = true;
+  //   }
   }
 }

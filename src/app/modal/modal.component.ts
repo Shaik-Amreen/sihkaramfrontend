@@ -1,22 +1,25 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MdbModalRef } from 'mdb-angular-ui-kit/modal';
+import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 import { HttprequestService } from '../commonservices/httprequest.service';
 import { Router } from '@angular/router'; 
+
 
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.component.html',
 })
 export class ModalComponent {
+  modalRef: MdbModalRef<ModalComponent> | null = null;
+
   logindetails: any = FormGroup;
   showerr: any = false;
   displaypopup: any = false;
-  popup:any
+  popup: any;
   constructor(
-    private router:Router,
+    private router: Router,
     private httprequest: HttprequestService,
-    modalRef: MdbModalRef<ModalComponent>
+    private modalService: MdbModalService
   ) {
     this.logindetails = new FormGroup({
       userid: new FormControl('', Validators.required),
@@ -33,6 +36,7 @@ export class ModalComponent {
           if (res.role == 'admin') {
             // console.log(hello )
             this.router.navigate(['/sih/admin']);
+            this.modalRef = this.modalService.open(ModalComponent);
           }
           // this.displaypopup = true;
           // this.popup = 'Successfully Submitted';

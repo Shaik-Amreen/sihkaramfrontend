@@ -15,7 +15,7 @@ export class NavbarComponent implements OnInit {
   role: any;
   routes: any;
 
-  constructor(private router:Router,private modalService: MdbModalService) {
+  constructor(private router: Router, private modalService: MdbModalService) {
     this.routes = this.publicroutes;
     this.role = sessionStorage.getItem('role');
     if (this.role == 'admin') {
@@ -57,8 +57,8 @@ export class NavbarComponent implements OnInit {
     document.getElementById('top')?.scrollIntoView({ behavior: 'smooth' });
   }
 
-  logout(){
-    sessionStorage.removeItem('role')
-    this.router.navigate(['/sih'])
+  logout() {
+    sessionStorage.removeItem('role');
+    this.router.navigate(['/sih']);
   }
 }
