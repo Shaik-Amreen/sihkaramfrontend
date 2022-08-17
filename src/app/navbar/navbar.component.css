@@ -7,9 +7,10 @@
     color: white;
     padding: 1rem;
     /* padding-left: 8vw; */
-    display: flex;
+    text-align: center;
+    /* display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
     font-family: 'Poppins', sans-serif;
     width: 100%;
 }
