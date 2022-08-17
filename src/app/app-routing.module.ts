@@ -1,5 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdmindonationsComponent } from './adminfolder/admindonations/admindonations.component';
+import { AdminfeedbackComponent } from './adminfolder/adminfeedback/adminfeedback.component';
+import { ContractsComponent } from './adminfolder/contracts/contracts.component';
+import { JobapplicationsComponent } from './adminfolder/jobapplications/jobapplications.component';
 import { AppservicesComponent } from './appservices/appservices.component';
 import { ContactusComponent } from './contactus/contactus.component';
 import { DonationsComponent } from './donations/donations.component';
@@ -29,9 +33,17 @@ const routes: Routes = [
       { path: 'maps', component: MapsComponent, pathMatch: "full" },
     ]
   },
-  // {
-  //   path:'sih'
-  // }
+  {
+    path:'sih/admin',component: MainpageComponent,
+    children:[
+      { path: "", redirectTo: 'homepage', pathMatch: 'full' },
+      { path:'homepage', component: HomepageComponent, pathMatch: 'full' },
+      {path:'donations',component:AdmindonationsComponent,pathMatch:'full'},
+      {path:'feedbacks',component:AdminfeedbackComponent,pathMatch:'full'},
+      {path:'contracts',component:ContractsComponent,pathMatch:'full'},
+      {path:'jobapplications',component:JobapplicationsComponent,pathMatch:'full'}
+    ]
+  }
 ];
 
 @NgModule({

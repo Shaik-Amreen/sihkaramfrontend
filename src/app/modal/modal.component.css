@@ -5,3 +5,22 @@
 .modal {
     background: rgba(0, 0, 0, .5);
   } 
+
+  .view {
+      position: fixed;
+      left: 72%;
+      top: 10%;
+      right: 1%;
+      color: white;
+      padding: 15px;
+      background: #47cbff;
+      box-shadow: 0px 0px 10px 2px rgb(214, 210, 210);
+      border-radius: 8px;
+      width: auto;
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      align-items: center;
+      animation: fade 3s;
+      cursor: context-menu;
+  }

@@ -18,10 +18,11 @@ export class NavbarComponent implements OnInit {
     this.routes = this.publicroutes;
     this.role = sessionStorage.getItem('role');
     if (this.role == 'admin') {
-      this.role = this.adminroutes;
+      this.routes = this.adminroutes;
     } else if (this.role == 'contractor') {
-      this.role = this.contractorroutes;
+      this.routes = this.contractorroutes;
     }
+    console.log(this.routes)
   }
 
   publicroutes = [
@@ -37,11 +38,11 @@ export class NavbarComponent implements OnInit {
   ];
 
   adminroutes = [
-    { route: 'admin/homepage', routename: 'Home' },
-    { route: 'admin/admindonations', routename: 'Donations' },
-    { route: 'admin/adminfeedback', routename: 'Feedbacks' },
-    { route: 'admin/contracts', routename: 'Contracts' },
-    { route: 'admin/jobapplications', routename: 'Job Applications' },
+    { route: 'homepage', routename: 'Home' },
+    { route: 'donations', routename: 'Donations' },
+    { route: 'feedbacks', routename: 'Feedbacks' },
+    { route: 'contracts', routename: 'Contracts' },
+    { route: 'jobapplications', routename: 'Job Applications' },
   ];
 
   contractorroutes = [{ route: 'contractor/homepage', routename: 'Home' }];

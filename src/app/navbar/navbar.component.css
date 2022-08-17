@@ -5,8 +5,11 @@
     background: rgb(1, 9, 71);
     background: linear-gradient(118deg, rgba(1, 9, 71, 1) 19%, rgba(23, 164, 209, 1) 77%);
     color: white;
-    padding: 0.7rem;
-    padding-left: 8vw;
+    padding: 1rem;
+    /* padding-left: 8vw; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-family: 'Poppins', sans-serif;
     width: 100%;
 }
@@ -14,12 +17,17 @@
 .nav-item {
     margin-right: 1.2rem;
     cursor: pointer;
+    /* margin: 1rem; */
+    /* max-wid: 7vw; */
     /* font: bold; */
 }
 .active{
-    font-weight: 900;
-    letter-spacing: 1px;
-   
+    font-weight: 800;
+    /* letter-spacing: 1px; */
+    padding-bottom: 0.3rem;
+    border-bottom: 3px solid white;
+    border-radius: 0.2rem;
+    /* transition: all 5s; */
 }
 
 .topNav {
