@@ -93,6 +93,10 @@
                     <button class="btn btn" type="submit"
                         style="background-color: rgba(1, 9, 71, 1);color: white;padding: 0.6rem 2rem; font-weight: bold;">Donate</button>
                 </div>
+            </div><br>
+            <div class="col-9" *ngIf="pay" style="display: flex;justify-content: center;align-items: center;">
+                <!-- ghwhuhvbhyigbuvbyuhvbuh -->
+                <app-payment-gateway [appdata]="workapply"></app-payment-gateway>
             </div>
         </div>
     </form>

@@ -1,0 +1,12 @@
+<google-pay-button
+    environment="TEST"
+    buttonType="pay"
+    buttonColor="white"
+    [paymentRequest]="paymentRequest"
+    (loadpaymentdata)="onLoadPaymentData($event)"
+    (error)="onError($event)"
+    [paymentAuthorizedCallback]="onPaymentDataAuthorized"
+  >
+  </google-pay-button><br><br>
+  <!-- <button class="btn btn-danger" routerLinkActive="active" routerLink="/donations">Close</button> -->
+

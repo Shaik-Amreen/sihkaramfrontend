@@ -20,7 +20,8 @@ import { ContractsComponent } from './adminfolder/contracts/contracts.component'
 import { AdmindonationsComponent } from './adminfolder/admindonations/admindonations.component';
 import { AdminfeedbackComponent } from './adminfolder/adminfeedback/adminfeedback.component';
 import { JobapplicationsComponent } from './adminfolder/jobapplications/jobapplications.component';
-
+import { PaymentGatewayComponent } from './payment-gateway/payment-gateway.component';
+import { GooglePayButtonModule } from '@google-pay/button-angular';
 import { MdbModalModule } from 'mdb-angular-ui-kit/modal';
 import { ModalComponent } from './modal/modal.component';
 // import { CarouselModule } from '@coreui/angular';
@@ -28,6 +29,7 @@ import { ModalComponent } from './modal/modal.component';
 @NgModule({
   declarations: [
     AppComponent,
+    PaymentGatewayComponent,
     MainpageComponent,
     NavbarComponent,
     FooterComponent,
@@ -49,14 +51,14 @@ import { ModalComponent } from './modal/modal.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule, 
+    FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
     // CarouselModule,
-    MdbModalModule
-
+    MdbModalModule,
+    GooglePayButtonModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
