@@ -6,7 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./footer.component.css'],
 })
 export class FooterComponent implements OnInit {
-  constructor() {}
+  role: any
+  admin: any=0
+  constructor() {
+    this.role = sessionStorage.getItem('role');
+    if (this.role == 'admin') {
+      this.admin = 1
+    } else if (this.role == 'contractor') {
+      this.admin = 2
+    }
+  }
 
   ngOnInit(): void {
     document.getElementById('top')?.scrollIntoView({ behavior: 'smooth' });

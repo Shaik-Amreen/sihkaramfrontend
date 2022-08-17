@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttprequestService } from '../../commonservices/httprequest.service';
 
 @Component({
   selector: 'app-adminfeedback',
@@ -6,7 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./adminfeedback.component.css'],
 })
 export class AdminfeedbackComponent implements OnInit {
-  constructor() {}
+  data:any
+  constructor( private httprequest:HttprequestService) {
+    this.httprequest.postrequest('/getFeedback','').subscribe(
+      (res:any)=>{
+        this.data=res.data
+      }
+    )
+  }
 
   ngOnInit(): void {
     document.getElementById('top')?.scrollIntoView({ behavior: 'smooth' });

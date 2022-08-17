@@ -23,6 +23,7 @@ export class FeedbackComponent implements OnInit {
       suggestions: new FormControl('', Validators.required),
       feedbackmsg: new FormControl('', Validators.required),
     });
+   
   }
 
   ngOnInit() {
