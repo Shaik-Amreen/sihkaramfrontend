@@ -2,11 +2,11 @@
     <div class="modal-body">
         <form [formGroup]="logindetails" (ngSubmit)="login()"><br>
             <label><strong>LOGIN ID<sup style="color:crimson"><strong>*</strong></sup></strong></label>
-            <input class="form-control shadow-none" placeholder="Enter Login Id" formControlName="userid"><br>
-                <span *ngIf="showerr" style="color:crimson;font-size: 0.8rem;">Enter valid text</span>
+            <input class="form-control shadow-none" placeholder="Enter Login Id" formControlName="userid">
+                <span *ngIf="showerr" style="color:crimson;font-size: 0.8rem;">Enter valid text</span><br>
             <label><strong>PASSWORD<sup style="color:crimson"><strong>*</strong></sup></strong></label>
-            <input class="form-control shadow-none" placeholder="Enter Password" formControlName="password"><br>
-                <span *ngIf="showerr" style="color:crimson;font-size: 0.8rem;">Enter valid text</span>
+            <input class="form-control shadow-none" placeholder="Enter Password" formControlName="password">
+                <span *ngIf="showerr" style="color:crimson;font-size: 0.8rem;">Enter valid text</span><br>
             <div style="display: flex;justify-content:center;align-items:center">
                 <button class="btn btn" type="submit"
                     style="background-color: rgba(1, 9, 71, 1);color: white;padding: 0.6rem 2rem; font-weight: bold;">Login</button>

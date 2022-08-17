@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ModalComponent } from '../modal/modal.component';
 import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -14,7 +15,7 @@ export class NavbarComponent implements OnInit {
   role: any;
   routes: any;
 
-  constructor(private modalService: MdbModalService) {
+  constructor(private router:Router,private modalService: MdbModalService) {
     this.routes = this.publicroutes;
     this.role = sessionStorage.getItem('role');
     if (this.role == 'admin') {
@@ -22,7 +23,7 @@ export class NavbarComponent implements OnInit {
     } else if (this.role == 'contractor') {
       this.routes = this.contractorroutes;
     }
-    console.log(this.routes)
+    console.log(this.routes);
   }
 
   publicroutes = [
@@ -54,5 +55,10 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
     document.getElementById('top')?.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  logout(){
+    sessionStorage.removeItem('role')
+    this.router.navigate(['/sih'])
   }
 }

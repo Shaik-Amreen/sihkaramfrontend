@@ -37,6 +37,7 @@ export class WorkwithusComponent implements OnInit {
   workapply: any = FormGroup;
   apply() {
     if (this.workapply.status == 'VALID') {
+      console.log(this.workapply.value)
       this.httprequest
         .postrequest('/postapplications', this.workapply.value)
         .subscribe((res) => {

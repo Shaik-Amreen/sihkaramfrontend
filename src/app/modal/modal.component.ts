@@ -31,6 +31,7 @@ export class ModalComponent {
           console.log(res);
           sessionStorage.setItem('role', res.role);
           if (res.role == 'admin') {
+            // console.log(hello )
             this.router.navigate(['/sih/admin']);
           }
           // this.displaypopup = true;

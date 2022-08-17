@@ -2,7 +2,7 @@
     <div class="topNav" style="background-color: white;width:100%;">
         <img src="assets/logo.png" style="height:10vh ;width: 5vw;margin-right: 1rem;" alt="hello" />
         <span>
-            <span class="logo_name">HAPPY RESIDENCE 4 U</span><br />
+            <span class="logo_name">HAPPYRESIDENCE4U</span><br />
             <strong style="font-size: 0.9rem;color:rgba(23, 164, 209, 1);font-family: poppins;">We build your visions ,
                 with perfections .</strong>
         </span>
@@ -12,9 +12,12 @@
     </div>
     <div class="backgroundColor">
         <span  *ngFor="let x of routes" class="nav-item" routerLinkActive="active" routerLink={{x.route}}>{{x.routename}}</span>
-        <button class="btn btn" *ngIf = "role==''"
-            style="background: linear-gradient(118deg, rgb(5, 166, 219) 5%, rgb(16, 29, 127) 95%);margin-left: 15%;color: white;font-weight: bold;"
+        <button class="btn btn" *ngIf = "!role"
+            style="background: linear-gradient(118deg, rgb(5, 166, 219) 5%, rgb(16, 29, 127) 95%);margin-left: 10%;color: white;font-weight: bold;"
             (click)="openModal()" >LOGIN</button>
+        <button class="btn btn" *ngIf = "role"
+            style="background: linear-gradient(118deg,  rgb(5, 166, 219) 5%, rgb(16, 29, 127) 95%);margin-left: 10%;color: white;font-weight: bold;"
+            (click)="logout()" >LogOut</button>
     </div>
 </div>
 
