@@ -9,6 +9,7 @@ export class FooterComponent implements OnInit {
   role: any
   admin: any=0
   constructor() {
+    sessionStorage.removeItem('role');
     this.role = sessionStorage.getItem('role');
     if (this.role == 'admin') {
       this.admin = 1

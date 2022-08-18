@@ -10,7 +10,7 @@ import { AppservicesComponent } from './appservices/appservices.component';
 import { MapsComponent } from './maps/maps.component';
 import { LocalanalysisComponent } from './localanalysis/localanalysis.component';
 import { InfrastructuremodelsComponent } from './infrastructuremodels/infrastructuremodels.component';
-import { ContactusComponent } from './contactus/contactus.component';
+// import { ContactusComponent } from './contactus/contactus.component';
 import { WorkwithusComponent } from './workwithus/workwithus.component';
 import { FeedbackComponent } from './feedback/feedback.component';
 import { DonationsComponent } from './donations/donations.component';
@@ -38,7 +38,7 @@ import { ModalComponent } from './modal/modal.component';
     MapsComponent,
     LocalanalysisComponent,
     InfrastructuremodelsComponent,
-    ContactusComponent,
+    // ContactusComponent,
     WorkwithusComponent,
     FeedbackComponent,
     DonationsComponent,

@@ -16,6 +16,7 @@ export class FeedbackComponent implements OnInit {
   rootElement: any = document.documentElement
 
   constructor(private httprequest: HttprequestService, private http: HttpClient) {
+    sessionStorage.removeItem('role');
     this.workapply = new FormGroup({
       fullname: new FormControl('', Validators.required),
       email: new FormControl(''),

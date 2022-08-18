@@ -29,18 +29,18 @@ export class NavbarComponent implements OnInit {
   publicroutes = [
     { route: 'homepage', routename: 'Home' },
     { route: 'services', routename: 'Services' },
+    { route: 'workwithus', routename: 'Employment' },
+    { route: 'infrastructure', routename: 'Infrastructure Designs' },
     { route: 'maps', routename: 'Maps' },
+    // { route: 'localanalysis', routename: 'Local Analysis' },
     { route: 'donations', routename: 'Donate' },
-    { route: 'localanalysis', routename: 'Local Analysis' },
-    { route: 'infrastructure', routename: 'Infrastructure and 3D Module' },
-    { route: 'workwithus', routename: 'Work with us' },
-    { route: 'feedback', routename: 'Feedback' },
-    { route: 'contactus', routename: 'Contact Us' },
+    { route: 'feedback', routename: 'Feedback & Report' },
+    // { route: 'contactus', routename: 'Contact Us' },
   ];
 
   adminroutes = [
     { route: 'homepage', routename: 'Home' },
-    { route: 'donations', routename: 'Donations' },
+    { route: 'admindonations', routename: 'Donations' },
     { route: 'feedbacks', routename: 'Feedbacks' },
     { route: 'contracts', routename: 'Contracts' },
     { route: 'jobapplications', routename: 'Job Applications' },
