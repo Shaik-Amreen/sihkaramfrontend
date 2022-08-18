@@ -11,12 +11,14 @@ export class JobapplicationsComponent implements OnInit {
   jobdetails: FormGroup;
   jobs: any;
   display = 'None';
+  err=false;
 
   constructor(private httprequest: HttprequestService) {
     this.jobdetails = new FormGroup({
       amount: new FormControl('', Validators.required),
       jobtitle: new FormControl('', Validators.required),
       jobdescription: new FormControl('', Validators.required),
+      location: new FormControl('', Validators.required),
       jobid: new FormControl('', Validators.required),
     });
 
@@ -31,8 +33,8 @@ export class JobapplicationsComponent implements OnInit {
       });
   }
 
-  displaymodal(){
-    this.display='block'
+  displaymodal() {
+    this.display = 'block';
   }
 
   approve(i: any, d: any) {
@@ -43,11 +45,15 @@ export class JobapplicationsComponent implements OnInit {
   }
 
   createjob() {
-    this.httprequest
-      .postrequest('/postJob', this.jobdetails)
-      .subscribe((res: any) => {
-        console.log(res);
-      });
+    if (this.jobdetails.status == 'VALID') {
+      this.httprequest
+        .postrequest('/postJob', this.jobdetails)
+        .subscribe((res: any) => {
+          console.log(res);
+        });
+    } else {
+      this.err = true;
+    }
   }
 
   ngOnInit(): void {

@@ -45,8 +45,8 @@ const routes: Routes = [
     path: 'sih/admin',
     component: MainpageComponent,
     children: [
-      { path: '', redirectTo: 'homepage', pathMatch: 'full' },
-      { path: 'homepage', component: HomepageComponent, pathMatch: 'full' },
+      { path: '', redirectTo: 'adminhomepage', pathMatch: 'full' },
+      { path: 'adminhomepage', component: HomepageComponent, pathMatch: 'full' },
       {
         path: 'admindonations',
         component: AdmindonationsComponent,

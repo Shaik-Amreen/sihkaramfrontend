@@ -94,25 +94,29 @@
             <div class="modal-header">
                 <h4 class="modal-title" style="text-align: center;display: flex;justify-content: center;">Job Application</h4>
             </div>
-            <div class="modal-body">
-                <div [formGroup]="jobdetails" class="modal-dialog">
-
-                    <input type="text" class="form-control" placeholder="jobid" formControlName="jobid"><br />
-                    <input type="text" class="form-control" placeholder="jobtitle" formControlName="jobtitle"><br />
-                    <input type="text" class="form-control" placeholder="jobdescription"
-                        formControlName="jobdescription"><br />
-                    <input type="text" class="form-control" placeholder="amount" formControlName="amount">
-
-
+            <div class="modal-body " >
+                <div  [formGroup]="jobdetails" class="table-responsive" style="height: 84vh;margin-top: 0;padding-top:  0;">
+                    <label><b>Job Id</b></label>
+                    <input type="text" class="form-control shadow-none" placeholder="Job Id" formControlName="jobid">
+                    <span *ngIf="err" style="color:crimson;font-size: 0.8rem;">Enter valid text</span><br />
+                    <label><b>Job Tittle</b></label>
+                    <input type="text" class="form-control shadow-none" placeholder="Job Tittle" formControlName="jobtitle">
+                    <span *ngIf="err" style="color:crimson;font-size: 0.8rem;">Enter valid text</span><br />
+                    <label><b>Job Location</b></label>
+                    <input type="text" class="form-control shadow-none" placeholder="Job Tittle" formControlName="location">
+                    <span *ngIf="err" style="color:crimson;font-size: 0.8rem;">Enter valid text</span><br />
+                    <label><b>Salary</b></label>
+                    <input type="text" class="form-control shadow-none" placeholder="Salary" formControlName="amount">
+                    <span *ngIf="err" style="color:crimson;font-size: 0.8rem;">Enter valid text</span><br>
+                    <label><b>Job Description</b></label>
+                    <textarea type="text" class="form-control shadow-none" placeholder="Job Description"
+                    formControlName="jobdescription"></textarea>
+                    <span *ngIf="err" style="color:crimson;font-size: 0.8rem;">Enter valid text</span><br>
+                        <button (click)="display='None'" style="float: right ;margin-right:1.2rem;" class="btn btn-danger" > Close</button>
+                        <button (click)="createjob()" style="float: right ;margin:0rem 1rem;" class="btn btn-primary" >Create Job</button>
                 </div>
             </div>
 
-            <div >
-                <button (click)="display='None'" style="float: right ;margin-right:1.2rem;" class="btn btn-danger" > Close</button>
-                <button (click)="createjob()" style="float: right ;margin:0rem 1rem;" class="btn btn-primary" >Create Job</button>
-
-            </div>
-            <br />
         </div>
     </div>
 </div>

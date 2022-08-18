@@ -18,6 +18,7 @@ export class NavbarComponent implements OnInit {
   constructor(private router: Router, private modalService: MdbModalService) {
     this.routes = this.publicroutes;
     this.role = sessionStorage.getItem('role');
+    console.log(this.role,"this.role")
     if (this.role == 'admin') {
       this.routes = this.adminroutes;
     } else if (this.role == 'contractor') {
@@ -39,7 +40,7 @@ export class NavbarComponent implements OnInit {
   ];
 
   adminroutes = [
-    { route: 'homepage', routename: 'Home' },
+    { route: 'adminhomepage', routename: 'Home' },
     { route: 'admindonations', routename: 'Donations' },
     { route: 'feedbacks', routename: 'Feedbacks' },
     { route: 'contracts', routename: 'Contracts' },
