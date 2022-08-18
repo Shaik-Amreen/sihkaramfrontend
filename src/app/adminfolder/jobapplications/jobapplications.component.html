@@ -1,5 +1,83 @@
 <div style="display: flex;justify-content:center;max-height: 1000vh;font-size: 0.9rem;">
-    <div class="row m-5 mt-0" st>
+    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal"
+        style="float: right;">create job</button>
+
+
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+        <div [formGroup]="jobdetails" class="modal-dialog">
+
+            <input type="text" class="form-control" formControlName="jobid">
+            <input type="text" class="form-control" formControlName="jobtitle">
+            <input type="text" class="form-control" formControlName="jobdescription">
+            <input type="text" class="form-control" formControlName="amount">
+
+            <button (click)="createjob()" class="btn btn-primary">create job</button>
+        </div>
+    </div>
+    <div class="row m-5 mt-0" *ngIf="data else nodata">
+        <div class="col card m-2 mb-0 shadow  border-0" style="background-color: whiteSmoke;padding: 1rem; "
+            *ngFor="let c of data ; index as i">
+            {{c.jobid}}
+            {{c.firstname}} {{c.middlename}} {{c.lastname}}
+            {{c.mobileno}}
+            {{c.jobtitle}}
+            {{c.prevexperience}}
+            <!-- <table class="table">
+                <tbody>
+                    <tr>
+                        <td>Name</td>
+
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td>{{c.email}}</td>
+                    </tr>
+                    <tr>
+                        <td>Mobile</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Alternative mobile</td>
+                        <td>{{c.altmobileno}}</td>
+                    </tr>
+                    <tr>
+                        <td>Job role</td>
+                        <td>{{c.jobid}}</td>
+                    </tr>
+                    <tr>
+                        <td>Previous Experience</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Previous workplace</td>
+                        <td>{{c.prevworkplace}}</td>
+                    </tr>
+                    <tr>
+                        <td>Address</td>
+                        <td>{{c.address}}</td>
+                    </tr>
+
+
+
+                </tbody>
+            </table>           -->
+
+            <span style="float: right;">
+                <span style="display: flex;"><button class="btn btn-success m-1"
+                        style="background-color: green;color:white" *ngIf="c.approve==''"
+                        (click)="approve(i,'yes')">Accept</button>
+                    <button class="btn btn-danger m-1" *ngIf="c.approve==''" (click)="approve(i,'no')"
+                        style="background-color: rgb(110, 16, 16);color:white">Reject</button></span>
+                <button class="btn btn-success" *ngIf="c.approve=='yes'"
+                    style="background-color: green;color:white">Accepted</button>
+                <button class="btn btn-danger" *ngIf="c.approve=='no'"
+                    style="background-color: rgb(110, 16, 16);color:white">Rejected</button>
+
+            </span>
+        </div>
+    </div>
+    <div class="row m-5 mt-0" *ngIf="data else nodata">
         <div class="col-3 card m-5 mb-0 shadow  border-0" style="background-color: whiteSmoke;padding: 1rem; "
             *ngFor="let c of data ; index as i">
             <table class="table">
@@ -22,7 +100,7 @@
                     </tr>
                     <tr>
                         <td>Job role</td>
-                        <td>{{c.jobpost}}</td>
+                        <td>{{c.jobid}}</td>
                     </tr>
                     <tr>
                         <td>Previous Experience</td>
@@ -36,17 +114,24 @@
                         <td>Address</td>
                         <td>{{c.address}}</td>
                     </tr>
-                    
-                        
-                    
+
+
+
                 </tbody>
             </table>
 
-            <span style="display: flex;"><button class="btn btn-success m-1" style="background-color: green;color:white" *ngIf="c.approve==''" (click)="approve(i,'yes')" >Approve</button>
-                <button class="btn btn-danger m-1" *ngIf="c.approve==''" (click)="approve(i,'no')" style="background-color: rgb(110, 16, 16);color:white" >Reject</button></span>
-            <button class="btn btn-success" *ngIf="c.approve=='yes'"style="background-color: green;color:white" >Approved</button>
-            <button class="btn btn-danger" *ngIf="c.approve=='no'" style="background-color: rgb(110, 16, 16);color:white" >Rejected</button>
+            <span style="display: flex;"><button class="btn btn-success m-1" style="background-color: green;color:white"
+                    *ngIf="c.approve==''" (click)="approve(i,'yes')">Approve</button>
+                <button class="btn btn-danger m-1" *ngIf="c.approve==''" (click)="approve(i,'no')"
+                    style="background-color: rgb(110, 16, 16);color:white">Reject</button></span>
+            <button class="btn btn-success" *ngIf="c.approve=='yes'"
+                style="background-color: green;color:white">Approved</button>
+            <button class="btn btn-danger" *ngIf="c.approve=='no'"
+                style="background-color: rgb(110, 16, 16);color:white">Rejected</button>
 
         </div>
     </div>
+    <ng-template #nodata>
+        No job applications.
+    </ng-template>
 </div>

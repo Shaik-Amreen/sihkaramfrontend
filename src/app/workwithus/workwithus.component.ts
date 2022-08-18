@@ -11,10 +11,18 @@ import { HttprequestService } from '../commonservices/httprequest.service';
 export class WorkwithusComponent implements OnInit {
   successMsg = '';
   showerr: any = false;
+  jobs: any;
+  currentApplying: any
+  searchtext: any = ''
   constructor(
     private httprequest: HttprequestService,
     private http: HttpClient
   ) {
+    this.httprequest.postrequest('/getJobs', '').subscribe(
+      (res: any) => {
+        this.jobs = res.data
+      }
+    )
     this.workapply = new FormGroup({
       firstname: new FormControl('', Validators.required),
       middlename: new FormControl(''),
@@ -35,6 +43,25 @@ export class WorkwithusComponent implements OnInit {
   }
 
   workapply: any = FormGroup;
+
+  selected(c: any) {
+    this.currentApplying = c
+  }
+
+
+  search() {
+    if (this.searchtext == '') {
+      return this.jobs
+    }
+    else {
+      let temp = this.jobs.filter((j: any) => {
+        j.jobtitle.includes(this.searchtext) || j.jobid.includes(this.searchtext)
+      })
+      return temp
+    }
+
+  }
+
   apply() {
     if (this.workapply.status == 'VALID') {
       console.log(this.workapply.value)
