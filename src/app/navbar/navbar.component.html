@@ -1,24 +1,52 @@
 <div class="navbar">
     <div class="topNav" style="background-color: white;width:100%;">
-        <img src="assets/logo.png" style="height:10vh ;width: 5vw;margin-right: 1rem;" alt="hello" />
+        <img src="assets/logo12.png" style="height:12vh ;width: 6vw;margin-right: 1rem;" alt="hello" />
         <span>
             <span class="logo_name">HAPPYRESIDENCE4U</span><br />
             <strong style="font-size: 0.9rem;color:rgba(23, 164, 209, 1);font-family: poppins;">We build your visions ,
                 with perfections .</strong>
         </span>
         <span style="margin-left: 50%;">
-            <img src="../../assets/sihlogo.svg">
+            <!-- <img src="../../assets/sihlogo.svg"> -->
+            <img src="../../assets/sihlogo.jpg" height="55" width="275">
         </span>
     </div>
     <div class="backgroundColor">
-        <span  *ngFor="let x of routes" class="nav-item" routerLinkActive="active" routerLink={{x.route}}>{{x.routename}}</span>
-        <button class="btn btn" *ngIf = "!role"
+        <span *ngFor="let x of routes" class="nav-item" routerLinkActive="active"
+            routerLink={{x.route}}>{{x.routename}}</span>
+        <button class="btn btn" *ngIf="!role"
             style="background: linear-gradient(118deg, rgb(5, 166, 219) 5%, rgb(16, 29, 127) 95%);color: white;font-weight: bold;float: right;"
-            (click)="openModal()" >LOGIN</button>
-        <button class="btn btn" *ngIf = "role"
+            (click)="display='block'">LOGIN</button>
+        <button class="btn btn" *ngIf="role"
             style="background: linear-gradient(118deg,  rgb(5, 166, 219) 5%, rgb(16, 29, 127) 95%);color: white;font-weight: bold;float: right;"
-            (click)="logout()" >LogOut</button>
+            (click)="logout()">LogOut</button>
     </div>
 </div>
 
+<div style="margin-top: 10%;width: 100vw;" class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':display}">
+    <div class="modal-dialog" style="margin-left: 35%;" role="document">
+        <div class="modal-content" style="width: 30vw;">
+            <div class="modal-header" style="justify-content: center;align-items: center;display: flex;">
+                <h4 class="modal-title" style="text-align: center;display: flex;justify-content: center;align-items: center;">Login Authentication</h4>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="logindetails" (ngSubmit)="login()"><br>
+                    <label><strong>LOGIN ID<sup style="color:crimson"><strong>*</strong></sup></strong></label>
+                    <input class="form-control shadow-none" placeholder="Enter Your Login Id" formControlName="userid">
+                    <span *ngIf="showerr" style="color:crimson;font-size: 0.8rem;">Enter valid text</span><br>
+                    <label><strong>PASSWORD<sup style="color:crimson"><strong>*</strong></sup></strong></label>
+                    <input class="form-control shadow-none" placeholder="Enter Your Password" type="password"
+                        formControlName="password">
+                    <span *ngIf="showerr" style="color:crimson;font-size: 0.8rem;">Enter valid text</span><br><br>
+                    <div style="display: flex;justify-content:center;align-items:center">
+                        <button class="btn btn" type="submit"
+                            style="background-color: rgba(1, 9, 71, 1);color: white;padding: 0.6rem 2rem; font-weight: bold;">Login</button>
+                        <button class="btn btn-danger" (click)="cancel()"
+                            style="color: white;padding: 0.6rem 2rem; font-weight: bold;margin-left: 1rem;">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 

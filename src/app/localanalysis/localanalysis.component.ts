@@ -6,7 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./localanalysis.component.css'],
 })
 export class LocalanalysisComponent implements OnInit {
-  constructor() {}
+  constructor() {
+    sessionStorage.removeItem('role');
+  }
 
   ngOnInit(): void {
     document.getElementById('top')?.scrollIntoView({ behavior: 'smooth' });

@@ -6,7 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./mainpage.component.css'],
 })
 export class MainpageComponent implements OnInit {
-  constructor() {}
+  constructor() {
+    
+  }
 
   ngOnInit(): void {
     document.getElementById('top')?.scrollIntoView({ behavior: 'smooth' });

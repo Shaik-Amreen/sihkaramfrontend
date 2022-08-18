@@ -1,68 +1,72 @@
-
-<div #top id="top" class="row" style="height: 100vh;margin:0rem;padding:0rem">
-    <div class="col-6" style="background-color: rgba(1, 9, 71, 1);color: white;padding-left: 9vw;padding-top: 25vh;">
-        <div>
-            <h1>Feedback .</h1>
+<div #top id="top" class="row" style="height: 80vh;margin:0rem;padding:3rem;margin-bottom: 2rem;">
+    <div class="col-6" style="padding: 0rem 5rem;padding-top: 0rem;">
+        <h2><b>Office Address</b></h2>
+        <hr>
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col">
+                3094-13th Cross, <br>
+                Administrative Building,<br>
+                Anant Kanekar Marg, Bandra (E),<br>
+                Mumbai 400051. India.<br>
+            </div>
+        </div><br><br>
+        <h2><b>Our Social Media</b></h2>
+        <hr>
+        <div class="row" style="display: flex;justify-content:center;align-items:center;margin-left: 2rem;">
+            <div class="col">
+                <i class='bx bxl-facebook-circle' style="font-size: 2rem;"></i>
+                <i class='bx bxl-twitter' style="font-size: 2rem;margin:0 1rem;"></i>
+                <i class='bx bxl-instagram-alt' style="font-size: 2rem;margin:0 1rem;margin-left: 0;"></i>
+                <i class='bx bxl-youtube' style="font-size: 2rem;"></i>
+            </div>
+        </div><br><br>
+        <div class="row">
+            <div class="col">
+                <div style="margin: 0.5rem;margin-top: 0;"><i class='bx bxs-phone bx-tada'
+                        style="font-size: 1.2rem;"></i>&nbsp;<b>Phone :</b> 022-26565800<br></div>
+                <div style="margin: 0.5rem;"><i class='bx bxs-package bx-tada' style="font-size: 1.2rem;"></i>&nbsp;<b>
+                        Fax &nbsp;&nbsp;&nbsp;&nbsp;:</b> 022-26590457<br></div>
+                <div style="margin: 0.5rem;"><i class='bx bx-envelope bx-tada'
+                        style="font-size: 1.2rem;"></i>&nbsp;<b>Email
+                        &nbsp;:</b> info@sra.gov.in</div>
+            </div>
         </div>
     </div>
-    <form class="col" [formGroup]="workapply" (ngSubmit)="submit()">
+    <form class="col" style="margin-top: 0rem 5rem;padding:0rem" [formGroup]="workapply" (ngSubmit)="submit()">
 
-        <div style="padding: 2rem 5rem;">
+        <div class="row card"
+            style="display: flex;align-items: center;justify-content: center;height: 71vh; width: 80%;padding: 0rem 3rem;padding-top: 0;">
             <div style="color:green" *ngIf="successMsg!=''"><strong><i style="color:green"
                         class='bx bxs-check-circle'></i>
 
                     {{successMsg}}</strong></div>
             <br>
-            <div class="row">
-                <div class="col-6">
-                    <label>Full Name <sup style="color:crimson"><strong>*</strong></sup></label><br>
-                    <input (click)="showerr=false" class="form-control shadow-none" placeholder="Enter  First Name"
-                        formControlName="fullname">
-                    <span *ngIf="showerr" style="color:crimson;font-size: 0.8rem;">Enter valid text</span>
-                    <!-- <span *ngIf="!showerr" style="color:crimson;font-size: 0.8rem;">k</span> -->
-                </div>
-            </div>
-            <br>
-            <div class="row">
-                <div class="col-6">
-                    <label>Email <sup style="color:crimson"><strong></strong></sup></label><br>
-                    <input (click)="showerr=false" class="form-control shadow-none" placeholder="Enter  Email"
-                        type="email" formControlName="email">
-                    <!-- <span *ngIf="showerr" style="color:crimson;font-size: 0.8rem;">Enter valid text</span> -->
-                </div>
-            </div><br>
-            <div class="row">
-                <div class="col-6">
-                    <label>Contact Number<sup style="color:crimson"><strong></strong></sup></label><br>
-                    <input (click)="showerr=false" class="form-control shadow-none" placeholder="Enter Your Contact Number" 
-                        formControlName="contact" type="number">
-                    <!-- <span *ngIf="showerr" style="color:crimson;font-size: 0.8rem;">Enter valid text</span> -->
-                </div>
-            </div>
-            <br>
-            <div class="row">
-                <div class="col-6">
-                    <label>Suggestions<sup style="color:crimson"><strong>*</strong></sup></label><br>
-                    <textarea style="font-size: 0.8rem;" (click)="showerr=false" class="form-control shadow-none"
-                        placeholder="Enter Your Valuable Feedback" formControlName="suggestions"></textarea>
-                    <span *ngIf="showerr" style="color:crimson;font-size: 0.8rem;">Enter valid text</span>
-                </div>
-            </div><br />
-            <div class="row">
-                <div class="col-6">
-                    <label>Feedback Message<sup style="color:crimson"><strong>*</strong></sup></label><br>
-                    <textarea style="font-size: 0.8rem;" class="form-control shadow-none" placeholder="Enter  Address"
-                        formControlName="feedbackmsg"></textarea>
-                    <span *ngIf="showerr" style="color:crimson;font-size: 0.8rem;">Enter valid address</span>
-
-                </div>
-            </div><br />
-            <div class="row">
-                <div class="col-6" style="display: flex;justify-content: center;align-items: center;">
+            <div class="col">
+                <label>Full Name <sup style="color:crimson"><strong>*</strong></sup></label><br>
+                <input (click)="showerr=false" class="form-control shadow-none" placeholder="Enter Your First Name"
+                    formControlName="fullname">
+                <span *ngIf="showerr" style="color:crimson;font-size: 0.8rem;">Enter valid text</span><br>
+                <label>Email <sup style="color:crimson"><strong></strong></sup></label><br>
+                <input (click)="showerr=false" class="form-control shadow-none" placeholder="Enter Your Email" type="email"
+                    formControlName="email"><br>
+                <label>Contact Number<sup style="color:crimson"><strong></strong></sup></label><br>
+                <input (click)="showerr=false" class="form-control shadow-none" placeholder="Enter Your Contact Number"
+                    formControlName="contact" type="number"><br>
+                <label>Suggestions<sup style="color:crimson"><strong>*</strong></sup></label><br>
+                <textarea style="font-size: 0.8rem;" (click)="showerr=false" class="form-control shadow-none"
+                    placeholder="Enter Your Valuable Feedback" formControlName="suggestions"></textarea>
+                <span *ngIf="showerr" style="color:crimson;font-size: 0.8rem;">Enter valid text</span><br>
+                <label>Feedback or Report Message<sup style="color:crimson"><strong>*</strong></sup></label><br>
+                <textarea style="font-size: 0.8rem;" class="form-control shadow-none" placeholder="Enter  Address"
+                    formControlName="feedbackmsg"></textarea>
+                <span *ngIf="showerr" style="color:crimson;font-size: 0.8rem;">Enter valid address</span><br>
+                <div style="display: flex;justify-content: center;align-items: center;">
                     <button class="btn btn" type="submit"
                         style="background-color: rgba(1, 9, 71, 1);color: white;padding: 0.6rem 2rem; font-weight: bold;">Submit</button>
                 </div>
             </div>
+
         </div>
     </form>
 

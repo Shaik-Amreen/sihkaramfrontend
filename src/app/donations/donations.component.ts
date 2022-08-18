@@ -17,6 +17,7 @@ export class DonationsComponent implements OnInit {
     private httprequest: HttprequestService,
     private http: HttpClient
   ) {
+    sessionStorage.removeItem('role');
     this.workapply = new FormGroup({
       fullname: new FormControl('', Validators.required),
       email: new FormControl(''),

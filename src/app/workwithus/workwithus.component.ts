@@ -43,8 +43,10 @@ export class WorkwithusComponent implements OnInit {
   }
 
   workapply: any = FormGroup;
+  display:any = 'none'
 
   selected(c: any) {
+    this.display = 'block'
     this.currentApplying = c
   }
 

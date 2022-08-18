@@ -10,7 +10,7 @@ import { AppservicesComponent } from './appservices/appservices.component';
 import { MapsComponent } from './maps/maps.component';
 import { LocalanalysisComponent } from './localanalysis/localanalysis.component';
 import { InfrastructuremodelsComponent } from './infrastructuremodels/infrastructuremodels.component';
-import { ContactusComponent } from './contactus/contactus.component';
+// import { ContactusComponent } from './contactus/contactus.component';
 import { WorkwithusComponent } from './workwithus/workwithus.component';
 import { FeedbackComponent } from './feedback/feedback.component';
 import { DonationsComponent } from './donations/donations.component';
@@ -23,7 +23,7 @@ import { JobapplicationsComponent } from './adminfolder/jobapplications/jobappli
 import { PaymentGatewayComponent } from './payment-gateway/payment-gateway.component';
 import { GooglePayButtonModule } from '@google-pay/button-angular';
 import { MdbModalModule } from 'mdb-angular-ui-kit/modal';
-import { ModalComponent } from './modal/modal.component';
+// import { ModalComponent } from './modal/modal.component';
 // import { CarouselModule } from '@coreui/angular';
 
 @NgModule({
@@ -38,7 +38,7 @@ import { ModalComponent } from './modal/modal.component';
     MapsComponent,
     LocalanalysisComponent,
     InfrastructuremodelsComponent,
-    ContactusComponent,
+    // ContactusComponent,
     WorkwithusComponent,
     FeedbackComponent,
     DonationsComponent,
@@ -46,7 +46,7 @@ import { ModalComponent } from './modal/modal.component';
     AdmindonationsComponent,
     AdminfeedbackComponent,
     JobapplicationsComponent,
-    ModalComponent,
+    // ModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,7 +55,7 @@ import { ModalComponent } from './modal/modal.component';
     ReactiveFormsModule,
     HttpClientModule,
     // CarouselModule,
-    MdbModalModule,
+    // MdbModalModule,
     GooglePayButtonModule,
   ],
   providers: [],

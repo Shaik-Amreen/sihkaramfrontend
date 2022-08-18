@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-homepage',
@@ -15,7 +16,14 @@ export class HomepageComponent implements OnInit {
   ];
   imageSource: any = this.images[0];
   i: any = 0;
-  constructor() {
+  constructor(private router:Router) {
+    if(sessionStorage.getItem('role')=='admin'){
+      this.router.navigate(['/sih/admin'])
+    }
+    else{
+      this.router.navigate(['/sih/'])
+
+    }
     setInterval(() => {
       this.imageSource = this.images[this.i];
       if (this.i == this.images.length - 1) {

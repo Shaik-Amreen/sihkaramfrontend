@@ -9,6 +9,7 @@ export class AppservicesComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
+    sessionStorage.removeItem('role');
     document.getElementById('top')?.scrollIntoView({ behavior: 'smooth' });
   }
 }
