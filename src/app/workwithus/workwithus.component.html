@@ -5,39 +5,33 @@
         </div>
     </div>
     <div class="col" >
-        <div class="row m-5 mt-4" *ngIf="search() else nodata">
+        <div class="row m-3 mt-4" *ngIf="search() else nodata">
             <input class="form-control shadow-none" [(ngModel)]="searchtext" placeholder=" 🔎 Search"
                 style="float: right;height: 5vh;">
-            <div class="col-4 card m-5 mb-0  shadow  border-0" style="background-color: whiteSmoke;padding: 2rem; "
+            <div class="col-5 card m-4 mb-0  shadow  border-0" style="background-color: whiteSmoke;padding: 2rem; padding-bottom: 1rem;"
                 *ngFor="let c of search() ; index as i">
                 <div class="row">
-                    <div class="col">
-
+                    <div class="col-8">
                         <strong> {{c.jobtitle}}</strong>
                         <br>
                         <i class='bx bxs-location-plus'></i>&nbsp;<span style="font-size:1rem;">{{c.location}}</span>
                         <br />
-                        {{c.amount}}
-
+                        <div class="col" style="display: flex;align-items:center">
+                            <i class='bx bx-rupee bx-tada'></i>&nbsp;{{c.amount}}
+                        </div>
                     </div>
-                    <div class="col">
+                    <div class="col" style="display: flex;justify-content:center;align-items:center">
                         <button class="btn btn-primary" (click)="selected(c)">Apply</button>
                     </div>
                 </div>
             </div>
-
         </div>
-
-
-
         <ng-template #nodata><br /><br />
             <div class="text-center" style="display: flex;justify-content:center;align-items:center">
                 No Job Posts
             </div>
         </ng-template>
-
     </div>
-
 </div>
 
 <div style="margin-top: 10%;width: 100vw;" class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':display}">
@@ -148,8 +142,9 @@
                                     address</span>
 
                             </div>
-                        </div><br />
-                        <div class="row" style="float: right;">
+                        </div>
+                        <span *ngIf="application" style="color:crimson;font-size: 0.8rem;">Application Exist&nbsp; <i class='bx bx-error'></i></span>
+                        <br /><div class="row" style="float: right;">
                             <div style="display: flex;justify-content: center;align-items: center;">
                                 <button class="btn btn" (click)="apply()"
                                     style="background-color: rgba(1, 9, 71, 1);color: white;padding: 0.6rem 2rem; font-weight: bold;">Apply</button>
@@ -163,4 +158,12 @@
 
         </div>
     </div>
+</div>
+
+<div *ngIf="displaypopup" [ngClass]="{'view':displaypopup}">
+    <span style="font-size: 1rem;">
+        <strong><span style="font-size: 1.2rem;">{{popup}}</span>
+            <div class="btn"><i style="color:white;font-size:2rem" class="bx bxs-check-circle"></i></div>
+        </strong>
+    </span>
 </div>

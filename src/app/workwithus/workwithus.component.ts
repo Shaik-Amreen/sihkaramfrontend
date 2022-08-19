@@ -42,7 +42,7 @@ export class WorkwithusComponent implements OnInit {
 
   workapply: any = FormGroup;
   display: any = 'none';
-  jobpost:any
+  jobpost: any;
 
   selected(c: any) {
     this.display = 'block';
@@ -58,8 +58,8 @@ export class WorkwithusComponent implements OnInit {
       let temp = this.jobs.filter((j: any) => {
         j.jobtitle.includes(this.searchtext) ||
           j.jobid.includes(this.searchtext) ||
-          j.location.includes(this.searchtext) ;
-          j.jobdescription.includes(this.searchtext);
+          j.location.includes(this.searchtext);
+        j.jobdescription.includes(this.searchtext);
       });
       // let x=temp
       // temp = temp.push(...x)
@@ -68,22 +68,33 @@ export class WorkwithusComponent implements OnInit {
     }
   }
 
+  displaypopup: any = false;
+  popup: any = 'Successfully Submitted';
+  application:any = ''
+
   apply() {
+    this.application=false
     if (this.workapply.status == 'VALID') {
       console.log(this.workapply.value);
       this.httprequest
         .postrequest('/postapplications', {
           ...this.workapply.value,
           jobid: this.currentApplying.jobid,
-          jobtitle: this.currentApplying.jobtitle
+          jobtitle: this.currentApplying.jobtitle,
         })
         .subscribe((res) => {
-          this.successMsg = 'Sucessfully submitted';
-          setTimeout(() => {
+          if (res.message != 'error') {
+            // this.successMsg = 'Sucessfully submitted';
+            this.displaypopup = true;
+            this.popup = 'Payment Successfull';
             this.display = 'None';
             this.workapply.reset();
-            this.successMsg = '';
-          }, 1000);
+            setTimeout(() => {
+              this.displaypopup = false;
+            }, 4000);
+          } else {
+            this.application = true;
+          }
         });
     } else {
       this.showerr = true;

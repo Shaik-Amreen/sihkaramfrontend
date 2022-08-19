@@ -61,4 +61,5 @@ export class JobapplicationsComponent implements OnInit {
       this.err = true;
     }
   }
+  
 }

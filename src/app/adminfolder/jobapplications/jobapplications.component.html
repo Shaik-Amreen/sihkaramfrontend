@@ -2,7 +2,8 @@
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" style="float: right;"
         (click)="displaymodal()">Create a new job</button>
     <br /><br />
-    <div class=" m-5 mt-0" *ngIf="data else nodata">
+    <!-- {{data | json}} -->
+    <div class="m-5 mt-0" *ngIf="data&&data.length!=0 else nodata">
         <div class=" card m-2  mb-0 shadow  border-0"
             style="background-color: whiteSmoke;padding: 1rem;margin-left: 20vw !important; width: 50vw;"
             *ngFor="let c of data ; index as i">
@@ -45,7 +46,7 @@
 
 
 
-<div style="margin-top: 10%;" class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':display}">
+<!-- <div style="margin-top: 10%;" class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':display}">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -111,18 +112,18 @@
 
         </div>
     </div>
-</div>
+</div> -->
 
 <div style="margin-top: 10%;" class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':display}">
     <div class="modal-dialog" role="document">
-        <div class="modal-content">
+        <div class="modal-content" >
             <div class="modal-header">
                 <h4 class="modal-title" style="text-align: center;display: flex;justify-content: center;">Job
                     Application</h4>
             </div>
             <div class="modal-body ">
                 <div [formGroup]="jobdetails" class="table-responsive"
-                    style="height: 84vh;margin-top: 0;padding-top:  0;">
+                    style="height: 60vh;margin-top: 0;padding-top:  0;">
                     <label><b>Job Id</b></label>
                     <input type="text" class="form-control shadow-none" placeholder="Job Id" formControlName="jobid">
                     <span *ngIf="err" style="color:crimson;font-size: 0.8rem;">Enter valid text</span><br />
