@@ -1,34 +1,38 @@
 <div style="display: flex;justify-content:center;max-height: 100vh;font-size: 0.9rem;">
-    <div class="row  mt-0" st>
-        <div class="col-4 shadow card m-5 mb-0  border-0" style="background-color: whiteSmoke;padding: 1rem; ">
-            <h5>Karthik</h5>
-            <span>karthik.kovi2001@gmail.com</span>
-            <span>9529875312</span>
-            <strong>15000 /-</strong>
-            <span>Donated on 19 January 2022</span>
-        </div>
-        <div class="col-4 shadow card m-5 mb-0  border-0" style="background-color: whiteSmoke;padding: 1rem; ">
-            <h5>Rakshitha</h5>
-            <span>Rakshitha2001@gmail.com</span>
-            <span>9529875312</span>
-            <strong>15000 /-</strong>
-            <span>Donated on 19 January 2022</span>
-        </div>
-        <div class="col-4 shadow card m-5 mb-0  border-0" style="background-color: whiteSmoke;padding: 1rem; ">
-            <h5>Umesh</h5>
-            <span>Umesh@gmail.com</span>
-            <span>9529875312</span>
-            <strong>15000 /-</strong>
-            <span>Donated on 19 January 2022</span>
-        </div>
-        <div class="col-4 shadow card m-5 mb-0  border-0" style="background-color: whiteSmoke;padding: 1rem; ">
-            <h5>Kiran</h5>
-            <span>kiran2001@gmail.com</span>
-            <span>9529875312</span>
-            <strong>15000 /-</strong>
-            <span>Donated on 19 January 2022</span>
-        </div>
+    <div *ngIf="data else feedbacks" class="row m-5 mt-0" st>
+        <div class="col-2 shadow card m-5 mb-0  border-0" style="background-color: whiteSmoke;padding: 1rem; "
+            *ngFor="let c of data">
+            <!-- {{c | json}
+            fullname: { type: "string", required: "true" },
+            email: { type: "string", required: "true" },
+            companyname: { type: "string" },
+            email: { type: "string", required: "true" },
+            contact: { type: "string", required: "true" },
+            country: { type: "string", required: "true" },
+            streetno: { type: "string", required: "true" },
+            appartment: { type: "string"},
+            city: { type: "string", required: "true" },
+            state: { type: "string", required: "true" },
+            pincode: { type: "string", required: "true" },
+            amount: { type: "string", required: "true" },
+            donationmsg: { type: "string" }, -->
+            <h5>{{c.fullname | uppercase}}</h5>
+            <div>
+                <i class='bx bx-envelope bx-tada'></i>&nbsp;{{c.email}}
+            </div><br>
 
+            <span>{{c.email}}</span><br>
+            <span>{{c.companyname}}</span><br>
+            <span>{{c.contact}}</span><br>
+            <span>{{c.amount}}</span><br>
+            <span>{{c.donationmsg}}</span>
+        </div>
     </div>
+    <ng-template #feedbacks>
+        <div style="height: 80vh;justify-content: center;align-items: center;display: flex;">
+            <h4>
+                No Feebacks
+            </h4>
+        </div>
+    </ng-template>
 </div>
-<br /><br />

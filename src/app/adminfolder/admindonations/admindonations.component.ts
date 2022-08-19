@@ -6,16 +6,17 @@ import { HttprequestService } from 'src/app/commonservices/httprequest.service';
   styleUrls: ['./admindonations.component.css'],
 })
 export class AdmindonationsComponent implements OnInit {
-  
-  data:any
-    constructor( private httprequest:HttprequestService) {
-      this.httprequest.postrequest('/getFeedback','').subscribe(
-        (res:any)=>{
-          this.data=res.data
-        }
-      )
-    }
-  
+
+  data: any = []
+  constructor(private httprequest: HttprequestService) {
+    this.httprequest.postrequest('/getDonations', '').subscribe(
+      (res: any) => {
+        this.data = res.data
+
+      }
+    )
+  }
+
 
   ngOnInit(): void {
     document.getElementById('top')?.scrollIntoView({ behavior: 'smooth' });
