@@ -15,6 +15,8 @@ export class FeedbackComponent implements OnInit {
   scrollToTopBtn: any = document.getElementById("scrollToTopBtn")
   rootElement: any = document.documentElement
 
+    displaypopup = false;
+  popup: any = 'Payment Successfull';
   constructor(private httprequest: HttprequestService, private http: HttpClient) {
     sessionStorage.removeItem('role');
     this.workapply = new FormGroup({
@@ -45,11 +47,16 @@ export class FeedbackComponent implements OnInit {
       this.httprequest
         .postrequest('/postfeedback', this.workapply.value)
         .subscribe((res) => {
-          this.successMsg = 'Sucessfully submitted';
+          // this.successMsg = 'Sucessfully submitted';
           this.workapply.reset();
+          // setTimeout(() => {
+          //   this.successMsg = '';
+          // }, 2000);
+          this.displaypopup = true;
+          this.popup = 'Payment Successfull';
           setTimeout(() => {
-            this.successMsg = '';
-          }, 2000);
+            this.displaypopup = false;
+          }, 4000);
         });
     } else {
       this.showerr = true;

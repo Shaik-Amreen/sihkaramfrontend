@@ -12,6 +12,7 @@ export class AdminfeedbackComponent implements OnInit {
     this.httprequest.postrequest('/getFeedback','').subscribe(
       (res:any)=>{
         this.data=res.data
+        this.data = this.data.reverse()
       }
     )
   }

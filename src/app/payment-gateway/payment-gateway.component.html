@@ -1,4 +1,5 @@
-<google-pay-button
+<google-pay-button 
+style="box-shadow: rgb(8, 8, 8);"
     environment="TEST"
     buttonType="pay"
     buttonColor="white"
@@ -10,3 +11,10 @@
   </google-pay-button><br><br>
   <!-- <button class="btn btn-danger" routerLinkActive="active" routerLink="/donations">Close</button> -->
 
+<div *ngIf="displaypopup" [ngClass]="{'view':displaypopup}">
+  <span style="font-size: 1rem;">
+    <strong><span style="font-size: 1.2rem;" >{{popup}}</span>
+      <div class="btn" ><i style="color:white;font-size:2rem" class="bx bxs-check-circle"></i></div>
+    </strong>
+  </span>
+</div>

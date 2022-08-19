@@ -54,11 +54,11 @@ export class NavbarComponent implements OnInit {
 
   adminroutes = [
     { route: 'adminhomepage', routename: 'Home' },
-    { route: 'admindonations', routename: 'Donations' },
-    { route: 'feedbacks', routename: 'Feedbacks' },
     { route: 'adminmaps', routename: 'Maps' },
-    // { route: 'contracts', routename: 'Contracts' },
     { route: 'jobapplications', routename: 'Job Applications' },
+    { route: 'admindonations', routename: 'Donations' },
+    { route: 'feedbacks', routename: 'Reports & Feedbacks' },
+    // { route: 'contracts', routename: 'Contracts' },
   ];
 
   contractorroutes = [{ route: 'contractor/homepage', routename: 'Home' }];

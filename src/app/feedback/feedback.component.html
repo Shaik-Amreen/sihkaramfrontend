@@ -34,12 +34,10 @@
         </div>
     </div>
     <form class="col" style="margin-top: 0rem 5rem;padding:0rem" [formGroup]="workapply" (ngSubmit)="submit()">
-
         <div class="row card"
             style="display: flex;align-items: center;justify-content: center;height: 71vh; width: 80%;padding: 0rem 3rem;padding-top: 0;">
             <div style="color:green" *ngIf="successMsg!=''"><strong><i style="color:green"
-                        class='bx bxs-check-circle'></i>
-
+                        class='bx bxs-check-circle'></i>    
                     {{successMsg}}</strong></div>
             <br>
             <div class="col">
@@ -69,5 +67,12 @@
 
         </div>
     </form>
+</div>
 
+<div *ngIf="displaypopup" [ngClass]="{'view':displaypopup}">
+    <span style="font-size: 1rem;">
+        <strong><span style="font-size: 1.2rem;">{{popup}}</span>
+            <div class="btn"><i style="color:white;font-size:2rem" class="bx bxs-check-circle"></i></div>
+        </strong>
+    </span>
 </div>

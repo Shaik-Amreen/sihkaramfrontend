@@ -1,14 +1,22 @@
 <div style="display: flex;justify-content:center;max-height: 100vh;font-size: 0.9rem;">
-    <div class="row m-5 mt-0" st>
+    <div *ngIf="data else feedbacks" class="row m-5 mt-0" st>
         <div class="col-2 shadow card m-5 mb-0  border-0" style="background-color: whiteSmoke;padding: 1rem; "
             *ngFor="let c of data">
             <h5>{{c.fullname | uppercase}}</h5>
-            <span>{{c.email}}</span>
-            <strong>Suggestions</strong>
-            <span>{{c.suggestions}}</span>
+            <div style="">
+                <i class='bx bx-envelope bx-tada'></i>&nbsp;{{c.email}}
+            </div><br>
+            <strong>Suggestion</strong>
+            <span>{{c.suggestions}}</span><br>
             <strong>Feedback</strong>
             <span>{{c.feedbackmsg}}</span>
-
         </div>
     </div>
+    <ng-template #feedbacks>
+        <div style="height: 80vh;justify-content: center;align-items: center;display: flex;">
+            <h4>
+                No Feebacks
+            </h4>
+        </div>
+    </ng-template>
 </div>
