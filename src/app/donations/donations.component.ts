@@ -130,6 +130,8 @@ export class DonationsComponent implements OnInit {
         (res) => {
           this.displaypopup = true;
           this.popup = 'Payment Successfull';
+          this.pay = false;
+          this.workapply.reset();
           setTimeout(() => {
             this.displaypopup = false;
           }, 4000);

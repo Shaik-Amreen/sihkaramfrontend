@@ -12,6 +12,7 @@ export class AdmindonationsComponent implements OnInit {
     this.httprequest.postrequest('/getDonations', '').subscribe(
       (res: any) => {
         this.data = res.data
+        console.log(this.data)
 
       }
     )
