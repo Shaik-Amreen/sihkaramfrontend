@@ -12,17 +12,15 @@ export class WorkwithusComponent implements OnInit {
   successMsg = '';
   showerr: any = false;
   jobs: any;
-  currentApplying: any
-  searchtext: any = ''
+  currentApplying: any;
+  searchtext: any = '';
   constructor(
     private httprequest: HttprequestService,
     private http: HttpClient
   ) {
-    this.httprequest.postrequest('/getJobs', '').subscribe(
-      (res: any) => {
-        this.jobs = res.data
-      }
-    )
+    this.httprequest.postrequest('/getJobs', '').subscribe((res: any) => {
+      this.jobs = res.data;
+    });
     this.workapply = new FormGroup({
       firstname: new FormControl('', Validators.required),
       middlename: new FormControl(''),
@@ -43,38 +41,49 @@ export class WorkwithusComponent implements OnInit {
   }
 
   workapply: any = FormGroup;
-  display:any = 'none'
+  display: any = 'none';
+  jobpost:any
 
   selected(c: any) {
-    this.display = 'block'
-    this.currentApplying = c
+    this.display = 'block';
+    this.currentApplying = c;
+    this.jobpost = this.currentApplying.jobtitle;
+    this.workapply.controls['jobpost'].disable();
   }
-
 
   search() {
     if (this.searchtext == '') {
-      return this.jobs
-    }
-    else {
+      return this.jobs;
+    } else {
       let temp = this.jobs.filter((j: any) => {
-        j.jobtitle.includes(this.searchtext) || j.jobid.includes(this.searchtext)
-      })
-      return temp
+        j.jobtitle.includes(this.searchtext) ||
+          j.jobid.includes(this.searchtext) ||
+          j.location.includes(this.searchtext) ;
+          j.jobdescription.includes(this.searchtext);
+      });
+      // let x=temp
+      // temp = temp.push(...x)
+      // console.log(temp,"temp")
+      return temp;
     }
-
   }
 
   apply() {
     if (this.workapply.status == 'VALID') {
-      console.log(this.workapply.value)
+      console.log(this.workapply.value);
       this.httprequest
-        .postrequest('/postapplications', this.workapply.value)
+        .postrequest('/postapplications', {
+          ...this.workapply.value,
+          jobid: this.currentApplying.jobid,
+          jobtitle: this.currentApplying.jobtitle
+        })
         .subscribe((res) => {
           this.successMsg = 'Sucessfully submitted';
           setTimeout(() => {
+            this.display = 'None';
             this.workapply.reset();
             this.successMsg = '';
-          }, 2000);
+          }, 1000);
         });
     } else {
       this.showerr = true;

@@ -23,6 +23,7 @@ import { JobapplicationsComponent } from './adminfolder/jobapplications/jobappli
 import { PaymentGatewayComponent } from './payment-gateway/payment-gateway.component';
 import { GooglePayButtonModule } from '@google-pay/button-angular';
 import { MdbModalModule } from 'mdb-angular-ui-kit/modal';
+import { AdminmapsComponent } from './adminfolder/adminmaps/adminmaps.component';
 // import { ModalComponent } from './modal/modal.component';
 // import { CarouselModule } from '@coreui/angular';
 
@@ -46,6 +47,7 @@ import { MdbModalModule } from 'mdb-angular-ui-kit/modal';
     AdmindonationsComponent,
     AdminfeedbackComponent,
     JobapplicationsComponent,
+    AdminmapsComponent,
     // ModalComponent,
   ],
   imports: [

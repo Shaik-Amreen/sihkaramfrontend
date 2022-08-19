@@ -4,16 +4,18 @@
             <h1>Work , <br />with us .</h1>
         </div>
     </div>
-    <div class="col">
+    <div class="col" >
         <div class="row m-5 mt-4" *ngIf="search() else nodata">
             <input class="form-control shadow-none" [(ngModel)]="searchtext" placeholder=" 🔎 Search"
-                style="float: right;">
+                style="float: right;height: 5vh;">
             <div class="col-4 card m-5 mb-0  shadow  border-0" style="background-color: whiteSmoke;padding: 2rem; "
                 *ngFor="let c of search() ; index as i">
                 <div class="row">
                     <div class="col">
 
                         <strong> {{c.jobtitle}}</strong>
+                        <br>
+                        <i class='bx bxs-location-plus'></i>&nbsp;<span style="font-size:1rem;">{{c.location}}</span>
                         <br />
                         {{c.amount}}
 
@@ -41,10 +43,12 @@
 <div style="margin-top: 10%;width: 100vw;" class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':display}">
     <div class="modal-dialog" style="margin-left: 25%;" role="document">
         <div class="modal-content" style="width: 50vw;">
-            <div class="modal-header" style="justify-content: center;align-items: center;display: flex;">
-                <h4 class="modal-title"
-                    style="text-align: center;display: flex;justify-content: center;align-items: center;">Job
+            <div class="modal-header col" style="text-align: center;justify-content: center;">
+                <h4 class="modal-title ">Job
                     Application</h4>
+                    <br>
+                    
+                    
             </div>
             <div class="modal-body " style="margin: 0%;padding:1rem">
                 <form [formGroup]="workapply">
@@ -103,14 +107,17 @@
                         <div class="row">
                             <div class="col">
                                 <label>Applying Post <sup style="color:crimson"><strong>*</strong></sup></label><br>
-                                <select class="form-select shadow-none" formControlName="jobpost">
+                                
+                                <input (click)="showerr=false" class="form-control shadow-none" value={{jobpost}} placeholder="Enter Job post "
+                                    formControlName="jobpost">
+                                <!-- <select class="form-select shadow-none" formControlName="jobpost" value={{currentApplying.jobtitle}} [disabled]="'disabled'">
                                     <option value="" disabled selected>select a post</option>
                                     <option value="contractor">Contractor</option>
                                     <option value="construction engineer">Construction Engineer</option>
                                     <option value="supervisor">Supervisor</option>
                                     <option value="daily labour">Daily Labour</option>
                                     <option value="any post">Any Post</option>
-                                </select>
+                                </select> -->
                                 <span *ngIf="showerr" style="color:crimson;font-size: 0.8rem;">Enter valid text</span>
                             </div>
                             <div class="col">

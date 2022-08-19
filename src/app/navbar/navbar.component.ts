@@ -18,13 +18,13 @@ export class NavbarComponent implements OnInit {
   routes: any;
   logindetails: any = FormGroup;
   showerr: any = false;
-  display:any;
+  display: any;
 
   constructor(
     private router: Router,
-    private httprequest: HttprequestService,
-    // private modalService: MdbModalService
-  ) {
+    private httprequest: HttprequestService
+  ) // private modalService: MdbModalService
+  {
     this.routes = this.publicroutes;
     this.role = sessionStorage.getItem('role');
     console.log(this.role, 'this.role');
@@ -56,7 +56,8 @@ export class NavbarComponent implements OnInit {
     { route: 'adminhomepage', routename: 'Home' },
     { route: 'admindonations', routename: 'Donations' },
     { route: 'feedbacks', routename: 'Feedbacks' },
-    { route: 'contracts', routename: 'Contracts' },
+    { route: 'adminmaps', routename: 'Maps' },
+    // { route: 'contracts', routename: 'Contracts' },
     { route: 'jobapplications', routename: 'Job Applications' },
   ];
 
@@ -98,9 +99,9 @@ export class NavbarComponent implements OnInit {
       this.showerr = true;
     }
   }
-  cancel(){
+  cancel() {
     this.showerr = null;
-    this.logindetails.reset()
+    this.logindetails.reset();
     this.display = 'None';
   }
 }

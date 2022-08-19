@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdmindonationsComponent } from './adminfolder/admindonations/admindonations.component';
 import { AdminfeedbackComponent } from './adminfolder/adminfeedback/adminfeedback.component';
+import { AdminmapsComponent } from './adminfolder/adminmaps/adminmaps.component';
 import { ContractsComponent } from './adminfolder/contracts/contracts.component';
 import { JobapplicationsComponent } from './adminfolder/jobapplications/jobapplications.component';
 import { AppservicesComponent } from './appservices/appservices.component';
@@ -61,6 +62,11 @@ const routes: Routes = [
       {
         path: 'jobapplications',
         component: JobapplicationsComponent,
+        pathMatch: 'full',
+      },
+      {
+        path: 'adminmaps',
+        component:AdminmapsComponent,
         pathMatch: 'full',
       },
     ],

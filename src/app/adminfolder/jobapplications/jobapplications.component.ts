@@ -55,6 +55,7 @@ export class JobapplicationsComponent implements OnInit {
         .postrequest('/postJob', this.jobdetails.value)
         .subscribe((res: any) => {
           console.log(res, 'res');
+          this.display = 'None'
         });
     } else {
       this.err = true;
