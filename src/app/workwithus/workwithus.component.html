@@ -41,14 +41,16 @@
             <div style="text-align: center;justify-content: center;"><br />
                 <h4>Job
                     Application - {{currentApplying.jobtitle}}</h4>
-
-                <p>{{currentApplying.jobdescription}}</p>
-
+                    <hr>
+                    <div style="justify-content: center;">
+                        <p>{{currentApplying.jobdescription}}</p>
+                    </div>
+                    <hr>
 
             </div>
-            <div class="modal-body " style="margin: 2rem;padding:0rem;margin-top: 0rem;">
+            <div class="modal-body " style="margin: 0rem 0rem;padding:0rem 0.5rem 0 2rem;margin-top: 0rem;">
                 <form [formGroup]="workapply" class="table-responsive "
-                    style="height: 70vh;margin-top: 0;padding-top:  0;">
+                    style="height: 50vh;margin-top: 0;padding-top:  0;">
                     <!-- {{currentApplying | json }} -->
                     <div>
                         <div style="color:green" *ngIf="successMsg!=''"><strong><i style="color:green"
@@ -56,20 +58,20 @@
                                 {{successMsg}}</strong></div>
                         <br>
                         <div class="row">
-                            <div class="col">
+                            <div class="col-4">
                                 <label>First Name <sup style="color:crimson"><strong>*</strong></sup></label><br>
                                 <input (click)="showerr=false" class="form-control shadow-none"
                                     placeholder="Enter  First Name" formControlName="firstname">
                                 <span *ngIf="showerr" style="color:crimson;font-size: 0.8rem;">Enter valid text</span>
                                 <!-- <span *ngIf="!showerr" style="color:crimson;font-size: 0.8rem;">k</span> -->
                             </div>
-                            <div class="col">
+                            <div class="col-4">
                                 <label>Middle Name </label><br>
                                 <input (click)="showerr=false" class="form-control shadow-none"
                                     placeholder="Enter  Middle Name" formControlName="middlename">
                                 <!-- <span *ngIf="showerr" style="color:crimson;font-size: 0.8rem;">Enter valid text</span> -->
                             </div>
-                            <div class="col">
+                            <div class="col-4" style="padding-right: 1rem;">
                                 <label>Last Name <sup style="color:crimson"><strong>*</strong></sup></label><br>
                                 <input (click)="showerr=false" class="form-control shadow-none"
                                     placeholder="Enter  Last Name" formControlName="lastname">
@@ -79,19 +81,19 @@
                         </div>
                         <br>
                         <div class="row">
-                            <div class="col">
+                            <div class="col-4">
                                 <label>Email </label><br>
                                 <input (click)="showerr=false" class="form-control shadow-none"
                                     placeholder="Enter  Email" type="email" formControlName="email">
                                 <!-- <span *ngIf="showerr" style="color:crimson;font-size: 0.8rem;">Enter valid text</span> -->
                             </div>
-                            <div class="col">
+                            <div class="col-4">
                                 <label>Mobile Number <sup style="color:crimson"><strong>*</strong></sup></label><br>
                                 <input (click)="showerr=false" class="form-control shadow-none"
                                     placeholder="Enter  Mobile Numnber" type="number" formControlName="mobileno">
                                 <span *ngIf="showerr" style="color:crimson;font-size: 0.8rem;">Enter valid text</span>
                             </div>
-                            <div class="col">
+                            <div class="col-4" style="padding-right: 1rem;">
                                 <label>Alternative Mobile Number </label><br>
                                 <input (click)="showerr=false" class="form-control shadow-none"
                                     placeholder="Enter  Alternative Mobile " type="number"
@@ -102,7 +104,7 @@
                         </div>
                         <br>
                         <div class="row">
-                            <div class="col">
+                            <div class="col-4">
                                 <label>Applying Post <sup style="color:crimson"><strong>*</strong></sup></label><br>
 
                                 <input (click)="showerr=false" class="form-control shadow-none" value={{jobpost}}
@@ -117,7 +119,7 @@
                                 </select> -->
                                 <span *ngIf="showerr" style="color:crimson;font-size: 0.8rem;">Enter valid text</span>
                             </div>
-                            <div class="col">
+                            <div class="col-4">
                                 <label>Previous Experience <sup
                                         style="color:crimson"><strong>*</strong></sup></label><br>
                                 <select class="form-select shadow-none" formControlName="prevexperience">
@@ -127,7 +129,7 @@
                                 </select>
                                 <span *ngIf="showerr" style="color:crimson;font-size: 0.8rem;">Enter valid text</span>
                             </div>
-                            <div class="col">
+                            <div class="col-4" style="padding-right: 1rem;">
                                 <label>Previous Work Place <sup
                                         style="color:crimson"><strong>*</strong></sup></label><br>
                                 <input (click)="showerr=false" class="form-control shadow-none"
@@ -137,7 +139,7 @@
                             </div>
                         </div><br />
                         <div class="row">
-                            <div>
+                            <div style="padding-right: 1rem;">
                                 <label>Address <sup style="color:crimson"><strong>*</strong></sup></label><br>
                                 <textarea class="form-control shadow-none" placeholder="Enter  Address"
                                     formControlName="address" style="width: 100%;"></textarea>
@@ -149,12 +151,12 @@
                         <span *ngIf="application" style="color:crimson;font-size: 0.8rem;">Application Exist&nbsp; <i
                                 class='bx bx-error'></i></span>
                         <br />
-                        <div class="row" style="float: right;">
+                        <div class="row" style="float: right;padding-right: 1rem;padding-bottom: 1rem;">
                             <div style="display: flex;justify-content: center;align-items: center;">
                                 <button class="btn btn" (click)="apply()"
-                                    style="background-color: rgba(1, 9, 71, 1);color: white;padding: 0.6rem 2rem; font-weight: bold;">Apply</button>
+                                    style="background-color: rgba(1, 9, 71, 1);color: white;padding: 0.5rem 1.5rem; font-weight: bold;">Apply</button>
                                 <button class="btn btn-danger" (click)="display='None'"
-                                    style="color: white;padding: 0.6rem 2rem; font-weight: bold;margin-left: 2rem;">Close</button>
+                                    style="color: white;padding: 0.5rem 1.5rem; font-weight: bold;margin-left: 2rem;">Close</button>
                             </div>
                         </div>
                     </div>
