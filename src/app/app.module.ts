@@ -24,6 +24,7 @@ import { PaymentGatewayComponent } from './payment-gateway/payment-gateway.compo
 import { GooglePayButtonModule } from '@google-pay/button-angular';
 import { MdbModalModule } from 'mdb-angular-ui-kit/modal';
 import { AdminmapsComponent } from './adminfolder/adminmaps/adminmaps.component';
+import { SafePipe } from './safe.pipe';
 // import { ModalComponent } from './modal/modal.component';
 // import { CarouselModule } from '@coreui/angular';
 
@@ -48,6 +49,7 @@ import { AdminmapsComponent } from './adminfolder/adminmaps/adminmaps.component'
     AdminfeedbackComponent,
     JobapplicationsComponent,
     AdminmapsComponent,
+    SafePipe,
     // ModalComponent,
   ],
   imports: [

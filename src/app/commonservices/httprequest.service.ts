@@ -13,22 +13,22 @@ import { catchError, map, tap } from 'rxjs/operators';
 })
 export class HttprequestService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  // baseurl:any="http://localhost:4000"
-  baseurl:any=""
+  baseurl: any = "http://localhost:4000"
+  // baseurl:any=""
 
-  postrequest(url:any,data:any): Observable<any> {
+  postrequest(url: any, data: any): Observable<any> {
     const body = window.btoa(unescape(encodeURIComponent(JSON.stringify(data))));
     return (
-      this.http.post(this.baseurl+url, { data: body }).pipe(map((res: any) => {
+      this.http.post(this.baseurl + url, { data: body }).pipe(map((res: any) => {
         let response: any = window.atob(res.data);
         response = JSON.parse(response);
         return response;
       }))
     )
   }
-handleResponse(res: any) {
-  return res
-}
+  handleResponse(res: any) {
+    return res
+  }
 }
