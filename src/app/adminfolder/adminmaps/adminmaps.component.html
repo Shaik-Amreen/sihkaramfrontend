@@ -1,10 +1,11 @@
-<!-- <div *ngIf = "data else nodata"> -->
-    
-<div>
-    <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7754.9441415059755!2d78.47864557410105!3d13.629023561707868!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bb267e5e81449a3%3A0x22d91aa91367269d!2sAngallu%2C%20Andhra%20Pradesh!5e0!3m2!1sen!2sin!4v1660666372254!5m2!1sen!2sin"
-        width="1600" height="460" style="border:0;" allowfullscreen="" loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"></iframe>
+<br />
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" style="float: right;"
+    (click)="displaymodal()">Add slum</button>
+<br /><br />
+
+<div *ngIf="data else nodata">
+
+    >>>>>>> Stashed changes
 </div>
 <ng-template #nodata>
     <div style="height: 80vh;justify-content: center;align-items: center;display: flex;">
@@ -13,3 +14,51 @@
         </h4>
     </div>
 </ng-template>
+
+
+
+<div style="margin-top: 10%;" class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':display}">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" style="text-align: center;display: flex;justify-content: center;">Job
+                    Application</h4>
+            </div>
+            <div class="modal-body ">
+                <div [formGroup]="mapData" class="table-responsive" style="height: 60vh;margin-top: 0;padding-top:  0;">
+                    <label><b>Slum Id</b></label>
+                    <input type="text" class="form-control shadow-none" placeholder="Slum Id" formControlName="slumid">
+                    <span *ngIf="err" style="color:crimson;font-size: 0.8rem;">Enter valid text</span><br />
+                    <label><b>Slum name</b></label>
+                    <input type="text" class="form-control shadow-none" placeholder="Slum name" formControlName="name">
+                    <span *ngIf="err" style="color:crimson;font-size: 0.8rem;">Enter valid text</span><br />
+                    <label><b>Occupied area</b></label>
+                    <input type="text" class="form-control shadow-none" placeholder="Occupied area"
+                        formControlName="occupiedarea">
+                    <span *ngIf="err" style="color:crimson;font-size: 0.8rem;">Enter valid text</span><br />
+                    <label><b>Located</b></label>
+                    <input type="text" class="form-control shadow-none" placeholder="Located" formControlName="located">
+                    <span *ngIf="err" style="color:crimson;font-size: 0.8rem;">Enter valid text</span><br />
+                    <!-- <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7754.9441415059755!2d78.47864557410105!3d13.629023561707868!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bb267e5e81449a3%3A0x22d91aa91367269d!2sAngallu%2C%20Andhra%20Pradesh!5e0!3m2!1sen!2sin!4v1661014998127!5m2!1sen!2sin"
+                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe> -->
+                    <label><b>Embedded code</b></label>
+                    <input type="text" class="form-control shadow-none" placeholder="Embedded code"
+                        formControlName="iframe">
+                    <span *ngIf="err" style="color:crimson;font-size: 0.8rem;">Enter valid text</span><br>
+                    <label><b>Description</b></label>
+                    <textarea type="text" class="form-control shadow-none" placeholder="Description"
+                        formControlName="description"></textarea>
+                    <span *ngIf="err" style="color:crimson;font-size: 0.8rem;">Enter valid text</span><br>
+
+                    <button (click)="display='None'" style="float: right ;margin-right:1.2rem;" class="btn btn-danger">
+                        Close</button>
+                    <button (click)="submit()" style="float: right ;margin:0rem 1rem;" class="btn btn-primary">Add
+                        slum</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
