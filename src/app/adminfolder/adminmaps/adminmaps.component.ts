@@ -9,6 +9,8 @@ export class AdminmapsComponent implements OnInit {
 
   constructor() { }
 
+  data:any;
+
   ngOnInit(): void {
   }
 

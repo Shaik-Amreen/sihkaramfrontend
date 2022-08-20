@@ -53,7 +53,7 @@ export class FeedbackComponent implements OnInit {
           //   this.successMsg = '';
           // }, 2000);
           this.displaypopup = true;
-          this.popup = 'Payment Successfull';
+          this.popup = 'Feddback Submitted';
           setTimeout(() => {
             this.displaypopup = false;
           }, 4000);

@@ -1,1 +1,10 @@
-<p>adminmaps works!</p>
+<div *ngIf = "data else nodata">
+
+</div>
+<ng-template #nodata>
+    <div style="height: 80vh;justify-content: center;align-items: center;display: flex;">
+        <h4>
+            No Maps
+        </h4>
+    </div>
+</ng-template>

@@ -1,5 +1,5 @@
 <div style="display: flex;justify-content:center;max-height: auto;font-size: 0.9rem;">
-    <div *ngIf="data else feedbacks" class="row m-2 mt-0 ml-0" st>
+    <div *ngIf="data&&data.length!=0 else feedbacks" class="row m-2 mt-0 ml-0" st>
         <div class="col-3 shadow card m-5 mb-0  border-0" style="background-color: whiteSmoke;padding: 1rem; "
             *ngFor="let c of data">
             <!-- {{c | json}
@@ -31,7 +31,7 @@
     <ng-template #feedbacks>
         <div style="height: 80vh;justify-content: center;align-items: center;display: flex;">
             <h4>
-                No Feebacks
+                No Donations
             </h4>
         </div>
     </ng-template>

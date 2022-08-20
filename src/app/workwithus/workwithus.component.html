@@ -37,15 +37,18 @@
 <div style="margin-top: 10%;width: 100vw;" class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':display}">
     <div class="modal-dialog" style="margin-left: 25%;" role="document">
         <div class="modal-content" style="width: 50vw;">
-            <div class="modal-header col" style="text-align: center;justify-content: center;">
-                <h4 class="modal-title ">Job
+            <div class="modal-header " style="text-align: center;justify-content: center;">
+                <h4 >Job
                     Application</h4>
                     <br>
+                    <p>
+                        hello
+                    </p>
                     
                     
             </div>
-            <div class="modal-body " style="margin: 0%;padding:1rem">
-                <form [formGroup]="workapply">
+            <div class="modal-body " style="margin: 0%;padding:0rem">
+                <form [formGroup]="workapply" class="table-responsive " style="height: 60vh;margin-top: 0;padding-top:  0;">
                     <!-- {{currentApplying | json }} -->
                     <div style="">
                         <div style="color:green" *ngIf="successMsg!=''"><strong><i style="color:green"
