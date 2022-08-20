@@ -59,7 +59,7 @@ export class WorkwithusComponent implements OnInit {
         return (j.jobtitle.includes(this.searchtext) ||
           j.jobid.includes(this.searchtext) ||
           j.location.includes(this.searchtext) ||
-          j.jobdescription.includes(this.searchtext))
+          j.amount.includes(this.searchtext))
       });
       // let x=temp
       // temp = temp.push(...x)
