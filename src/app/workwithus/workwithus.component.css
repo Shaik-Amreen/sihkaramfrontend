@@ -5,19 +5,22 @@ div {
 	font-family: 'poppins';
 }
 
-label{
-	color:rgba(1, 9, 71, 1);
+label {
+	color: rgba(1, 9, 71, 1);
 	font-size: 0.9rem;
 }
-input , select {
+
+input,
+select {
 	font-size: 0.8rem !important;
-    border-radius: 3px !important;
+	border-radius: 3px !important;
 }
 
-h1{
+h1 {
 	font-family: 'Montserrat';
 	font-size: 5rem;
 }
+
 .modal {
 	background: rgba(0, 0, 0, .5);
 }
@@ -52,4 +55,9 @@ h1{
 		opacity: 1;
 
 	}
+}
+
+.nomar {
+	margin: 0;
+	padding: 0;
 }

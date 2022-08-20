@@ -1,4 +1,4 @@
-<div id="top" class="row" style="height: 92vh;margin:0rem;padding:0rem">
+<div id="top" class="row " style="height: 92vh;margin:0rem;padding:0rem">
     <div class="col-5" style="background-color: rgba(1, 9, 71, 1);color: white;padding-left: 9vw;padding-top: 20vh;">
         <div>
             <h1>Work , <br />with us .</h1>
@@ -41,11 +41,11 @@
             <div style="text-align: center;justify-content: center;"><br />
                 <h4>Job
                     Application - {{currentApplying.jobtitle}}</h4>
-                    <hr>
-                    <div style="justify-content: center;">
-                        <p>{{currentApplying.jobdescription}}</p>
-                    </div>
-                    <hr>
+                <hr>
+                <div style="justify-content: center;">
+                    <p>{{currentApplying.jobdescription}}</p>
+                </div>
+                <hr>
 
             </div>
             <div class="modal-body " style="margin: 0rem 0rem;padding:0rem 0.5rem 0 2rem;margin-top: 0rem;">
@@ -57,7 +57,7 @@
                                     class='bx bxs-check-circle'></i>
                                 {{successMsg}}</strong></div>
                         <br>
-                        <div class="row">
+                        <div class="row nomar">
                             <div class="col-4">
                                 <label>First Name <sup style="color:crimson"><strong>*</strong></sup></label><br>
                                 <input (click)="showerr=false" class="form-control shadow-none"
@@ -80,7 +80,7 @@
                             </div>
                         </div>
                         <br>
-                        <div class="row">
+                        <div class="row nomar">
                             <div class="col-4">
                                 <label>Email </label><br>
                                 <input (click)="showerr=false" class="form-control shadow-none"
@@ -103,7 +103,7 @@
                             </div>
                         </div>
                         <br>
-                        <div class="row">
+                        <div class="row nomar">
                             <div class="col-4">
                                 <label>Applying Post <sup style="color:crimson"><strong>*</strong></sup></label><br>
 
@@ -138,7 +138,7 @@
 
                             </div>
                         </div><br />
-                        <div class="row">
+                        <div class="row nomar">
                             <div style="padding-right: 1rem;">
                                 <label>Address <sup style="color:crimson"><strong>*</strong></sup></label><br>
                                 <textarea class="form-control shadow-none" placeholder="Enter  Address"
@@ -151,7 +151,7 @@
                         <span *ngIf="application" style="color:crimson;font-size: 0.8rem;">Application Exist&nbsp; <i
                                 class='bx bx-error'></i></span>
                         <br />
-                        <div class="row" style="float: right;padding-right: 1rem;padding-bottom: 1rem;">
+                        <div class="row nomar" style="float: right;padding-right: 1rem;padding-bottom: 1rem;">
                             <div style="display: flex;justify-content: center;align-items: center;">
                                 <button class="btn btn" (click)="apply()"
                                     style="background-color: rgba(1, 9, 71, 1);color: white;padding: 0.5rem 1.5rem; font-weight: bold;">Apply</button>
