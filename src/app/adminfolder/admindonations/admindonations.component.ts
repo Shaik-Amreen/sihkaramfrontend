@@ -11,7 +11,7 @@ export class AdmindonationsComponent implements OnInit {
   constructor(private httprequest: HttprequestService) {
     this.httprequest.postrequest('/getDonations', '').subscribe(
       (res: any) => {
-        this.data = res.data
+        this.data = res.data.reverse()
         console.log(this.data)
 
       }

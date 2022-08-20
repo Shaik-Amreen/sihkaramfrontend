@@ -61,3 +61,33 @@ h1 {
 	margin: 0;
 	padding: 0;
 }
+
+/* ::-webkit-scrollbar-thumb {
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	background: rgb(1, 9, 71);
+	background: whitesmoke;
+} */
+
+::-webkit-scrollbar {
+	width: 10px;
+}
+
+::-webkit-scrollbar-track {
+	border-radius: px;
+	background: #c9cacc;
+}
+
+::-webkit-scrollbar-track:hover {
+	background: #78797a;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #3d5585;
+	border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: #01143b;
+}
+

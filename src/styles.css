@@ -16,6 +16,8 @@
      background: rgb(1, 9, 71);
     background: linear-gradient(118deg, rgba(1, 9, 71, 1) 19%, rgba(23, 164, 209, 1) 77%);
 }
+
+
 .dropdown-toggle::after{
 content:unset;
 }
