@@ -1,20 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttprequestService } from '../../commonservices/httprequest.service';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+
 @Component({
   selector: 'app-adminmaps',
   templateUrl: './adminmaps.component.html',
   styleUrls: ['./adminmaps.component.css']
 })
 export class AdminmapsComponent implements OnInit {
-  urlSafe: SafeResourceUrl;
+
   mapData: FormGroup;
-  edit: any = false;
+  editMode: any = false;
   err = false;
   submitStatus = false
-  frame: any = ''
-  constructor(private httprequest: HttprequestService, public sanitizer: DomSanitizer) {
+  data: any = []
+
+
+
+
+
+  constructor(private httprequest: HttprequestService,) {
     this.mapData = new FormGroup({
       name: new FormControl('', Validators.required),
       description: new FormControl('', Validators.required),
@@ -25,31 +30,47 @@ export class AdminmapsComponent implements OnInit {
       slumid: new FormControl('', Validators.required),
     })
 
-    this.urlSafe = this.sanitizer.bypassSecurityTrustResourceUrl(this.mapData.value.iframe);
+
+    this.getData()
+
   }
 
-  data: any;
+  getData() {
+    this.httprequest.postrequest('/getMaps', '').subscribe(
+      (res: any) => {
+        this.data = res.data.reverse()
+        console.log(this.data)
+      }
+    )
+  }
+
+  edit(i: any) {
+    this.editMode = true
+    this.display = 'block';
+    this.mapData.patchValue(i)
+  }
+
+
   display: any = 'None'
   displaymodal() {
+    this.editMode = false
     this.display = 'block';
   }
   ngOnInit(): void {
   }
 
-  change() {
-    console.log("heloooooooooooooooo")
-    this.urlSafe = this.sanitizer.bypassSecurityTrustResourceUrl(this.frame);
-
-  }
   submit() {
+    console.log(this.mapData)
     if (this.mapData.status == 'VALID') {
       let url = '/postMaps'
-      if (this.edit) {
+      if (this.editMode) {
         url = '/editMaps'
       }
-      this.httprequest.postrequest(url, '').subscribe(
+      this.httprequest.postrequest(url, this.mapData.value).subscribe(
         (res: any) => {
+          this.getData()
           this.submitStatus = true
+          this.display = 'None'
         }
       )
     }
