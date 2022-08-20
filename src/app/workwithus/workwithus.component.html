@@ -4,11 +4,12 @@
             <h1>Work , <br />with us .</h1>
         </div>
     </div>
-    <div class="col" >
+    <div class="col">
         <div class="row m-3 mt-4" *ngIf="search() else nodata">
             <input class="form-control shadow-none" [(ngModel)]="searchtext" placeholder=" 🔎 Search"
                 style="float: right;height: 5vh;">
-            <div class="col-5 card m-4 mb-0  shadow  border-0" style="background-color: whiteSmoke;padding: 2rem; padding-bottom: 1rem;"
+            <div class="col-5 card m-4 mb-0  shadow  border-0"
+                style="background-color: whiteSmoke;padding: 2rem; padding-bottom: 1rem;"
                 *ngFor="let c of search() ; index as i">
                 <div class="row">
                     <div class="col-8">
@@ -34,23 +35,22 @@
     </div>
 </div>
 
-<div style="margin-top: 10%;width: 100vw;" class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':display}">
+<div style="margin-top: 9%;" class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':display}">
     <div class="modal-dialog" style="margin-left: 25%;" role="document">
-        <div class="modal-content" style="width: 50vw;">
-            <div class="modal-header " style="text-align: center;justify-content: center;">
-                <h4 >Job
-                    Application</h4>
-                    <br>
-                    <p>
-                        hello
-                    </p>
-                    
-                    
+        <div class="modal-content" style="width: 50vw;margin: 2rem;">
+            <div style="text-align: center;justify-content: center;"><br />
+                <h4>Job
+                    Application - {{currentApplying.jobtitle}}</h4>
+
+                <p>{{currentApplying.jobdescription}}</p>
+
+
             </div>
-            <div class="modal-body " style="margin: 0%;padding:0rem">
-                <form [formGroup]="workapply" class="table-responsive " style="height: 60vh;margin-top: 0;padding-top:  0;">
+            <div class="modal-body " style="margin: 2rem;padding:0rem;margin-top: 0rem;">
+                <form [formGroup]="workapply" class="table-responsive "
+                    style="height: 70vh;margin-top: 0;padding-top:  0;">
                     <!-- {{currentApplying | json }} -->
-                    <div style="">
+                    <div>
                         <div style="color:green" *ngIf="successMsg!=''"><strong><i style="color:green"
                                     class='bx bxs-check-circle'></i>
                                 {{successMsg}}</strong></div>
@@ -104,9 +104,9 @@
                         <div class="row">
                             <div class="col">
                                 <label>Applying Post <sup style="color:crimson"><strong>*</strong></sup></label><br>
-                                
-                                <input (click)="showerr=false" class="form-control shadow-none" value={{jobpost}} placeholder="Enter Job post "
-                                    formControlName="jobpost">
+
+                                <input (click)="showerr=false" class="form-control shadow-none" value={{jobpost}}
+                                    placeholder="Enter Job post " formControlName="jobpost">
                                 <!-- <select class="form-select shadow-none" formControlName="jobpost" value={{currentApplying.jobtitle}} [disabled]="'disabled'">
                                     <option value="" disabled selected>select a post</option>
                                     <option value="contractor">Contractor</option>
@@ -146,8 +146,10 @@
 
                             </div>
                         </div>
-                        <span *ngIf="application" style="color:crimson;font-size: 0.8rem;">Application Exist&nbsp; <i class='bx bx-error'></i></span>
-                        <br /><div class="row" style="float: right;">
+                        <span *ngIf="application" style="color:crimson;font-size: 0.8rem;">Application Exist&nbsp; <i
+                                class='bx bx-error'></i></span>
+                        <br />
+                        <div class="row" style="float: right;">
                             <div style="display: flex;justify-content: center;align-items: center;">
                                 <button class="btn btn" (click)="apply()"
                                     style="background-color: rgba(1, 9, 71, 1);color: white;padding: 0.6rem 2rem; font-weight: bold;">Apply</button>
