@@ -55,6 +55,7 @@ export class AdminmapsComponent implements OnInit {
   displaymodal() {
     this.editMode = false
     this.display = 'block';
+    this.mapData.reset()
   }
   ngOnInit(): void {
   }
