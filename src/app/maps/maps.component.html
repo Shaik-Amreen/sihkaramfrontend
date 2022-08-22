@@ -1,3 +1,38 @@
-<div>
-    <iframe style="height:78vh;width:99vw" [src]="imageSource | safe"></iframe>
+<div id="abs1">
+    <strong>
+        Population
+    </strong><br />
+    <span>{{population}}</span><br />
+    <strong>Occupied area</strong><br />
+    <span>{{occupiedarea}}</span><br />
+    <strong>Located</strong><br />
+    <span>{{located}}</span>
+</div>
+
+<div id="rel1">
+    <iframe style="height:50vh;width:99.2vw" [src]="imageSource | safe">
+    </iframe>
+</div>
+
+<div style="padding:0rem 4rem;">
+    <input [(ngModel)]="searchtext" class="form-control card shadow" placeholder="Search"
+        style="width: 30vw;margin-left:30vw" /><br />
+    <div *ngFor="let c of search()">
+        <div id="abs2">
+            <strong>
+                Population
+            </strong><br />
+            <span>{{c.population}}</span><br />
+            <strong>Occupied area</strong><br />
+            <span>{{c.occupiedarea}}</span><br />
+            <strong>Located</strong><br />
+            <span>{{c.located}}</span>
+        </div>
+
+        <div id="rel1">
+            <iframe style="height:50vh;width:92vw;border-radius: 30px;" [src]="c.iframe | safe">
+            </iframe>
+        </div>
+    </div>
+
 </div>
