@@ -48,32 +48,44 @@ export class AdminmapsComponent implements OnInit {
     this.editMode = true
     this.display = 'block';
     this.mapData.patchValue(i)
+    console.log(this.mapData.value,"edit activate")
+    this.prevslumid = this.mapData.controls.slumid
+    this.mapData.controls.slumid.disable()
+    
   }
 
+  close(){
+      this.mapData.reset();
+  }
 
-  display: any = 'None'
+  display: any = 'None';prevslumid:any
   displaymodal() {
+    this.mapData.reset();
     this.editMode = false
     this.display = 'block';
-    this.mapData.reset()
+    this.mapData.controls.slumid.enable();
   }
   ngOnInit(): void {
   }
 
   submit() {
-    console.log(this.mapData)
     if (this.mapData.status == 'VALID') {
       let url = '/postMaps'
+      // let data = {...this.mapData.value}
       if (this.editMode) {
         url = '/editMaps'
+        // data.prevslumid=this.prevslumid
       }
-      this.httprequest.postrequest(url, this.mapData.value).subscribe(
-        (res: any) => {
-          this.getData()
-          this.submitStatus = true
-          this.display = 'None'
-        }
-      )
+      // console.log(url,data)
+      // console.log(this.mapData.value,"postrequest....................")
+      this.httprequest
+        .postrequest(url, this.mapData.value)
+        .subscribe((res: any) => {
+          this.mapData.reset();
+          this.getData();
+          this.submitStatus = true;
+          this.display = 'None';
+        });
     }
     else {
       this.err = true;

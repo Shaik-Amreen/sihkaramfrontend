@@ -1,0 +1,25 @@
+.modal {
+    background: rgba(0, 0, 0, .5);
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    border-radius: px;
+    background: #c9cacc;
+}
+
+::-webkit-scrollbar-track:hover {
+    background: #78797a;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #3d5585;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #01143b;
+}
