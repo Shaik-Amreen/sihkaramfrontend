@@ -49,7 +49,7 @@ export class AdminmapsComponent implements OnInit {
     this.display = 'block';
     this.mapData.patchValue(i)
     console.log(this.mapData.value,"edit activate")
-    this.prevslumid = this.mapData.controls.slumid
+    // this.prevslumid = this.mapData.controls.slumid
     this.mapData.controls.slumid.disable()
     
   }
@@ -70,6 +70,7 @@ export class AdminmapsComponent implements OnInit {
 
   submit() {
     if (this.mapData.status == 'VALID') {
+      this.mapData.controls.slumid.enable();
       let url = '/postMaps'
       // let data = {...this.mapData.value}
       if (this.editMode) {
@@ -77,7 +78,7 @@ export class AdminmapsComponent implements OnInit {
         // data.prevslumid=this.prevslumid
       }
       // console.log(url,data)
-      // console.log(this.mapData.value,"postrequest....................")
+      console.log(this.mapData.value,"postrequest....................")
       this.httprequest
         .postrequest(url, this.mapData.value)
         .subscribe((res: any) => {
