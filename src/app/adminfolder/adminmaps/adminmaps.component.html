@@ -4,13 +4,18 @@
         Slum</b></button>
 
 
+
 <div id="top" *ngIf="data.length!=0 else nodata" class="row m-2 mt-0 ml-0" st>
+
+
     <div class="col-5 shadow card m-5 mb-0  border-0" style="background-color: whiteSmoke;padding: 1rem; "
         *ngFor="let c of data">
         <h5>{{c.slumid | uppercase}}
+            <span data-toggle="modal" data-target="#myModal" style="float: right;margin-left: 1rem;"><i
+                    class='bx bx-pencil' (click)="edit(c)"></i></span>
+            <span data-toggle="modal" data-target="#myModal" style="float: right;"><i class='bx bx-plus'
+                    (click)="add(c)"></i></span>
 
-            <span data-toggle="modal" data-target="#myModal" style="float: right;"><i class='bx bx-pencil'
-                    (click)="edit(c)"></i></span>
         </h5>
         <div style="display: flex;">
             <span> {{c.name}}</span>
@@ -19,20 +24,10 @@
             <span style="margin-left: 2rem;">{{c.occupiedarea}}</span>
         </div><br>
         <iframe [src]="c.iframe | safe"></iframe> <br />
-
         <span>{{c.description}}</span><br>
     </div>
-
-
-
-
-
-
-
-
-
-
 </div>
+
 <ng-template #nodata>
     <div style="height: 80vh;justify-content: center;align-items: center;display: flex;">
         <h4>
@@ -46,12 +41,16 @@
 <div style="margin-top: 10%;" class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':display}">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header" style="text-align: center;display: flec
+            <div class="modal-header" style="text-align: center;display: flex
             ;align-items: center;justify-content: center;">
-                <h4 class="modal-title"><b>Maps</b></h4>
+                <h4 class="modal-title"><b><span *ngIf="!addPeople">
+                            Maps
+                        </span> <span *ngIf="addPeople" style="font-size: 1.2rem;">Add people in
+
+                            {{mapData.value.name}} {{mapData.value.slumid}}</span></b></h4>
             </div>
             <div class="modal-body " style="padding-bottom: 0.5rem;">
-                <form [formGroup]="mapData" class="table-responsive"
+                <form *ngIf="!addPeople else addpeople" [formGroup]="mapData" class="table-responsive"
                     style="height: 60vh;margin-top: 0;padding-top:  0;">
                     <label><b>Slum Id</b></label>
                     <input [disabled]="true" type="text" class="form-control shadow-none" placeholder="Slum Id"
@@ -71,8 +70,6 @@
                     <label><b>Located</b></label>
                     <input type="text" class="form-control shadow-none" placeholder="Located" formControlName="located">
                     <span *ngIf="err" style="color:crimson;font-size: 0.8rem;">Enter valid text</span><br />
-
-
                     <label><b>Embedded code</b></label>
                     <input type="text" class="form-control shadow-none" placeholder="Embedded code"
                         formControlName="iframe">
@@ -92,6 +89,26 @@
                         class="btn btn-primary"><span *ngIf="!editMode"><b>Add
                                 Slum</b></span><span *ngIf="editMode"><b>Edit Slum</b></span></button><br><br>
                 </form>
+                <ng-template #addpeople>
+
+                    <form [formGroup]="people" (ngSubmit)="enroll()">
+                        <div style="text-align: center;">
+                            <span style="color: crimson;">{{userStatus}}</span>
+                            <strong *ngIf="err" style="color:crimson;font-size: 0.8rem;">Make all the
+                                fields valid
+                                .</strong>
+                        </div><br>
+                        <label>Id</label><br />
+                        <input (click)="userStatus=''" formControlName="id" class="form-control" /><br />
+                        <label>Full name</label><br />
+                        <input (click)="userStatus=''" formControlName="fullname" class="form-control" /><br />
+                        <button style="float: right;" class="btn btn-danger" type="button"
+                            (click)="closePeople()">Close</button>
+                        <button style="float: right;margin-right: 1rem;" type="submit"
+                            class="btn btn-primary">Add</button>
+                    </form>
+
+                </ng-template>
             </div>
 
         </div>
