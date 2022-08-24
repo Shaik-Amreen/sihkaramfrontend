@@ -16,7 +16,7 @@ import { FeedbackComponent } from './feedback/feedback.component';
 import { DonationsComponent } from './donations/donations.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { ContractsComponent } from './adminfolder/contracts/contracts.component';
+// import { ContractsComponent } from './adminfolder/contracts/contracts.component';
 import { AdmindonationsComponent } from './adminfolder/admindonations/admindonations.component';
 import { AdminfeedbackComponent } from './adminfolder/adminfeedback/adminfeedback.component';
 import { JobapplicationsComponent } from './adminfolder/jobapplications/jobapplications.component';
@@ -44,7 +44,7 @@ import { SafePipe } from './safe.pipe';
     WorkwithusComponent,
     FeedbackComponent,
     DonationsComponent,
-    ContractsComponent,
+    // ContractsComponent,
     AdmindonationsComponent,
     AdminfeedbackComponent,
     JobapplicationsComponent,

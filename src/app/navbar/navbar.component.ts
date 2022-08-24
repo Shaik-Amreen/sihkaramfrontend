@@ -31,7 +31,7 @@ export class NavbarComponent implements OnInit {
     if (this.role == 'admin') {
       this.routes = this.adminroutes;
     } else if (this.role == 'contractor') {
-      this.routes = this.contractorroutes;
+      // this.routes = this.contractorroutes;
     }
     console.log(this.routes);
     this.logindetails = new FormGroup({
@@ -57,11 +57,11 @@ export class NavbarComponent implements OnInit {
     { route: 'adminmaps', routename: 'Maps' },
     { route: 'jobapplications', routename: 'Job Applications' },
     { route: 'admindonations', routename: 'Donations' },
-    { route: 'feedbacks', routename: 'Reports & Feedbacks' },
+    { route: 'feedbacks', routename: 'Feedbacks & Reports' },
     // { route: 'contracts', routename: 'Contracts' },
   ];
 
-  contractorroutes = [{ route: 'contractor/homepage', routename: 'Home' }];
+  // contractorroutes = [{ route: 'contractor/homepage', routename: 'Home' }];
 
   // openModal() {
   //   // this.bgstyle.emit();

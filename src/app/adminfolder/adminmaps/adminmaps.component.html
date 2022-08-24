@@ -4,7 +4,7 @@
         Slum</b></button>
 
 
-<div *ngIf="data.length!=0 else nodata" class="row m-2 mt-0 ml-0" st>
+<div id="top" *ngIf="data.length!=0 else nodata" class="row m-2 mt-0 ml-0" st>
     <div class="col-5 shadow card m-5 mb-0  border-0" style="background-color: whiteSmoke;padding: 1rem; "
         *ngFor="let c of data">
         <h5>{{c.slumid | uppercase}}

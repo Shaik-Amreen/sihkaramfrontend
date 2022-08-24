@@ -14,10 +14,11 @@ export class JobapplicationsComponent implements OnInit {
   err = false;
 
   constructor(private httprequest: HttprequestService) {
-    
+    document.getElementById('top')?.scrollIntoView({ behavior: 'smooth' });
   }
 
   ngOnInit(): void {
+    document.getElementById('top')?.scrollIntoView({ behavior: 'smooth' });
     this.jobdetails = new FormGroup({
       amount: new FormControl('', Validators.required),
       jobtitle: new FormControl('', Validators.required),
@@ -35,7 +36,6 @@ export class JobapplicationsComponent implements OnInit {
       .subscribe((res: any) => {
         this.data = res.data;
       });
-    document.getElementById('top')?.scrollIntoView({ behavior: 'smooth' });
   }
 
   displaymodal() {

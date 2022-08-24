@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdmindonationsComponent } from './adminfolder/admindonations/admindonations.component';
 import { AdminfeedbackComponent } from './adminfolder/adminfeedback/adminfeedback.component';
 import { AdminmapsComponent } from './adminfolder/adminmaps/adminmaps.component';
-import { ContractsComponent } from './adminfolder/contracts/contracts.component';
+// import { ContractsComponent } from './adminfolder/contracts/contracts.component';
 import { JobapplicationsComponent } from './adminfolder/jobapplications/jobapplications.component';
 import { AppservicesComponent } from './appservices/appservices.component';
 // import { ContactusComponent } from './contactus/contactus.component';
@@ -58,7 +58,7 @@ const routes: Routes = [
         component: AdminfeedbackComponent,
         pathMatch: 'full',
       },
-      { path: 'contracts', component: ContractsComponent, pathMatch: 'full' },
+      // { path: 'contracts', component: ContractsComponent, pathMatch: 'full' },
       {
         path: 'jobapplications',
         component: JobapplicationsComponent,

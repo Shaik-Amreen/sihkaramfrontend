@@ -15,10 +15,6 @@ export class AdminmapsComponent implements OnInit {
   submitStatus = false
   data: any = []
 
-
-
-
-
   constructor(private httprequest: HttprequestService,) {
     this.mapData = new FormGroup({
       name: new FormControl('', Validators.required),
@@ -66,6 +62,7 @@ export class AdminmapsComponent implements OnInit {
     this.mapData.controls.slumid.enable();
   }
   ngOnInit(): void {
+    document.getElementById('top')?.scrollIntoView({ behavior: 'smooth' });
   }
 
   submit() {
