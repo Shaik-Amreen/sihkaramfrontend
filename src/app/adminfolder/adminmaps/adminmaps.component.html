@@ -2,12 +2,37 @@
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal"
     style="float: right;margin-right: 1rem;background-color: rgb(16, 29, 127);" (click)="displaymodal()"><b>New
         Slum</b></button>
-
-
+<!-- {{public | json}} -->
+<input [(ngModel)]="searchtext" class="form-control card shadow" placeholder="Search"
+    style="width: 30vw;margin-left:30vw" /><br />
+<table *ngIf="search()" class="table table-responsive">
+    <tbody>
+        <tr>
+            <td></td>
+            <td>Name</td>
+            <td>Aadhar</td>
+            <td>DOB</td>
+            <td>Gender</td>
+            <td>Mobile</td>
+            <td>Occupation</td>
+            <td>Address</td>
+            <td>Skills</td>
+        </tr>
+        <tr *ngFor="let c of search()">
+            <td></td>
+            <td>{{c.firstname}} {{c.lastname}}</td>
+            <td>{{c.aadharno}}</td>
+            <td>{{c.dob}}</td>
+            <td>{{c.gender}}</td>
+            <td>{{c.mobileno}}</td>
+            <td>{{c.occupation}}</td>
+            <td>{{c.presentaddress}}</td>
+            <td>{{c.skills}}</td>
+        </tr>
+    </tbody>
+</table>
 
 <div id="top" *ngIf="data.length!=0 else nodata" class="row m-2 mt-0 ml-0" st>
-
-
     <div class="col-5 shadow card m-5 mb-0  border-0" style="background-color: whiteSmoke;padding: 1rem; "
         *ngFor="let c of data">
         <h5>{{c.slumid | uppercase}}
@@ -91,7 +116,7 @@
                 </form>
                 <ng-template #addpeople>
                     <form [formGroup]="people" (ngSubmit)="enroll()" class="table-responsive"
-                    style="height: 60vh;margin-top: 0;padding-top:  0;">
+                        style="height: 60vh;margin-top: 0;padding-top:  0;">
                         <div *ngIf="userStatus || err" style="text-align: center;">
                             <span *ngIf="userStatus" style="color: crimson;">{{userStatus}}</span>
                             <strong *ngIf="err" style="color:crimson;font-size: 0.8rem;">Make all the
