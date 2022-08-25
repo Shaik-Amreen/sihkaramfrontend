@@ -17,9 +17,17 @@ export class AdminmapsComponent implements OnInit {
   addPeople: any = false
   people: FormGroup
   // skills: FormArray=[]
-  userStatus: any = ''
+  userStatus: any = '';
+  public: any = []
 
   constructor(private httprequest: HttprequestService,) {
+    this.httprequest.postrequest('/getPublic', '').subscribe(
+      (res: any) => {
+        console.log(res.data, "resssssssssssssssssssssssssssssss")
+        this.public = res.data
+      }
+    )
+
     this.mapData = new FormGroup({
       name: new FormControl('', Validators.required),
       description: new FormControl('', Validators.required),
@@ -33,6 +41,7 @@ export class AdminmapsComponent implements OnInit {
 
 
 
+
     this.people = new FormGroup({
       // slumid: new FormControl('', Validators.required),
       // image: new FormControl('', Validators.required),
@@ -40,7 +49,7 @@ export class AdminmapsComponent implements OnInit {
       occupation: new FormControl('', Validators.required),
       prevaddress: new FormControl('', Validators.required),
       Reasonofmigration: new FormControl('', Validators.required),
-      skills: new FormControl('', Validators.required), 
+      skills: new FormControl('', Validators.required),
     })
 
     this.getData()
@@ -60,6 +69,23 @@ export class AdminmapsComponent implements OnInit {
     }
     evt.target.value = "";
   }
+
+  searchtext: any = ''
+  search() {
+    if (this.searchtext == '') {
+      return this.public;
+    } else {
+      let temp = this.public.filter((j: any) => {
+        return (j.occupation.includes(this.searchtext) || j.skills.includes(this.searchtext) || j.presentaddress.includes(this.search))
+
+      });
+      // let x=temp
+      // temp = temp.push(...x)
+      // console.log(temp,"temp")
+      return temp;
+    }
+  }
+
 
   getData() {
     this.httprequest.postrequest('/getMaps', '').subscribe(
@@ -124,6 +150,8 @@ export class AdminmapsComponent implements OnInit {
     this.mapData.controls.slumid.enable();
   }
   ngOnInit(): void {
+
+
     document.getElementById('top')?.scrollIntoView({ behavior: 'smooth' });
   }
 
