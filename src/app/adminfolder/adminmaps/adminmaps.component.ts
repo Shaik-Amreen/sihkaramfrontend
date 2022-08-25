@@ -34,10 +34,12 @@ export class AdminmapsComponent implements OnInit {
 
     this.people = new FormGroup({
       // slumid: new FormControl('', Validators.required),
-      image: new FormControl('', Validators.required),
-      id: new FormControl('', Validators.required),
-      skills: new FormControl('', Validators.required),
-      fullname: new FormControl('', Validators.required)
+      // image: new FormControl('', Validators.required),
+      aadharid: new FormControl('', Validators.required),
+      occupation: new FormControl('', Validators.required),
+      prevaddress: new FormControl('', Validators.required),
+      Reasonofmigration: new FormControl('', Validators.required),
+      skills: new FormControl('', Validators.required), 
     })
 
     this.getData()
@@ -119,7 +121,7 @@ export class AdminmapsComponent implements OnInit {
       }
       // console.log(url,data)
       this.httprequest
-        .postrequest(url, this.mapData.value)
+        .postrequest(url, { ...this.people.value, slumname: this.mapData.controls.name, currentlocation: this.mapData.controls.located })
         .subscribe((res: any) => {
           this.mapData.reset();
           this.getData();

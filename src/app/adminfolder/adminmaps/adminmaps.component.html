@@ -98,23 +98,29 @@
                                 fields valid
                                 .</strong><br>
                         </div>
-                        <div style="text-align: center;">
+                        <!-- <div style="text-align: center;">
                             <img class="imag1" [src]="tempimg" (click)="img.click()" style="cursor: pointer;" />
                             <input style="display: none;" accept="image/png, image/jpeg"
                                 (change)="handleFileSelect($event)" type="file" #img><br>
-                        </div>
+                        </div> -->
                         <label>Slumid</label><br />
                         <div [formGroup]="mapData">
                             <input formControlName="slumid" class="form-control" /><br />
                         </div>
-                        <label>Person Id</label><br />
-                        <input (click)="userStatus=''" formControlName="id" class="form-control"
+                        <label>Aadhar Id</label><br />
+                        <input (click)="userStatus=''" formControlName="aadharid" class="form-control"
                             placeholder="Enter Person Id" /><br />
-                        <label>Full name</label><br />
-                        <input (click)="userStatus=''" formControlName="fullname" class="form-control"
+                        <label>Occupation</label><br />
+                        <input (click)="userStatus=''" formControlName="occupation" class="form-control"
                             placeholder="Enter Full Name" /><br />
-                        <label>Skill set</label><br />
-                        <input (click)="userStatus=''" formControlName="skills" class="form-control"
+                        <label>Previous address</label><br />
+                        <input (click)="userStatus=''" formControlName="prevaddress" class="form-control"
+                            placeholder="Enter Full Name" /><br />
+                        <label>Reason of migration</label><br />
+                        <input (click)="userStatus=''" formControlName="Reasonofmigration" class="form-control"
+                            placeholder="Enter Person Skill set" /><br />
+                        <label>Skills</label><br />
+                        <input (click)="userStatus=''" formControlName="Reasonofmigration" class="form-control"
                             placeholder="Enter Person Skill set" /><br />
                         <button style="float: right;" class="btn btn-danger" type="button"
                             (click)="closePeople()">Close</button>
