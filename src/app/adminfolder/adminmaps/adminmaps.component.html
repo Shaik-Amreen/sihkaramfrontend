@@ -1,65 +1,71 @@
 <br />
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal"
+    style="float: right;margin-right: 1rem;background-color: rgb(16, 29, 127);" (click)="publicdetails=true"><b>Slum People</b></button>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal"
     style="float: right;margin-right: 1rem;background-color: rgb(16, 29, 127);" (click)="displaymodal()"><b>New
         Slum</b></button>
-<!-- {{public | json}} -->
-<input [(ngModel)]="searchtext" class="form-control card shadow" placeholder="Search"
-    style="width: 30vw;margin-left:30vw" /><br />
-<table *ngIf="search()" class="table table-responsive">
-    <tbody>
-        <tr>
-            <td></td>
-            <td>Name</td>
-            <td>Aadhar</td>
-            <td>DOB</td>
-            <td>Gender</td>
-            <td>Mobile</td>
-            <td>Occupation</td>
-            <td>Address</td>
-            <td>Skills</td>
-        </tr>
-        <tr *ngFor="let c of search()">
-            <td></td>
-            <td>{{c.firstname}} {{c.lastname}}</td>
-            <td>{{c.aadharno}}</td>
-            <td>{{c.dob}}</td>
-            <td>{{c.gender}}</td>
-            <td>{{c.mobileno}}</td>
-            <td>{{c.occupation}}</td>
-            <td>{{c.presentaddress}}</td>
-            <td>{{c.skills}}</td>
-        </tr>
-    </tbody>
-</table>
-
-<div id="top" *ngIf="data.length!=0 else nodata" class="row m-2 mt-0 ml-0" st>
-    <div class="col-5 shadow card m-5 mb-0  border-0" style="background-color: whiteSmoke;padding: 1rem; "
-        *ngFor="let c of data">
-        <h5>{{c.slumid | uppercase}}
-            <span data-toggle="modal" data-target="#myModal" style="float: right;margin-left: 1rem;"><i
-                    class='bx bx-pencil' (click)="edit(c)"></i></span>
-            <span data-toggle="modal" data-target="#myModal" style="float: right;cursor: pointer;"><i class='bx bx-plus'
-                    (click)="add(c)"></i></span>
-
-        </h5>
-        <div style="display: flex;">
-            <span> {{c.name}}</span>
-            <span style="margin-left: 2rem;">{{c.population}}</span>
-            <span style="margin-left: 2rem;">{{c.located}}</span>
-            <span style="margin-left: 2rem;">{{c.occupiedarea}}</span>
-        </div><br>
-        <iframe [src]="c.iframe | safe"></iframe> <br />
-        <span>{{c.description}}</span><br>
-    </div>
+<i *ngIf="publicdetails" class='bx bx-arrow-back' style="font-size:3rem;float:left;padding-left:3rem;cursor:pointer" (click)="publicdetails=false"></i>
+<br>
+<div *ngIf="publicdetails">
+    <input [(ngModel)]="searchtext" class="form-control card shadow" placeholder="Search"
+        style="width: 30vw;margin-left:30vw" /><br />
+    <table *ngIf="search()" class="table table-responsive">
+        <tbody>
+            <tr>
+                <td></td>
+                <td>Name</td>
+                <td>Aadhar</td>
+                <td>DOB</td>
+                <td>Gender</td>
+                <td>Mobile</td>
+                <td>Occupation</td>
+                <td>Address</td>
+                <td>Skills</td>
+            </tr>
+            <tr *ngFor="let c of search()">
+                <td></td>
+                <td>{{c.firstname}} {{c.lastname}}</td>
+                <td>{{c.aadharno}}</td>
+                <td>{{c.dob}}</td>
+                <td>{{c.gender}}</td>
+                <td>{{c.mobileno}}</td>
+                <td>{{c.occupation}}</td>
+                <td>{{c.presentaddress}}</td>
+                <td>{{c.skills}}</td>
+            </tr>
+        </tbody>
+    </table>
 </div>
 
-<ng-template #nodata>
-    <div style="height: 80vh;justify-content: center;align-items: center;display: flex;">
-        <h4>
-            No Maps
-        </h4>
+<div *ngIf="!publicdetails">
+    <div id="top" *ngIf=" data.length!=0 else nodata" class="row m-2 mt-0 ml-0" st>
+        <div class="col-5 shadow card m-5 mb-0  border-0" style="background-color: whiteSmoke;padding: 1rem; "
+            *ngFor="let c of data">
+            <h5>{{c.slumid | uppercase}}
+                <span data-toggle="modal" data-target="#myModal" style="float: right;margin-left: 1rem;"><i
+                        class='bx bx-pencil' (click)="edit(c)"></i></span>
+                <span data-toggle="modal" data-target="#myModal" style="float: right;cursor: pointer;"><i class='bx bx-plus'
+                        (click)="add(c)"></i></span>
+            </h5>
+            <div style="display: flex;">
+                <span> {{c.name}}</span>
+                <span style="margin-left: 2rem;">{{c.population}}</span>
+                <span style="margin-left: 2rem;">{{c.located}}</span>
+                <span style="margin-left: 2rem;">{{c.occupiedarea}}</span>
+            </div><br>
+            <iframe [src]="c.iframe | safe"></iframe> <br />
+            <span>{{c.description}}</span><br>
+        </div>
     </div>
-</ng-template>
+    
+    <ng-template #nodata>
+        <div style="height: 80vh;justify-content: center;align-items: center;display: flex;">
+            <h4>
+                No Maps
+            </h4>
+        </div>
+    </ng-template>
+</div>
 
 
 
@@ -123,11 +129,11 @@
                                 fields valid
                                 .</strong><br>
                         </div>
-                        <div style="text-align: center;">
+                        <!-- <div style="text-align: center;">
                             <img class="imag1" [src]="tempimg" (click)="img.click()" style="cursor: pointer;" />
                             <input style="display: none;" accept="image/png, image/jpeg"
                                 (change)="handleFileSelect($event)" type="file" #img><br>
-                        </div>
+                        </div> -->
                         <label>Slumid</label><br />
                         <div [formGroup]="mapData">
                             <input formControlName="slumid" class="form-control" /><br />
@@ -138,6 +144,7 @@
                         <label>Occupation</label><br />
                         <input (click)="userStatus=''" formControlName="occupation" class="form-control"
                             placeholder="Enter Full Name" /><br />
+
 
                         Skills
 
