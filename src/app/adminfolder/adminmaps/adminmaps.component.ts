@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { HttprequestService } from '../../commonservices/httprequest.service';
 
 @Component({
@@ -20,7 +20,7 @@ export class AdminmapsComponent implements OnInit {
   userStatus: any = '';
   public: any = []
 
-  constructor(private httprequest: HttprequestService,) {
+  constructor(private httprequest: HttprequestService, private fb: FormBuilder) {
     this.httprequest.postrequest('/getPublic', '').subscribe(
       (res: any) => {
         console.log(res.data, "resssssssssssssssssssssssssssssss")
@@ -49,11 +49,30 @@ export class AdminmapsComponent implements OnInit {
       occupation: new FormControl('', Validators.required),
       prevaddress: new FormControl('', Validators.required),
       Reasonofmigration: new FormControl('', Validators.required),
-      skills: new FormControl('', Validators.required),
+      skills: new FormArray([this.initTimes()]),
     })
 
     this.getData()
 
+  }
+
+  initTimes() {
+    return this.fb.group({
+      skill: this.fb.control('', Validators.required),
+      experience: this.fb.control('', Validators.required),
+    });
+  }
+
+  addGroup() {
+    // add address to the list
+    const control = <FormArray>this.people.controls['skills'];
+    control.push(this.initTimes());
+  }
+
+  removeGroup(i: number) {
+    // remove address from the list
+    const control = <FormArray>this.people.controls['skills'];
+    control.removeAt(i);
   }
 
   tempimg = "assets/user.png";

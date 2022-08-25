@@ -138,9 +138,25 @@
                         <label>Occupation</label><br />
                         <input (click)="userStatus=''" formControlName="occupation" class="form-control"
                             placeholder="Enter Full Name" /><br />
-                        <label>Occupation</label><br />
-                        <input (click)="userStatus=''" formControlName="skills" class="form-control"
-                            placeholder="Enter skills" /><br />
+
+                        Skills
+
+                        <div formArrayName="skills" *ngFor="let time of people.controls.skills?.value; let i = index;">
+                            <div [formGroupName]="i" class="row" style="padding: 0;margin:0">
+                                <input placeholder="skill" class="form-control col" formControlName="skill">
+                                <input placeholder="experience" class="form-control col" formControlName="experience">
+                            </div>
+                            <div style="display: flex;margin-top: 0.5rem;">
+                                <button (click)="removeGroup(i)" style="margin-right:1rem"
+                                    *ngIf="people.value.skills.length!=1" class="btn btn-danger">Remove skill</button>
+                                <button class="btn btn-primary" *ngIf="people.value.skills.length-1==i"
+                                    (click)="addGroup()">Add skill</button>
+
+
+                            </div><br />
+
+                        </div>
+
                         <label>Previous address</label><br />
                         <input (click)="userStatus=''" formControlName="prevaddress" class="form-control"
                             placeholder="Enter Previous address" /><br />
