@@ -160,14 +160,14 @@ export class AdminmapsComponent implements OnInit {
     if (this.mapData.status == 'VALID') {
       this.mapData.controls.slumid.enable();
       let url = '/postMaps'
-      // let data = {...this.mapData.value}
       if (this.editMode) {
         url = '/editMaps'
         // data.prevslumid=this.prevslumid
       }
       // console.log(url,data)
+      let data = {...this.mapData.value}
       this.httprequest
-        .postrequest(url, { ...this.people.value, slumname: this.mapData.controls.name, currentlocation: this.mapData.controls.located })
+        .postrequest(url, data)
         .subscribe((res: any) => {
           this.mapData.reset();
           this.getData();
@@ -187,6 +187,7 @@ export class AdminmapsComponent implements OnInit {
 
   displaypopup: any = ""
   popup: any = ""
+  publicdetails:any=false
 
   enroll() {
     this.err = false
@@ -194,7 +195,7 @@ export class AdminmapsComponent implements OnInit {
     if (this.people.status === 'VALID') {
       this.mapData.controls.slumid.enable()
       this.httprequest
-        .postrequest('/findOrPostPeople', this.mapData.value)
+        .postrequest('/findOrPostPeople', { ...this.people.value, slumname: this.mapData.controls.name, currentlocation: this.mapData.controls.located })
         .subscribe((res: any) => {
           if (res.message == 'exist') {
             this.userStatus = 'User already exist'
