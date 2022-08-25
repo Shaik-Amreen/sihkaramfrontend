@@ -16,6 +16,7 @@ export class AdminmapsComponent implements OnInit {
   data: any = []
   addPeople: any = false
   people: FormGroup
+  // skills: FormArray=[]
   userStatus: any = ''
 
   constructor(private httprequest: HttprequestService,) {
@@ -55,6 +56,7 @@ export class AdminmapsComponent implements OnInit {
     reader.readAsDataURL(evt.target.files[0]);
     reader.onload = (event: any) => {
       this.tempimg = event.target.result;
+      console.log("image", this.tempimg)
     }
     evt.target.value = "";
   }
@@ -67,6 +69,22 @@ export class AdminmapsComponent implements OnInit {
       }
     )
   }
+
+  // get controls() {
+
+  //   return (<FormArray>this.skills.get('batch')).controls;
+  // }
+
+  // addEligible() {
+  //   (<FormArray>this.skills.get('batch')).push(new FormGroup({
+  //     'batchvalue': new FormControl("", Validators.required),
+  //   }))
+  // }
+
+
+  // deleteEligible(id: number) {
+  //   (<FormArray>this.skills.get('batch')).removeAt(id)
+  // }
 
   add(i: any) {
     // console.log(i)
