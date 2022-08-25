@@ -10,6 +10,7 @@ import { HttprequestService } from '../../commonservices/httprequest.service';
 export class AdminmapsComponent implements OnInit {
 
   mapData: FormGroup;
+  prevaddress: FormGroup;
   editMode: any = false;
   err = false;
   submitStatus = false
@@ -40,11 +41,15 @@ export class AdminmapsComponent implements OnInit {
     })
 
 
-
+    this.prevaddress = new FormGroup({
+      dno: new FormControl(''),
+      streetno: new FormControl(''),
+      townorcity: new FormControl('', Validators.required),
+      state: new FormControl('', Validators.required),
+      pincode: new FormControl('', Validators.required),
+    })
 
     this.people = new FormGroup({
-      // slumid: new FormControl('', Validators.required),
-      // image: new FormControl('', Validators.required),
       aadharid: new FormControl('', Validators.required),
       occupation: new FormControl('', Validators.required),
       prevaddress: new FormControl('', Validators.required),
@@ -213,6 +218,7 @@ export class AdminmapsComponent implements OnInit {
     this.people.controls['image'].setValue(this.tempimg)
     if (this.people.status === 'VALID') {
       this.mapData.controls.slumid.enable()
+      this.people.controls.prevaddress.setValue(this.prevaddress.value)
       this.httprequest
         .postrequest('/findOrPostPeople', { ...this.people.value, slumname: this.mapData.controls.name, currentlocation: this.mapData.controls.located })
         .subscribe((res: any) => {
