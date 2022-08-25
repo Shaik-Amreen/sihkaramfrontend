@@ -45,7 +45,7 @@ export class NavbarComponent implements OnInit {
     { route: 'services', routename: 'Services' },
     { route: 'workwithus', routename: 'Employment' },
     { route: 'infrastructure', routename: 'Infrastructure Designs' },
-    { route: 'maps', routename: 'Maps' },
+    { route: 'maps', routename: 'Slums' },
     // { route: 'localanalysis', routename: 'Local Analysis' },
     { route: 'donations', routename: 'Donate' },
     { route: 'feedback', routename: 'Feedback & Report' },
@@ -54,7 +54,7 @@ export class NavbarComponent implements OnInit {
 
   adminroutes = [
     { route: 'adminhomepage', routename: 'Home' },
-    { route: 'adminmaps', routename: 'Maps' },
+    { route: 'adminmaps', routename: 'Slums' },
     { route: 'jobapplications', routename: 'Job Applications' },
     { route: 'admindonations', routename: 'Donations' },
     { route: 'feedbacks', routename: 'Feedbacks & Reports' },

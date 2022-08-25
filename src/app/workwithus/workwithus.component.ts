@@ -56,10 +56,10 @@ export class WorkwithusComponent implements OnInit {
       return this.jobs;
     } else {
       let temp = this.jobs.filter((j: any) => {
-        return (j.jobtitle.includes(this.searchtext) ||
-          j.jobid.includes(this.searchtext) ||
-          j.location.includes(this.searchtext) ||
-          j.amount.includes(this.searchtext))
+        return (j.jobtitle.toLowerCase().includes(this.searchtext) ||
+          j.jobid.toLowerCase().includes(this.searchtext) ||
+          j.location.toLowerCase().includes(this.searchtext) ||
+          j.amount.toLowerCase().includes(this.searchtext))
       });
       // let x=temp
       // temp = temp.push(...x)

@@ -13,7 +13,7 @@
         <h5>{{c.slumid | uppercase}}
             <span data-toggle="modal" data-target="#myModal" style="float: right;margin-left: 1rem;"><i
                     class='bx bx-pencil' (click)="edit(c)"></i></span>
-            <span data-toggle="modal" data-target="#myModal" style="float: right;"><i class='bx bx-plus'
+            <span data-toggle="modal" data-target="#myModal" style="float: right;cursor: pointer;"><i class='bx bx-plus'
                     (click)="add(c)"></i></span>
 
         </h5>
@@ -90,24 +90,37 @@
                                 Slum</b></span><span *ngIf="editMode"><b>Edit Slum</b></span></button><br><br>
                 </form>
                 <ng-template #addpeople>
-
-                    <form [formGroup]="people" (ngSubmit)="enroll()">
-                        <div style="text-align: center;">
-                            <span style="color: crimson;">{{userStatus}}</span>
+                    <form [formGroup]="people" (ngSubmit)="enroll()" class="table-responsive"
+                    style="height: 60vh;margin-top: 0;padding-top:  0;">
+                        <div *ngIf="userStatus || err" style="text-align: center;">
+                            <span *ngIf="userStatus" style="color: crimson;">{{userStatus}}</span>
                             <strong *ngIf="err" style="color:crimson;font-size: 0.8rem;">Make all the
                                 fields valid
-                                .</strong>
-                        </div><br>
-                        <label>Id</label><br />
-                        <input (click)="userStatus=''" formControlName="id" class="form-control" /><br />
+                                .</strong><br>
+                        </div>
+                        <div style="text-align: center;">
+                            <img class="imag1" [src]="tempimg" (click)="img.click()" style="cursor: pointer;" />
+                            <input style="display: none;" accept="image/png, image/jpeg"
+                                (change)="handleFileSelect($event)" type="file" #img><br>
+                        </div>
+                        <label>Slumid</label><br />
+                        <div [formGroup]="mapData">
+                            <input formControlName="slumid" class="form-control" /><br />
+                        </div>
+                        <label>Person Id</label><br />
+                        <input (click)="userStatus=''" formControlName="id" class="form-control"
+                            placeholder="Enter Person Id" /><br />
                         <label>Full name</label><br />
-                        <input (click)="userStatus=''" formControlName="fullname" class="form-control" /><br />
+                        <input (click)="userStatus=''" formControlName="fullname" class="form-control"
+                            placeholder="Enter Full Name" /><br />
+                        <label>Skill set</label><br />
+                        <input (click)="userStatus=''" formControlName="skills" class="form-control"
+                            placeholder="Enter Person Skill set" /><br />
                         <button style="float: right;" class="btn btn-danger" type="button"
                             (click)="closePeople()">Close</button>
                         <button style="float: right;margin-right: 1rem;" type="submit"
                             class="btn btn-primary">Add</button>
                     </form>
-
                 </ng-template>
             </div>
 
@@ -115,3 +128,11 @@
     </div>
 </div>
 <br /><br />
+
+<div *ngIf="displaypopup" [ngClass]="{'view':displaypopup}">
+    <span style="font-size: 1rem;">
+        <strong><span style="font-size: 1.2rem;">{{popup}}</span>
+            <div class="btn"><i style="color:white;font-size:2rem" class="bx bxs-check-circle"></i></div>
+        </strong>
+    </span>
+</div>

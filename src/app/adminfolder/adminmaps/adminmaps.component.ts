@@ -31,14 +31,30 @@ export class AdminmapsComponent implements OnInit {
     })
 
 
+
     this.people = new FormGroup({
-      slumid: new FormControl('', Validators.required),
+      // slumid: new FormControl('', Validators.required),
+      image: new FormControl('', Validators.required),
       id: new FormControl('', Validators.required),
+      skills: new FormControl('', Validators.required),
       fullname: new FormControl('', Validators.required)
     })
 
     this.getData()
 
+  }
+
+  tempimg = "assets/user.png";
+
+  handleFileSelect(evt: any) {
+    var reader: any = ""
+    reader = new FileReader;
+    // console.log("reader",reader)
+    reader.readAsDataURL(evt.target.files[0]);
+    reader.onload = (event: any) => {
+      this.tempimg = event.target.result;
+    }
+    evt.target.value = "";
   }
 
   getData() {
@@ -58,7 +74,7 @@ export class AdminmapsComponent implements OnInit {
     this.people.value.slumid = i.slumid
     this.display = 'block';
     this.mapData.patchValue(i)
-    // this.mapData.controls.slumid.disable()
+    this.mapData.controls.slumid.disable()
   }
   edit(i: any) {
     this.err = false
@@ -69,7 +85,6 @@ export class AdminmapsComponent implements OnInit {
     console.log(this.mapData.value, "edit activate")
     // this.prevslumid = this.mapData.controls.slumid
     this.mapData.controls.slumid.disable()
-
   }
 
   close() {
@@ -77,6 +92,7 @@ export class AdminmapsComponent implements OnInit {
   }
   closePeople() {
     this.display = 'None'
+    this.mapData.controls.slumid.enable()
   }
 
   display: any = 'None'; prevslumid: any
@@ -107,6 +123,11 @@ export class AdminmapsComponent implements OnInit {
         .subscribe((res: any) => {
           this.mapData.reset();
           this.getData();
+          this.displaypopup = true;
+          this.popup = 'Successfully submitted';
+          setTimeout(() => {
+            this.displaypopup = false;
+          }, 4000);
           this.submitStatus = true;
           this.display = 'None';
         });
@@ -116,20 +137,43 @@ export class AdminmapsComponent implements OnInit {
     }
   }
 
+  displaypopup: any = ""
+  popup: any = ""
+
   enroll() {
     this.err = false
+    this.people.controls['image'].setValue(this.tempimg)
     if (this.people.status === 'VALID') {
+      this.mapData.controls.slumid.enable()
       this.httprequest
         .postrequest('/findOrPostPeople', this.mapData.value)
         .subscribe((res: any) => {
           if (res.message == 'exist') {
             this.userStatus = 'User already exist'
+            this.displaypopup = true;
+            this.popup = 'User already exist';
+            setTimeout(() => {
+              this.displaypopup = false;
+            }, 4000);
           }
-          else { this.display = 'None'; }
+          else {
+            this.display = 'None';
+            this.displaypopup = true;
+            this.popup = 'Person Added Successfull';
+            this.mapData.reset()
+            setTimeout(() => {
+              this.displaypopup = false;
+            }, 4000);
+          }
         });
     }
     else {
       this.err = true
+      this.displaypopup = true;
+      this.popup = 'Invalid Input !';
+      setTimeout(() => {
+        this.displaypopup = false;
+      }, 4000);
     }
   }
 
