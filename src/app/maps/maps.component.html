@@ -9,13 +9,31 @@
     <span>{{located}}</span>
 </div>
 
+<!-- <div style="margin-top: 10%;" class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':'block'}">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="width: 15vw;height: 30vh;float:right;padding-right: 0;">
+            <div class="modal-body " style="padding:1rem;width: 10vw;">
+                <strong>
+                    Population
+                </strong><br />
+                <span>{{population}}</span><br />
+                <strong>Occupied area</strong><br />
+                <span>{{occupiedarea}}</span><br /><br>
+                <strong>Located</strong><br />
+                <span>{{located}}</span><br>
+            </div>
+
+        </div>
+    </div>
+</div> -->
+
 <div id="rel1">
     <iframe style="height:50vh;width:99.2vw" [src]="imageSource | safe">
     </iframe>
 </div>
 
 <div style="padding:0rem 4rem;">
-    
+
     <input [(ngModel)]="searchtext" class="form-control card shadow" placeholder="Search"
         style="width: 30vw;margin-left:30vw" /><br />
     <div *ngFor="let c of search()">
