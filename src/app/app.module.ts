@@ -26,6 +26,8 @@ import { MdbModalModule } from 'mdb-angular-ui-kit/modal';
 import { AdminmapsComponent } from './adminfolder/adminmaps/adminmaps.component';
 import { SafePipe } from './safe.pipe';
 // import { ModalComponent } from './modal/modal.component';
+import { NgxEchartsModule } from 'ngx-echarts';
+import * as echarts from 'echarts';
 // import { CarouselModule } from '@coreui/angular';
 
 @NgModule({
@@ -61,6 +63,9 @@ import { SafePipe } from './safe.pipe';
     // CarouselModule,
     // MdbModalModule,
     GooglePayButtonModule,
+    NgxEchartsModule.forRoot({
+      echarts,
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],
