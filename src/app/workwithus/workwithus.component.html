@@ -137,13 +137,20 @@
                             </div>
                         </div><br />
                         <div class="row nomar">
-                            <div style="padding-right: 1rem;">
+                            <div class="col" style="padding-right: 1rem;">
                                 <label>Address <sup style="color:crimson"><strong>*</strong></sup></label><br>
                                 <textarea class="form-control shadow-none" placeholder="Enter  Address"
                                     formControlName="address" style="width: 100%;"></textarea>
                                 <span *ngIf="showerr" style="color:crimson;font-size: 0.8rem;">Enter valid
                                     address</span>
 
+                            </div>
+                            <div class="col" style="padding-right: 1rem;">
+                                <label>Education Qualifications <sup style="color:crimson"><strong>*</strong></sup></label><br>
+                                <textarea class="form-control shadow-none" placeholder="Enter Your Education Qualifications"
+                                    formControlName="educationqualifications" style="width: 100%;"></textarea>
+                                <span *ngIf="showerr" style="color:crimson;font-size: 0.8rem;">Enter valid
+                                    address</span>
                             </div>
                         </div>
                         <span *ngIf="application" style="color:crimson;font-size: 0.8rem;">Application Exist&nbsp; <i
