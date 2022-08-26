@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { HttprequestService } from '../../commonservices/httprequest.service';
+import * as XLSX from 'xlsx';
 
 @Component({
   selector: 'app-adminmaps',
@@ -18,7 +19,8 @@ export class AdminmapsComponent implements OnInit {
   people: FormGroup
   // skills: FormArray=[]
   userStatus: any = '';
-  public: any = []
+  public: any = [];
+  s: FormGroup
 
   constructor(private httprequest: HttprequestService, private fb: FormBuilder) {
     this.httprequest.postrequest('/getPublic', '').subscribe(
@@ -27,7 +29,10 @@ export class AdminmapsComponent implements OnInit {
         this.public = res.data
       }
     )
-
+    this.s = new FormGroup({
+      skill: new FormControl('', Validators.required),
+      experience: new FormControl('', Validators.required),
+    })
     this.mapData = new FormGroup({
       name: new FormControl('', Validators.required),
       description: new FormControl('', Validators.required),
@@ -49,24 +54,25 @@ export class AdminmapsComponent implements OnInit {
       occupation: new FormControl('', Validators.required),
       prevaddress: new FormControl('', Validators.required),
       Reasonofmigration: new FormControl('', Validators.required),
-      skills: new FormArray([this.initTimes()]),
+      skills: new FormArray([new FormGroup({
+        skill: new FormControl('', Validators.required),
+        experience: new FormControl('', Validators.required),
+      })]),
     })
 
     this.getData()
 
   }
 
-  initTimes() {
-    return this.fb.group({
-      skill: this.fb.control('', Validators.required),
-      experience: this.fb.control('', Validators.required),
-    });
-  }
+
 
   addGroup() {
     // add address to the list
     const control = <FormArray>this.people.controls['skills'];
-    control.push(this.initTimes());
+    control.push(new FormGroup({
+      skill: new FormControl('', Validators.required),
+      experience: new FormControl('', Validators.required),
+    }));
   }
 
   removeGroup(i: number) {
@@ -89,7 +95,13 @@ export class AdminmapsComponent implements OnInit {
     evt.target.value = "";
   }
 
+  get controls() {
+
+    return (<FormArray>this.people.get('skills')).controls;
+  }
+
   searchtext: any = ''
+
   search() {
     if (this.searchtext == '') {
       return this.public;
@@ -103,6 +115,18 @@ export class AdminmapsComponent implements OnInit {
       // console.log(temp,"temp")
       return temp;
     }
+  }
+
+  exportexcel(): void {
+  
+    /* table id is passed over here */
+    const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(document.getElementById('excel-table'), { raw: true });
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+    XLSX.writeFile(wb, 'Slums.xlsx');
+
+
+
   }
 
 
@@ -184,7 +208,7 @@ export class AdminmapsComponent implements OnInit {
         // data.prevslumid=this.prevslumid
       }
       // console.log(url,data)
-      let data = {...this.mapData.value}
+      let data = { ...this.mapData.value }
       this.httprequest
         .postrequest(url, data)
         .subscribe((res: any) => {
@@ -206,7 +230,7 @@ export class AdminmapsComponent implements OnInit {
 
   displaypopup: any = ""
   popup: any = ""
-  publicdetails:any=false
+  publicdetails: any = false
 
   enroll() {
     this.err = false

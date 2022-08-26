@@ -1,15 +1,20 @@
 <br />
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal"
-    style="float: right;margin-right: 1rem;background-color: rgb(16, 29, 127);" (click)="publicdetails=true"><b>Slum People</b></button>
+    style="float: right;margin-right: 1rem;background-color: rgb(16, 29, 127);" (click)="publicdetails=true"><b>Slum
+        People</b></button>
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal"
     style="float: right;margin-right: 1rem;background-color: rgb(16, 29, 127);" (click)="displaymodal()"><b>New
         Slum</b></button>
-<i *ngIf="publicdetails" class='bx bx-arrow-back' style="font-size:3rem;float:left;padding-left:3rem;cursor:pointer" (click)="publicdetails=false"></i>
+<i *ngIf="publicdetails" class='bx bx-arrow-back' style="font-size:3rem;float:left;padding-left:3rem;cursor:pointer"
+    (click)="publicdetails=false"></i>
 <br>
 <div *ngIf="publicdetails">
+
     <input [(ngModel)]="searchtext" class="form-control card shadow" placeholder="Search"
         style="width: 30vw;margin-left:30vw" /><br />
-    <table *ngIf="search()" class="table table-responsive">
+    <button class="btn btn-primary" style="float: right;margin-right: 1rem;"
+        (click)="exportexcel()">Download</button><br />
+    <table id="excel-table" *ngIf="search()" class="table table-responsive table-striped text-center">
         <tbody>
             <tr>
                 <td></td>
@@ -30,7 +35,9 @@
                 <td>{{c.gender}}</td>
                 <td>{{c.mobileno}}</td>
                 <td>{{c.occupation}}</td>
-                <td>{{c.presentaddress}}</td>
+
+                <td>{{c.presentaddress.dno}} {{c.presentaddress.street}} {{c.presentaddress.town}}
+                    {{c.presentaddress.state}} {{c.presentaddress.pincode}}</td>
                 <td>{{c.skills}}</td>
             </tr>
         </tbody>
@@ -44,8 +51,8 @@
             <h5>{{c.slumid | uppercase}}
                 <span data-toggle="modal" data-target="#myModal" style="float: right;margin-left: 1rem;"><i
                         class='bx bx-pencil' (click)="edit(c)"></i></span>
-                <span data-toggle="modal" data-target="#myModal" style="float: right;cursor: pointer;"><i class='bx bx-plus'
-                        (click)="add(c)"></i></span>
+                <span data-toggle="modal" data-target="#myModal" style="float: right;cursor: pointer;"><i
+                        class='bx bx-plus' (click)="add(c)"></i></span>
             </h5>
             <div style="display: flex;">
                 <span> {{c.name}}</span>
@@ -57,7 +64,7 @@
             <span>{{c.description}}</span><br>
         </div>
     </div>
-    
+
     <ng-template #nodata>
         <div style="height: 80vh;justify-content: center;align-items: center;display: flex;">
             <h4>
@@ -147,21 +154,24 @@
 
 
                         Skills
+                        <div formArrayName="skills">
+                            <div *ngFor="let eligibility of controls; index as i">
+                                <div [formGroupName]="i" class="row" style="padding: 0;margin:0">
+                                    <input placeholder="skill" class="form-control col" formControlName="skill">
+                                    <input placeholder="experience" class="form-control col"
+                                        formControlName="experience">
+                                </div>
+                                <div style="display: flex;margin-top: 0.5rem;">
+                                    <button (click)="removeGroup(i)" style="margin-right:1rem"
+                                        *ngIf="people.value.skills.length!=1" class="btn btn-danger">Remove
+                                        skill</button>
+                                    <button class="btn btn-primary" *ngIf="people.value.skills.length-1==i"
+                                        (click)="addGroup()">Add skill</button>
 
-                        <div formArrayName="skills" *ngFor="let time of people.controls.skills?.value; let i = index;">
-                            <div [formGroupName]="i" class="row" style="padding: 0;margin:0">
-                                <input placeholder="skill" class="form-control col" formControlName="skill">
-                                <input placeholder="experience" class="form-control col" formControlName="experience">
+
+                                </div><br />
+
                             </div>
-                            <div style="display: flex;margin-top: 0.5rem;">
-                                <button (click)="removeGroup(i)" style="margin-right:1rem"
-                                    *ngIf="people.value.skills.length!=1" class="btn btn-danger">Remove skill</button>
-                                <button class="btn btn-primary" *ngIf="people.value.skills.length-1==i"
-                                    (click)="addGroup()">Add skill</button>
-
-
-                            </div><br />
-
                         </div>
 
                         <label>Previous address</label><br />
