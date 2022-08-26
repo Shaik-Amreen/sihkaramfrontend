@@ -21,9 +21,8 @@ export class MapsComponent implements OnInit {
           this.population = this.data[this.i].population
           this.located = this.data[this.i].located
           this.occupiedarea = this.data[this.i].occupiedarea
-    
           this.imageSource = this.data[this.i]['iframe'];
-    
+
           if (this.i == this.data.length - 1) {
             this.i = 0;
           } else {
