@@ -8,7 +8,7 @@ strong {
 }
 
 #abs1 {
-    z-index: 5;
+    z-index: 10;
     position: absolute;
     padding: 2rem;
     top: 10px;
