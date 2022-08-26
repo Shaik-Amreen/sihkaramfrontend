@@ -95,17 +95,35 @@ export class AdminmapsComponent implements OnInit {
   }
 
   searchtext: any = ''
+  searchtext01: any = ''
   search() {
     if (this.searchtext == '') {
       return this.public;
     } else {
+      console.log(this.public, "this.public")
       let temp = this.public.filter((j: any) => {
-        return (j.occupation.includes(this.searchtext) || j.skills.includes(this.searchtext) || j.presentaddress.includes(this.search))
-
+        return (j.occupation.toLowerCase().includes(this.searchtext) ||
+          j.skills.includes(this.searchtext) ||
+          j.presentaddress.town.toLowerCase().includes(this.searchtext)
+          || j.presentaddress.state.toLowerCase().includes(this.searchtext)
+          || j.prevaddress.town.toLowerCase().includes(this.searchtext) || j.prevaddress.state.toLowerCase().includes(this.searchtext) || j.firstname.toLowerCase().includes(this.searchtext) || j.lastname.toLowerCase().includes(this.searchtext) || j.aadharno.toLowerCase().includes(this.searchtext) || j.gender.toLowerCase().includes(this.searchtext) || j.mobileno.toLowerCase().includes(this.searchtext) || j.dob.toLowerCase().includes(this.searchtext))
       });
-      // let x=temp
-      // temp = temp.push(...x)
-      // console.log(temp,"temp")
+      return temp;
+    }
+  }
+
+  search01() {
+    if (this.searchtext01 == '') {
+      return this.data;
+    } else {
+      console.log(this.data, "this.data")
+      let temp = this.data.filter((j: any) => {
+        return (j.slumid.toLowerCase().includes(this.searchtext01.toLowerCase()) ||
+          j.name.toLowerCase().includes(this.searchtext01.toLowerCase()) ||
+          j.population.toLowerCase().includes(this.searchtext01)
+          || j.located.toLowerCase().includes(this.searchtext01)
+          || j.occupiedarea.toLowerCase().includes(this.searchtext01) )
+      });
       return temp;
     }
   }

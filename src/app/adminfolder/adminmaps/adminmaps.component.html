@@ -1,36 +1,41 @@
 <br />
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal"
-    style="float: right;margin-right: 1rem;background-color: rgb(16, 29, 127);" (click)="publicdetails=true"><b>Slum People</b></button>
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal"
+<button type="button" class="btn btn-primary shadow-none" data-toggle="modal" data-target="#myModal"
+    style="float: right;margin-right: 1rem;background-color: rgb(16, 29, 127);" (click)="publicdetails=true"><b>Slum
+        People</b></button>
+<button type="button" class="btn btn-primary shadow-none" data-toggle="modal" data-target="#myModal"
     style="float: right;margin-right: 1rem;background-color: rgb(16, 29, 127);" (click)="displaymodal()"><b>New
         Slum</b></button>
-<i *ngIf="publicdetails" class='bx bx-arrow-back' style="font-size:3rem;float:left;padding-left:3rem;cursor:pointer" (click)="publicdetails=false"></i>
+<i *ngIf="publicdetails" class='bx bx-arrow-back'
+    style="font-size:3rem;float:left;cursor: pointer;padding-left:3rem;cursor:pointer"
+    (click)="publicdetails=false"></i>
 <br>
 <div *ngIf="publicdetails">
     <input [(ngModel)]="searchtext" class="form-control card shadow" placeholder="Search"
         style="width: 30vw;margin-left:30vw" /><br />
-    <table *ngIf="search()" class="table table-responsive">
+    <table *ngIf="search()" class="table table-responsive" style="margin-left:0.5rem,width:90vw">
         <tbody>
-            <tr>
-                <td></td>
+            <tr style="background-color: rgb(16, 29, 127);;color: #fff !important;border-bottom: none;">
+                <td>SNO</td>
                 <td>Name</td>
                 <td>Aadhar</td>
                 <td>DOB</td>
                 <td>Gender</td>
                 <td>Mobile</td>
                 <td>Occupation</td>
-                <td>Address</td>
+                <td>Present Address</td>
+                <td>Previous Address</td>
                 <td>Skills</td>
             </tr>
-            <tr *ngFor="let c of search()">
-                <td></td>
+            <tr *ngFor="let c of search();index as i">
+                <td>{{i+1}}</td>
                 <td>{{c.firstname}} {{c.lastname}}</td>
                 <td>{{c.aadharno}}</td>
                 <td>{{c.dob}}</td>
                 <td>{{c.gender}}</td>
                 <td>{{c.mobileno}}</td>
                 <td>{{c.occupation}}</td>
-                <td>{{c.presentaddress}}</td>
+                <td>{{c.prevaddress.town}},{{c.prevaddress.state}}</td>
+                <td>{{c.presentaddress.town}},{{c.presentaddress.state}}</td>
                 <td>{{c.skills}}</td>
             </tr>
         </tbody>
@@ -38,14 +43,16 @@
 </div>
 
 <div *ngIf="!publicdetails">
+    <input [(ngModel)]="searchtext01" class="form-control card shadow" placeholder="Search"
+        style="width: 30vw;margin-left:30vw;position: fixed;margin-top: 0;z-index: 10;top: 11rem;" /><br />
     <div id="top" *ngIf=" data.length!=0 else nodata" class="row m-2 mt-0 ml-0" st>
         <div class="col-5 shadow card m-5 mb-0  border-0" style="background-color: whiteSmoke;padding: 1rem; "
-            *ngFor="let c of data">
+            *ngFor="let c of search01()">
             <h5>{{c.slumid | uppercase}}
                 <span data-toggle="modal" data-target="#myModal" style="float: right;margin-left: 1rem;"><i
                         class='bx bx-pencil' (click)="edit(c)"></i></span>
-                <span data-toggle="modal" data-target="#myModal" style="float: right;cursor: pointer;"><i class='bx bx-plus'
-                        (click)="add(c)"></i></span>
+                <span data-toggle="modal" data-target="#myModal" style="float: right;cursor: pointer;"><i
+                        class='bx bx-plus' (click)="add(c)"></i></span>
             </h5>
             <div style="display: flex;">
                 <span> {{c.name}}</span>
@@ -57,7 +64,7 @@
             <span>{{c.description}}</span><br>
         </div>
     </div>
-    
+
     <ng-template #nodata>
         <div style="height: 80vh;justify-content: center;align-items: center;display: flex;">
             <h4>
@@ -147,22 +154,22 @@
                         <label>Skills</label><br />
                         <input (click)="userStatus=''" formControlName="skills" class="form-control"
                             placeholder="Enter Skills" /><br />
-                            <div formGroupName="prevaddress">
-                                <label>Previous address</label><br />
-                                <input (click)="userStatus=''" formControlName="dno" class="form-control"
-                                    placeholder="Enter Door No" /><br />
-                                <input (click)="userStatus=''" formControlName="streetno" class="form-control"
-                                    placeholder="Enter Street No" /><br />
-                                <input (click)="userStatus=''" formControlName="townorcity" class="form-control"
-                                    placeholder="Enter Town or City" /><br />
-                                <input (click)="userStatus=''" formControlName="state" class="form-control"
-                                    placeholder="Enter State" /><br />
-                                <input (click)="userStatus=''" formControlName="pincode" class="form-control"
-                                    placeholder="Enter Pincode" /><br />
-                            </div>
-                        <label>Reason of migration</label><br />
+                        <div formGroupName="prevaddress">
+                            <label>Previous address</label><br />
+                            <input (click)="userStatus=''" formControlName="dno" class="form-control"
+                                placeholder="Enter Door No" /><br />
+                            <input (click)="userStatus=''" formControlName="streetno" class="form-control"
+                                placeholder="Enter Street No" /><br />
+                            <input (click)="userStatus=''" formControlName="townorcity" class="form-control"
+                                placeholder="Enter Town or City" /><br />
+                            <input (click)="userStatus=''" formControlName="state" class="form-control"
+                                placeholder="Enter State" /><br />
+                            <input (click)="userStatus=''" formControlName="pincode" class="form-control"
+                                placeholder="Enter Pincode" /><br />
+                        </div>
+                        <label>Reason Of Migration</label><br />
                         <input (click)="userStatus=''" formControlName="Reasonofmigration" class="form-control"
-                            placeholder="Enter Reason Of Migartion" /><br />
+                            placeholder="Enter Reason Of Migration" /><br />
                         <!-- <label>Skills</label><br />
                         <input (click)="userStatus=''" formControlName="Reasonofmigration" class="form-control"
                             placeholder="Enter Person Skill set" /><br /> -->

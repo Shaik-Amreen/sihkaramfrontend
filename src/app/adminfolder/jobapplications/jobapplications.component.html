@@ -4,9 +4,11 @@
     <br /><br />
     <!-- {{data | json}} -->
     <div class="m-5 mt-0" *ngIf="data&&data.length!=0 else nodata">
+        <input [(ngModel)]="searchtext" class="form-control card shadow" placeholder="Search"
+            style="width: 30vw;margin-left:30vw" /><br />
         <div class=" card m-2  mb-0 shadow  border-0"
             style="background-color: whiteSmoke;padding: 1rem;margin-left: 20vw !important; width: 50vw;"
-            *ngFor="let c of data ; index as i">
+            *ngFor="let c of search() ; index as i">
             <div class="row">
                 <div class="col-9">
                     {{c.jobid}}
@@ -127,15 +129,18 @@
                     <input type="text" class="form-control shadow-none" placeholder="Job Id" formControlName="jobid">
                     <span *ngIf="err" style="color:crimson;font-size: 0.8rem;">Enter valid text</span><br />
                     <label><b>Job Tittle</b></label>
-                    <input type="text" class="form-control shadow-none" placeholder="Job Tittle"
+                    <input type="text" class="form-control shadow-none" placeholder="Enter  Job Tittle"
                         formControlName="jobtitle">
                     <span *ngIf="err" style="color:crimson;font-size: 0.8rem;">Enter valid text</span><br />
                     <label><b>Job Location</b></label>
-                    <input type="text" class="form-control shadow-none" placeholder="Job Tittle"
-                        formControlName="location">
+                    <input type="text" class="form-control shadow-none" placeholder="Enter  Job Tittle"
+                        formControlName="location"><br>
+                    <label><b>Job Skills</b></label>
+                    <input type="text" class="form-control shadow-none" placeholder="Enter Job Skills"
+                        formControlName="jobskills">
                     <span *ngIf="err" style="color:crimson;font-size: 0.8rem;">Enter valid text</span><br />
                     <label><b>Salary</b></label>
-                    <input type="text" class="form-control shadow-none" placeholder="Salary" formControlName="amount">
+                    <input type="text" class="form-control shadow-none" type="number" placeholder="Enter  Salary" formControlName="amount">
                     <span *ngIf="err" style="color:crimson;font-size: 0.8rem;">Enter valid text</span><br>
                     <label><b>Job Description</b></label>
                     <textarea type="text" class="form-control shadow-none" placeholder="Job Description"
@@ -150,4 +155,12 @@
 
         </div>
     </div>
+</div>
+
+<div *ngIf="displaypopup" [ngClass]="{'view':displaypopup}">
+    <span style="font-size: 1rem;">
+        <strong><span style="font-size: 1.2rem;">{{popup}}</span>
+            <div class="btn"><i style="color:white;font-size:2rem" class="bx bxs-check-circle"></i></div>
+        </strong>
+    </span>
 </div>
