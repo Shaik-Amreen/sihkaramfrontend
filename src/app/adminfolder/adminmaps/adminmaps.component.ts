@@ -88,6 +88,7 @@ export class AdminmapsComponent implements OnInit {
       aadharid: new FormControl('', Validators.required),
       occupation: new FormControl('', Validators.required),
       prevaddress: new FormControl('', Validators.required),
+      educationqualification: new FormControl('', Validators.required),
       Reasonofmigration: new FormControl('', Validators.required),
       skills: new FormArray([new FormGroup({
         skill: new FormControl('', Validators.required),

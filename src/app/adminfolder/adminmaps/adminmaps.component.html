@@ -1,5 +1,4 @@
 <br />
-
 <button type="button" class="btn btn-primary shadow-none" data-toggle="modal" data-target="#myModal"
     style="float: right;margin-right: 1rem;background-color: rgb(16, 29, 127);" (click)="publicdetails=true"><b>Slum
         People</b></button>
@@ -11,7 +10,7 @@
     (click)="publicdetails=false"></i>
 <br>
 <div *ngIf="publicdetails">
-    
+
     <input [(ngModel)]="searchtext" class="form-control card shadow" placeholder="Search"
         style="width: 30vw;margin-left:30vw" /><br />
 
@@ -41,14 +40,9 @@
                 <td>{{c.gender}}</td>
                 <td>{{c.mobileno}}</td>
                 <td>{{c.occupation}}</td>
-
-
-
-
                 <td>{{c.prevaddress.town}},{{c.prevaddress.state}}</td>
                 <td>{{c.presentaddress.dno}} {{c.presentaddress.street}} {{c.presentaddress.town}}
                     {{c.presentaddress.state}} {{c.presentaddress.pincode}}</td>
-
                 <td>{{c.skills}}</td>
             </tr>
         </tbody>
@@ -70,9 +64,9 @@
             </h5>
             <div style="display: flex;">
                 <span> {{c.name}}</span>
-                <span style="margin-left: 2rem;">{{c.population}}</span>
-                <i class='bx bx-current-location'></i><span style="margin-left: 2rem;">{{c.located}}</span>
-                <span style="margin-left: 2rem;">{{c.occupiedarea}}</span>
+                <span style="margin-left: 2rem;"><i class='bx bxs-group'></i>{{c.population}}</span>
+                <span style="margin-left: 2rem;"><i class='bx bx-current-location'></i>{{c.located}}</span>
+                <span style="margin-left: 2rem;"><i class='bx bxs-area'></i>{{c.occupiedarea}}</span>
             </div><br>
             <iframe [src]="c.iframe | safe"></iframe> <br />
             <span>{{c.description}}</span><br>
@@ -157,19 +151,17 @@
                         </div> -->
                         <label>Slumid</label><br />
                         <div [formGroup]="mapData">
-                            <input formControlName="slumid" class="form-control" /><br />
+                            <input formControlName="Enter Slumid" class="form-control" /><br />
                         </div>
                         <label>Aadhar Id</label><br />
                         <input (click)="userStatus=''" formControlName="aadharid" class="form-control"
                             placeholder="Enter Person Id" /><br />
-                        <label>Education Qualifications</label><br />
-                        <input (click)="userStatus=''" formControlName="educationqualifications" class="form-control"
-                            placeholder="Enter Person Id" /><br />
                         <label>Occupation</label><br />
                         <input (click)="userStatus=''" formControlName="occupation" class="form-control"
-                            placeholder="Enter Full Name" /><br />
-
-
+                            placeholder="Enter Occupation" /><br />
+                        <label>Qualification</label><br />
+                        <input (click)="userStatus=''" formControlName="educationqualification" class="form-control"
+                            placeholder="Enter Education Qualifications" /><br />
                         Skills
                         <div formArrayName="skills">
                             <div *ngFor="let eligibility of controls; index as i">
