@@ -23,7 +23,9 @@ export class AdminmapsComponent implements OnInit {
   public: any = [];
   s: FormGroup
   graphData: any = []; option: any
-
+  singlePage: any = false
+  currentArea: any = {}
+  viewGraph: any = false
   constructor(private httprequest: HttprequestService, private fb: FormBuilder) {
     this.httprequest.postrequest('/getPublic', '').subscribe(
       (res: any) => {
@@ -100,6 +102,78 @@ export class AdminmapsComponent implements OnInit {
 
   }
 
+
+  singleoption: any
+  emphasisStyle: any = {
+    itemStyle: {
+      shadowBlur: 10,
+      shadowColor: 'rgba(0,0,0,0.3)'
+    }
+  };
+
+  singles(i: any) {
+   
+    let l = ['jaipur', 'agra', 'madanapalle']
+    this.currentArea = i
+    console.log(i)
+    this.singlePage = true
+    // if (l.includes(i.located.toLowerCase())) {
+    this.httprequest.postrequest('/aianalsys', { "location": "jaipur" }).subscribe(
+      (res: any) => {
+        console.log(res)
+        this.viewGraph = true
+        this.singleoption = {
+          legend: {
+            data: ['Approved', 'Unapproved', 'bar3', 'bar4'],
+            left: '10%'
+          },
+          brush: {
+            toolbox: ['rect', 'polygon', 'lineX', 'lineY', 'keep', 'clear'],
+            xAxisIndex: 0
+          },
+          toolbox: {
+            feature: {
+              magicType: {
+                type: ['stack']
+              },
+              dataView: {}
+            }
+          },
+          tooltip: {},
+          xAxis: {
+            data: res.years,
+            name: 'X Axis',
+            axisLine: { onZero: true },
+            splitLine: { show: false },
+            splitArea: { show: false }
+          },
+          yAxis: {},
+          grid: {
+            bottom: 100
+          },
+          series: [
+            {
+              name: 'Approved',
+              type: 'bar',
+              stack: 'one',
+              emphasis: this.emphasisStyle,
+              data: res.approved
+            },
+            {
+              name: 'Unapproved',
+              type: 'bar',
+              stack: 'one',
+              emphasis: this.emphasisStyle,
+              data: res.unappoved_homes
+            }
+          ]
+        };
+
+      }
+    )
+    // }
+
+  }
 
 
   addGroup() {

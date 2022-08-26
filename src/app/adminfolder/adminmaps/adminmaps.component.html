@@ -1,230 +1,263 @@
-<br />
-<button type="button" class="btn btn-primary shadow-none" data-toggle="modal" data-target="#myModal"
-    style="float: right;margin-right: 1rem;background-color: rgb(16, 29, 127);" (click)="publicdetails=true"><b>Slum
-        People</b></button>
-<button type="button" class="btn btn-primary shadow-none" data-toggle="modal" data-target="#myModal"
-    style="float: right;margin-right: 1rem;background-color: rgb(16, 29, 127);" (click)="displaymodal()"><b>New
-        Slum</b></button>
-<i *ngIf="publicdetails" class='bx bx-arrow-back'
-    style="font-size:3rem;float:left;cursor: pointer;padding-left:3rem;cursor:pointer"
-    (click)="publicdetails=false"></i>
-<br>
-<div *ngIf="publicdetails">
+<div *ngIf="!singlePage else si">
+    <br />
+    <button type="button" class="btn btn-primary shadow-none" data-toggle="modal" data-target="#myModal"
+        style="float: right;margin-right: 1rem;background-color: rgb(16, 29, 127);" (click)="publicdetails=true"><b>Slum
+            People</b></button>
+    <button type="button" class="btn btn-primary shadow-none" data-toggle="modal" data-target="#myModal"
+        style="float: right;margin-right: 1rem;background-color: rgb(16, 29, 127);" (click)="displaymodal()"><b>New
+            Slum</b></button>
+    <i *ngIf="publicdetails" class='bx bx-arrow-back'
+        style="font-size:3rem;float:left;cursor: pointer;padding-left:3rem;cursor:pointer"
+        (click)="publicdetails=false"></i>
+    <br>
+    <div *ngIf="publicdetails">
 
-    <input [(ngModel)]="searchtext" class="form-control card shadow" placeholder="Search"
-        style="width: 30vw;margin-left:30vw" /><br />
+        <input [(ngModel)]="searchtext" class="form-control card shadow" placeholder="Search"
+            style="width: 30vw;margin-left:30vw" /><br />
 
-    <button class="btn btn-primary" style="float: right;margin-right: 1rem;"
-        (click)="exportexcel()">Download</button><br />
-    <table id="excel-table" *ngIf="search()" style="margin-left:0.5rem;width:90vw"
-        class="table table-responsive table-striped text-center">
+        <button class="btn btn-primary" style="float: right;margin-right: 1rem;"
+            (click)="exportexcel()">Download</button><br />
+        <table id="excel-table" *ngIf="search()" style="margin-left:0.5rem;width:90vw"
+            class="table table-responsive table-striped text-center">
 
-        <tbody>
-            <tr style="background-color: rgb(16, 29, 127);;border-bottom: none;">
-                <td style="color: #fff">SNO</td>
-                <td style="color: #fff">Name</td>
-                <td style="color: #fff">Aadhar</td>
-                <td style="color: #fff">DOB</td>
-                <td style="color: #fff">Gender</td>
-                <td style="color: #fff">Mobile</td>
-                <td style="color: #fff">Occupation</td>
-                <td style="color: #fff">Present Address</td>
-                <td style="color: #fff">Previous Address</td>
-                <td style="color: #fff">Skills</td>
-            </tr>
-            <tr *ngFor="let c of search();index as i" style="font-size: 0.8rem;">
-                <td>{{i+1}}</td>
-                <td>{{c.firstname}} {{c.lastname}}</td>
-                <td>{{c.aadharno}}</td>
-                <td>{{c.dob}}</td>
-                <td>{{c.gender}}</td>
-                <td>{{c.mobileno}}</td>
-                <td>{{c.occupation}}</td>
-                <td>{{c.prevaddress.town}},{{c.prevaddress.state}}</td>
-                <td>{{c.presentaddress.dno}} {{c.presentaddress.street}} {{c.presentaddress.town}}
-                    {{c.presentaddress.state}} {{c.presentaddress.pincode}}</td>
-                <td>{{c.skills}}</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-
-<div *ngIf="!publicdetails">
-    <div echarts style="width:100vw" [options]="option"></div>
-    <input [(ngModel)]="searchtext01" class="form-control card shadow" placeholder="Search"
-        style="width: 30vw;margin-left:30vw;position: fixed;margin-top: 0;z-index: 10;top: 11rem;" /><br />
-    <div id="top" *ngIf=" data.length!=0 else nodata" class="row m-2 mt-0 ml-0" st>
-        <div class="col-5 shadow card m-5 mb-0  border-0" style="background-color: whiteSmoke;padding: 1rem; "
-            *ngFor="let c of search01()">
-            <h5>{{c.slumid | uppercase}}
-                <span data-toggle="modal" data-target="#myModal" style="float: right;margin-left: 1rem;"><i
-                        class='bx bx-pencil' (click)="edit(c)"></i></span>
-                <span data-toggle="modal" data-target="#myModal" style="float: right;cursor: pointer;"><i
-                        class='bx bx-plus' (click)="add(c)"></i></span>
-            </h5>
-            <div style="display: flex;">
-                <span> {{c.name}}</span>
-                <span style="margin-left: 2rem;"><i class='bx bxs-group'></i>{{c.population}}</span>
-                <span style="margin-left: 2rem;"><i class='bx bx-current-location'></i>{{c.located}}</span>
-                <span style="margin-left: 2rem;"><i class='bx bxs-area'></i>{{c.occupiedarea}}</span>
-            </div><br>
-            <iframe [src]="c.iframe | safe"></iframe> <br />
-            <span>{{c.description}}</span><br>
-        </div>
+            <tbody>
+                <tr style="background-color: rgb(16, 29, 127);;border-bottom: none;">
+                    <td style="color: #fff">SNO</td>
+                    <td style="color: #fff">Name</td>
+                    <td style="color: #fff">Aadhar</td>
+                    <td style="color: #fff">DOB</td>
+                    <td style="color: #fff">Gender</td>
+                    <td style="color: #fff">Mobile</td>
+                    <td style="color: #fff">Occupation</td>
+                    <td style="color: #fff">Present Address</td>
+                    <td style="color: #fff">Previous Address</td>
+                    <td style="color: #fff">Skills</td>
+                </tr>
+                <tr *ngFor="let c of search();index as i" style="font-size: 0.8rem;">
+                    <td>{{i+1}}</td>
+                    <td>{{c.firstname}} {{c.lastname}}</td>
+                    <td>{{c.aadharno}}</td>
+                    <td>{{c.dob}}</td>
+                    <td>{{c.gender}}</td>
+                    <td>{{c.mobileno}}</td>
+                    <td>{{c.occupation}}</td>
+                    <td>{{c.prevaddress.town}},{{c.prevaddress.state}}</td>
+                    <td>{{c.presentaddress.dno}} {{c.presentaddress.street}} {{c.presentaddress.town}}
+                        {{c.presentaddress.state}} {{c.presentaddress.pincode}}</td>
+                    <td>{{c.skills}}</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
-    <ng-template #nodata>
-        <div style="height: 80vh;justify-content: center;align-items: center;display: flex;">
-            <h4>
-                No Maps
-            </h4>
-        </div>
-    </ng-template>
-</div>
-
-
-
-<div style="margin-top: 10%;" class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':display}">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header" style="text-align: center;display: flex
-            ;align-items: center;justify-content: center;">
-                <h4 class="modal-title"><b><span *ngIf="!addPeople">
-                            Maps
-                        </span> <span *ngIf="addPeople" style="font-size: 1.2rem;">Add People In
-
-                            {{mapData.value.name}} {{mapData.value.slumid}}</span></b></h4>
+    <div *ngIf="!publicdetails">
+        <div echarts style="width:100vw" [options]="option"></div>
+        <input [(ngModel)]="searchtext01" class="form-control card shadow" placeholder="Search"
+            style="width: 30vw;margin-left:30vw;position: fixed;margin-top: 0;z-index: 10;top: 11rem;" /><br />
+        <div id="top" *ngIf=" data.length!=0 else nodata" class="row m-2 mt-0 ml-0" st>
+            <div class="col-5 shadow card m-5 mb-0  border-0" style="background-color: whiteSmoke;padding: 1rem; "
+                *ngFor="let c of search01()">
+                <span style="cursor: pointer;">
+                    <h5 (click)="singles(c)">{{c.slumid | uppercase}}
+                        <span data-toggle="modal" data-target="#myModal" style="float: right;margin-left: 1rem;"><i
+                                class='bx bx-pencil' (click)="edit(c)"></i></span>
+                        <span data-toggle="modal" data-target="#myModal" style="float: right;cursor: pointer;"><i
+                                class='bx bx-plus' (click)="add(c)"></i></span>
+                    </h5>
+                    <div style="display: flex;">
+                        <span> {{c.name}}</span>
+                        <span style="margin-left: 2rem;"><i class='bx bxs-group'></i>{{c.population}}</span>
+                        <span style="margin-left: 2rem;"><i class='bx bx-current-location'></i>{{c.located}}</span>
+                        <span style="margin-left: 2rem;"><i class='bx bxs-area'></i>{{c.occupiedarea}}</span>
+                    </div><br>
+                    <iframe [src]="c.iframe | safe"></iframe> <br />
+                    <span>{{c.description}}</span><br>
+                </span>
             </div>
-            <div class="modal-body " style="padding-bottom: 0.5rem;">
-                <form *ngIf="!addPeople else addpeople" [formGroup]="mapData" class="table-responsive"
-                    style="height: 60vh;margin-top: 0;padding-top:  0;">
-                    <label><b>Slum Id</b></label>
-                    <input [disabled]="true" type="text" class="form-control shadow-none" placeholder="Slum Id"
-                        formControlName="slumid">
-                    <span *ngIf="err" style="color:crimson;font-size: 0.8rem;">Enter valid text</span><br />
-                    <label><b>Slum name</b></label>
-                    <input type="text" class="form-control shadow-none" placeholder="Slum name" formControlName="name">
-                    <span *ngIf="err" style="color:crimson;font-size: 0.8rem;">Enter valid text</span><br />
-                    <label><b>Population</b></label>
-                    <input type="text" class="form-control shadow-none" placeholder="Population"
-                        formControlName="population">
-                    <span *ngIf="err" style="color:crimson;font-size: 0.8rem;">Enter valid text</span><br />
-                    <label><b>Occupied area</b></label>
-                    <input type="text" class="form-control shadow-none" placeholder="Occupied area"
-                        formControlName="occupiedarea">
-                    <span *ngIf="err" style="color:crimson;font-size: 0.8rem;">Enter valid text</span><br />
-                    <label><b>Located</b></label>
-                    <input type="text" class="form-control shadow-none" placeholder="Located" formControlName="located">
-                    <span *ngIf="err" style="color:crimson;font-size: 0.8rem;">Enter valid text</span><br />
-                    <label><b>Embedded code</b></label>
-                    <input type="text" class="form-control shadow-none" placeholder="Embedded code"
-                        formControlName="iframe">
-                    <span *ngIf="err" style="color:crimson;font-size: 0.8rem;">Enter valid text</span><br>
-                    <iframe [src]="mapData.value.iframe | safe"></iframe>
-                    <br />
-                    <label><b>Description</b></label>
-                    <textarea type="text" class="form-control shadow-none" placeholder="Description"
-                        formControlName="description"></textarea>
-                    <span *ngIf="err" style="color:crimson;font-size: 0.8rem;">Enter valid text</span><br>
+        </div>
 
-                    <button (click)="display='None';prevslumid='';close()"
-                        style="float: right ;margin-right:1.2rem;box-shadow: none;" class="btn btn-danger">
-                        Close</button>
-                    <button (click)="submit()"
-                        style="float: right ;margin:0rem 1rem;background-color: rgb(16, 29, 127);box-shadow: none;"
-                        class="btn btn-primary"><span *ngIf="!editMode"><b>Add
-                                Slum</b></span><span *ngIf="editMode"><b>Edit Slum</b></span></button><br><br>
-                </form>
-                <ng-template #addpeople>
-                    <form [formGroup]="people" (ngSubmit)="enroll()" class="table-responsive"
+        <ng-template #nodata>
+            <div style="height: 80vh;justify-content: center;align-items: center;display: flex;">
+                <h4>
+                    No Maps
+                </h4>
+            </div>
+        </ng-template>
+    </div>
+
+
+
+    <div style="margin-top: 10%;" class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':display}">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="text-align: center;display: flex
+            ;align-items: center;justify-content: center;">
+                    <h4 class="modal-title"><b><span *ngIf="!addPeople">
+                                Maps
+                            </span> <span *ngIf="addPeople" style="font-size: 1.2rem;">Add People In
+
+                                {{mapData.value.name}} {{mapData.value.slumid}}</span></b></h4>
+                </div>
+                <div class="modal-body " style="padding-bottom: 0.5rem;">
+                    <form *ngIf="!addPeople else addpeople" [formGroup]="mapData" class="table-responsive"
                         style="height: 60vh;margin-top: 0;padding-top:  0;">
-                        <div *ngIf="userStatus || err" style="text-align: center;">
-                            <span *ngIf="userStatus" style="color: crimson;">{{userStatus}}</span>
-                            <strong *ngIf="err" style="color:crimson;font-size: 0.8rem;">Make all the
-                                fields valid
-                                .</strong><br>
-                        </div>
-                        <!-- <div style="text-align: center;">
+                        <label><b>Slum Id</b></label>
+                        <input [disabled]="true" type="text" class="form-control shadow-none" placeholder="Slum Id"
+                            formControlName="slumid">
+                        <span *ngIf="err" style="color:crimson;font-size: 0.8rem;">Enter valid text</span><br />
+                        <label><b>Slum name</b></label>
+                        <input type="text" class="form-control shadow-none" placeholder="Slum name"
+                            formControlName="name">
+                        <span *ngIf="err" style="color:crimson;font-size: 0.8rem;">Enter valid text</span><br />
+                        <label><b>Population</b></label>
+                        <input type="text" class="form-control shadow-none" placeholder="Population"
+                            formControlName="population">
+                        <span *ngIf="err" style="color:crimson;font-size: 0.8rem;">Enter valid text</span><br />
+                        <label><b>Occupied area</b></label>
+                        <input type="text" class="form-control shadow-none" placeholder="Occupied area"
+                            formControlName="occupiedarea">
+                        <span *ngIf="err" style="color:crimson;font-size: 0.8rem;">Enter valid text</span><br />
+                        <label><b>Located</b></label>
+                        <input type="text" class="form-control shadow-none" placeholder="Located"
+                            formControlName="located">
+                        <span *ngIf="err" style="color:crimson;font-size: 0.8rem;">Enter valid text</span><br />
+                        <label><b>Embedded code</b></label>
+                        <input type="text" class="form-control shadow-none" placeholder="Embedded code"
+                            formControlName="iframe">
+                        <span *ngIf="err" style="color:crimson;font-size: 0.8rem;">Enter valid text</span><br>
+                        <iframe [src]="mapData.value.iframe | safe"></iframe>
+                        <br />
+                        <label><b>Description</b></label>
+                        <textarea type="text" class="form-control shadow-none" placeholder="Description"
+                            formControlName="description"></textarea>
+                        <span *ngIf="err" style="color:crimson;font-size: 0.8rem;">Enter valid text</span><br>
+
+                        <button (click)="display='None';prevslumid='';close()"
+                            style="float: right ;margin-right:1.2rem;box-shadow: none;" class="btn btn-danger">
+                            Close</button>
+                        <button (click)="submit()"
+                            style="float: right ;margin:0rem 1rem;background-color: rgb(16, 29, 127);box-shadow: none;"
+                            class="btn btn-primary"><span *ngIf="!editMode"><b>Add
+                                    Slum</b></span><span *ngIf="editMode"><b>Edit Slum</b></span></button><br><br>
+                    </form>
+                    <ng-template #addpeople>
+                        <form [formGroup]="people" (ngSubmit)="enroll()" class="table-responsive"
+                            style="height: 60vh;margin-top: 0;padding-top:  0;">
+                            <div *ngIf="userStatus || err" style="text-align: center;">
+                                <span *ngIf="userStatus" style="color: crimson;">{{userStatus}}</span>
+                                <strong *ngIf="err" style="color:crimson;font-size: 0.8rem;">Make all the
+                                    fields valid
+                                    .</strong><br>
+                            </div>
+                            <!-- <div style="text-align: center;">
                             <img class="imag1" [src]="tempimg" (click)="img.click()" style="cursor: pointer;" />
                             <input style="display: none;" accept="image/png, image/jpeg"
                                 (change)="handleFileSelect($event)" type="file" #img><br>
                         </div> -->
-                        <label>Slumid</label><br />
-                        <div [formGroup]="mapData">
-                            <input formControlName="Enter Slumid" class="form-control" /><br />
-                        </div>
-                        <label>Aadhar Id</label><br />
-                        <input (click)="userStatus=''" formControlName="aadharid" class="form-control"
-                            placeholder="Enter Person Id" /><br />
-                        <label>Occupation</label><br />
-                        <input (click)="userStatus=''" formControlName="occupation" class="form-control"
-                            placeholder="Enter Occupation" /><br />
-                        <label>Qualification</label><br />
-                        <input (click)="userStatus=''" formControlName="educationqualification" class="form-control"
-                            placeholder="Enter Education Qualifications" /><br />
-                        Skills
-                        <div formArrayName="skills">
-                            <div *ngFor="let eligibility of controls; index as i">
+                            <label>Slumid</label><br />
+                            <div [formGroup]="mapData">
+                                <input formControlName="Enter Slumid" class="form-control" /><br />
+                            </div>
+                            <label>Aadhar Id</label><br />
+                            <input (click)="userStatus=''" formControlName="aadharid" class="form-control"
+                                placeholder="Enter Person Id" /><br />
+                            <label>Occupation</label><br />
+                            <input (click)="userStatus=''" formControlName="occupation" class="form-control"
+                                placeholder="Enter Occupation" /><br />
+                            <label>Qualification</label><br />
+                            <input (click)="userStatus=''" formControlName="educationqualification" class="form-control"
+                                placeholder="Enter Education Qualifications" /><br />
+                            Skills
+                            <div formArrayName="skills">
+                                <div *ngFor="let eligibility of controls; index as i">
 
-                                <div [formGroupName]="i" class="row" style="padding: 0;margin:0">
-                                    <input placeholder="skill" class="form-control col" formControlName="skill">
-                                    <input placeholder="experience" class="form-control col"
-                                        formControlName="experience">
+                                    <div [formGroupName]="i" class="row" style="padding: 0;margin:0">
+                                        <input placeholder="skill" class="form-control col" formControlName="skill">
+                                        <input placeholder="experience" class="form-control col"
+                                            formControlName="experience">
+                                    </div>
+
+                                    <div style="display: flex;margin-top: 0.5rem;">
+                                        <button (click)="removeGroup(i)" style="margin-right:1rem"
+                                            *ngIf="people.value.skills.length!=1" class="btn btn-danger">Remove
+                                            skill</button>
+                                        <button class="btn btn-primary" *ngIf="people.value.skills.length-1==i"
+                                            (click)="addGroup()">Add skill</button>
+
+
+                                    </div><br />
+
                                 </div>
+                            </div>
 
-                                <div style="display: flex;margin-top: 0.5rem;">
-                                    <button (click)="removeGroup(i)" style="margin-right:1rem"
-                                        *ngIf="people.value.skills.length!=1" class="btn btn-danger">Remove
-                                        skill</button>
-                                    <button class="btn btn-primary" *ngIf="people.value.skills.length-1==i"
-                                        (click)="addGroup()">Add skill</button>
+                            <br />
 
-
-                                </div><br />
+                            <div [formGroup]="prevaddress">
+                                <label>Previous address</label><br />
+                                <input (click)="userStatus=''" formControlName="dno" class="form-control"
+                                    placeholder="Enter Door No" /><br />
+                                <input (click)="userStatus=''" formControlName="streetno" class="form-control"
+                                    placeholder="Enter Street No" /><br />
+                                <input (click)="userStatus=''" formControlName="townorcity" class="form-control"
+                                    placeholder="Enter Town or City" /><br />
+                                <input (click)="userStatus=''" formControlName="state" class="form-control"
+                                    placeholder="Enter State" /><br />
+                                <input (click)="userStatus=''" formControlName="pincode" class="form-control"
+                                    placeholder="Enter Pincode" /><br />
 
                             </div>
-                        </div>
-
-                        <br />
-
-                        <div [formGroup]="prevaddress">
-                            <label>Previous address</label><br />
-                            <input (click)="userStatus=''" formControlName="dno" class="form-control"
-                                placeholder="Enter Door No" /><br />
-                            <input (click)="userStatus=''" formControlName="streetno" class="form-control"
-                                placeholder="Enter Street No" /><br />
-                            <input (click)="userStatus=''" formControlName="townorcity" class="form-control"
-                                placeholder="Enter Town or City" /><br />
-                            <input (click)="userStatus=''" formControlName="state" class="form-control"
-                                placeholder="Enter State" /><br />
-                            <input (click)="userStatus=''" formControlName="pincode" class="form-control"
-                                placeholder="Enter Pincode" /><br />
-
-                        </div>
-                        <label>Reason Of Migration</label><br />
-                        <input (click)="userStatus=''" formControlName="Reasonofmigration" class="form-control"
-                            placeholder="Enter Reason Of Migration" /><br />
-                        <!-- <label>Skills</label><br />
+                            <label>Reason Of Migration</label><br />
+                            <input (click)="userStatus=''" formControlName="Reasonofmigration" class="form-control"
+                                placeholder="Enter Reason Of Migration" /><br />
+                            <!-- <label>Skills</label><br />
                         <input (click)="userStatus=''" formControlName="Reasonofmigration" class="form-control"
                             placeholder="Enter Person Skill set" /><br /> -->
 
-                        <button style="float: right;" class="btn btn-danger" type="button"
-                            (click)="closePeople()">Close</button>
-                        <button style="float: right;margin-right: 1rem;" type="submit"
-                            class="btn btn-primary">Add</button>
-                    </form>
-                </ng-template>
-            </div>
+                            <button style="float: right;" class="btn btn-danger" type="button"
+                                (click)="closePeople()">Close</button>
+                            <button style="float: right;margin-right: 1rem;" type="submit"
+                                class="btn btn-primary">Add</button>
+                        </form>
+                    </ng-template>
+                </div>
 
+            </div>
         </div>
     </div>
-</div>
-<br /><br />
+    <br /><br />
 
-<div *ngIf="displaypopup" [ngClass]="{'view':displaypopup}">
-    <span style="font-size: 1rem;">
-        <strong><span style="font-size: 1.2rem;">{{popup}}</span>
-            <div class="btn"><i style="color:white;font-size:2rem" class="bx bxs-check-circle"></i></div>
-        </strong>
-    </span>
+    <div *ngIf="displaypopup" [ngClass]="{'view':displaypopup}">
+        <span style="font-size: 1rem;">
+            <strong><span style="font-size: 1.2rem;">{{popup}}</span>
+                <div class="btn"><i style="color:white;font-size:2rem" class="bx bxs-check-circle"></i></div>
+            </strong>
+        </span>
+    </div>
 </div>
+
+<ng-template #si>
+    <i class='bx bx-arrow-back' style="font-size:3rem;float:left;cursor: pointer;padding-left:3rem;cursor:pointer"
+        (click)="singlePage=false"></i><br /><br />
+
+    <div class="row " style="margin: 2rem;backgroundColor:'#f5f5f5';padding: 4rem;border-radius: 30px;">
+        <div class="col-5">
+            <span style="cursor: pointer;">
+                <h5>{{currentArea.slumid | uppercase}}
+
+                </h5>
+                <div style="display: flex;">
+                    <span> {{currentArea.name}}</span>
+                    <span style="margin-left: 2rem;"><i class='bx bxs-group'></i>{{currentArea.population}}</span>
+                    <span style="margin-left: 2rem;"><i
+                            class='bx bx-current-location'></i>{{currentArea.located}}</span>
+                    <span style="margin-left: 2rem;"><i class='bx bxs-area'></i>{{currentArea.occupiedarea}}</span>
+                </div><br>
+                <iframe [src]="currentArea.iframe | safe"></iframe> <br />
+                <span>{{currentArea.description}}</span><br>
+            </span>
+        </div>
+        <div echarts class="col-4" *ngIf="viewGraph" style="width:40vw;margin-left:2rem" [options]="singleoption"></div>
+
+    </div>
+
+</ng-template>
