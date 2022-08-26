@@ -22,12 +22,42 @@ export class AdminmapsComponent implements OnInit {
   userStatus: any = '';
   public: any = [];
   s: FormGroup
+  graphData: any = []; option: any
 
   constructor(private httprequest: HttprequestService, private fb: FormBuilder) {
     this.httprequest.postrequest('/getPublic', '').subscribe(
       (res: any) => {
-        console.log(res.data, "resssssssssssssssssssssssssssssss")
+
         this.public = res.data
+      }
+    )
+    this.httprequest.postrequest('/graph', '').subscribe(
+      (res: any) => {
+        console.log(res)
+        this.graphData = res
+        this.option = {
+
+          xAxis: {
+            type: 'category',
+            data: this.graphData.key
+          },
+          yAxis: {
+            type: 'value'
+          },
+          series: [
+            {
+              data: this.graphData.val,
+              type: 'line'
+            }
+          ],
+          tooltip: {
+            trigger: 'axis'
+          },
+          legend: {
+            data: [this.graphData.key]
+          },
+        };
+
       }
     )
     this.s = new FormGroup({
@@ -135,14 +165,14 @@ export class AdminmapsComponent implements OnInit {
           j.name.toLowerCase().includes(this.searchtext01.toLowerCase()) ||
           j.population.toLowerCase().includes(this.searchtext01)
           || j.located.toLowerCase().includes(this.searchtext01)
-          || j.occupiedarea.toLowerCase().includes(this.searchtext01) )
+          || j.occupiedarea.toLowerCase().includes(this.searchtext01))
       });
       return temp;
     }
   }
 
   exportexcel(): void {
-  
+
     /* table id is passed over here */
     const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(document.getElementById('excel-table'), { raw: true });
     const wb: XLSX.WorkBook = XLSX.utils.book_new();
@@ -152,6 +182,10 @@ export class AdminmapsComponent implements OnInit {
 
 
   }
+
+
+
+
 
 
   getData() {
