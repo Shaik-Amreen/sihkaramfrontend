@@ -1,5 +1,5 @@
 <br />
-<div echarts style="width:100vw" [options]="option"></div>
+
 <button type="button" class="btn btn-primary shadow-none" data-toggle="modal" data-target="#myModal"
     style="float: right;margin-right: 1rem;background-color: rgb(16, 29, 127);" (click)="publicdetails=true"><b>Slum
         People</b></button>
@@ -11,7 +11,7 @@
     (click)="publicdetails=false"></i>
 <br>
 <div *ngIf="publicdetails">
-
+    
     <input [(ngModel)]="searchtext" class="form-control card shadow" placeholder="Search"
         style="width: 30vw;margin-left:30vw" /><br />
 
@@ -56,6 +56,7 @@
 </div>
 
 <div *ngIf="!publicdetails">
+    <div echarts style="width:100vw" [options]="option"></div>
     <input [(ngModel)]="searchtext01" class="form-control card shadow" placeholder="Search"
         style="width: 30vw;margin-left:30vw;position: fixed;margin-top: 0;z-index: 10;top: 11rem;" /><br />
     <div id="top" *ngIf=" data.length!=0 else nodata" class="row m-2 mt-0 ml-0" st>
@@ -70,7 +71,7 @@
             <div style="display: flex;">
                 <span> {{c.name}}</span>
                 <span style="margin-left: 2rem;">{{c.population}}</span>
-                <span style="margin-left: 2rem;">{{c.located}}</span>
+                <i class='bx bx-current-location'></i><span style="margin-left: 2rem;">{{c.located}}</span>
                 <span style="margin-left: 2rem;">{{c.occupiedarea}}</span>
             </div><br>
             <iframe [src]="c.iframe | safe"></iframe> <br />
@@ -160,6 +161,9 @@
                         </div>
                         <label>Aadhar Id</label><br />
                         <input (click)="userStatus=''" formControlName="aadharid" class="form-control"
+                            placeholder="Enter Person Id" /><br />
+                        <label>Education Qualifications</label><br />
+                        <input (click)="userStatus=''" formControlName="educationqualifications" class="form-control"
                             placeholder="Enter Person Id" /><br />
                         <label>Occupation</label><br />
                         <input (click)="userStatus=''" formControlName="occupation" class="form-control"
