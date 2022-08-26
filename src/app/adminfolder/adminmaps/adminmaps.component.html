@@ -173,11 +173,13 @@
                         Skills
                         <div formArrayName="skills">
                             <div *ngFor="let eligibility of controls; index as i">
+
                                 <div [formGroupName]="i" class="row" style="padding: 0;margin:0">
                                     <input placeholder="skill" class="form-control col" formControlName="skill">
                                     <input placeholder="experience" class="form-control col"
                                         formControlName="experience">
                                 </div>
+
                                 <div style="display: flex;margin-top: 0.5rem;">
                                     <button (click)="removeGroup(i)" style="margin-right:1rem"
                                         *ngIf="people.value.skills.length!=1" class="btn btn-danger">Remove
@@ -191,9 +193,9 @@
                             </div>
                         </div>
 
-                        "Enter Occupation" /><br />
+                        <br />
 
-                        <div formGroupName="prevaddress">
+                        <div [formGroup]="prevaddress">
                             <label>Previous address</label><br />
                             <input (click)="userStatus=''" formControlName="dno" class="form-control"
                                 placeholder="Enter Door No" /><br />
