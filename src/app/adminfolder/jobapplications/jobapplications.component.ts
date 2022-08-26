@@ -22,6 +22,7 @@ export class JobapplicationsComponent implements OnInit {
     this.jobdetails = new FormGroup({
       amount: new FormControl('', Validators.required),
       jobtitle: new FormControl('', Validators.required),
+      jobskills: new FormControl('', Validators.required),
       jobdescription: new FormControl('', Validators.required),
       location: new FormControl('', Validators.required),
       jobid: new FormControl('', Validators.required),
@@ -38,6 +39,26 @@ export class JobapplicationsComponent implements OnInit {
       });
   }
 
+  searchtext: any = ''
+  search() {
+    if (this.searchtext == '') {
+      return this.data;
+    } else {
+      console.log(this.data, "this.data")
+      let temp = this.data.filter((j: any) => {
+        return (j.jobtitle.toLowerCase().includes(this.searchtext.toLowerCase()) ||
+          j.jobid.toLowerCase().includes(this.searchtext.toLowerCase())
+          || j.mobileno.toLowerCase().includes(this.searchtext.toString().toLowerCase())
+          || j.prevexperience.toLowerCase().includes(this.searchtext.toLowerCase()) || j.firstname.toLowerCase().includes(this.searchtext.toLowerCase()) || j.lastname.toLowerCase().includes(this.searchtext.toLowerCase()) )
+      });
+      // let x=temp
+      // temp = temp.push(...x)
+      // console.log(temp,"temp")
+      return temp;
+    }
+  }
+
+
   displaymodal() {
     this.display = 'block';
   }
@@ -49,12 +70,20 @@ export class JobapplicationsComponent implements OnInit {
       .subscribe((res: any) => {});
   }
 
+
+  displaypopup: any = ""
+  popup: any = ""
   createjob() {
     if (this.jobdetails.status == 'VALID') {
       this.httprequest
         .postrequest('/postJob', this.jobdetails.value)
         .subscribe((res: any) => {
           console.log(res, 'res');
+          this.displaypopup = true;
+          this.popup = 'Successfully submitted';
+          setTimeout(() => {
+            this.displaypopup = false;
+          }, 4000);
           this.display = 'None'
         });
     } else {

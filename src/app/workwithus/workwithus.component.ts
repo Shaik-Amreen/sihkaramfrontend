@@ -28,6 +28,7 @@ export class WorkwithusComponent implements OnInit {
       email: new FormControl(''),
       mobileno: new FormControl('', Validators.required),
       altmobileno: new FormControl(''),
+      aadharno: new FormControl('', Validators.required),
       jobpost: new FormControl('', Validators.required),
       prevexperience: new FormControl('', Validators.required),
       prevworkplace: new FormControl('', Validators.required),
@@ -55,6 +56,8 @@ export class WorkwithusComponent implements OnInit {
     if (this.searchtext == '') {
       return this.jobs;
     } else {
+      console.log(this.jobs, "this.public")
+
       let temp = this.jobs.filter((j: any) => {
         return (j.jobtitle.toLowerCase().includes(this.searchtext) ||
           j.jobid.toLowerCase().includes(this.searchtext) ||

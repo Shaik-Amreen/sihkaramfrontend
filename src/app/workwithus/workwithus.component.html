@@ -92,14 +92,13 @@
                                     placeholder="Enter  Mobile Numnber" type="number" formControlName="mobileno">
                                 <span *ngIf="showerr" style="color:crimson;font-size: 0.8rem;">Enter valid text</span>
                             </div>
-                            <div class="col-4" style="padding-right: 1rem;">
-                                <label>Alternative Mobile Number </label><br>
+                            <div class="col-4">
+                                <label>Aadhar Number <sup style="color:crimson"><strong>*</strong></sup></label><br>
                                 <input (click)="showerr=false" class="form-control shadow-none"
-                                    placeholder="Enter  Alternative Mobile " type="number"
-                                    formControlName="altmobileno">
-                                <!-- <span *ngIf="showerr" style="color:crimson;font-size: 0.8rem;">Enter valid text</span> -->
-
+                                    placeholder="Enter Aadhar Numnber" type="number" formControlName="aadharno">
+                                <span *ngIf="showerr" style="color:crimson;font-size: 0.8rem;">Enter valid Aadhar number</span>
                             </div>
+
                         </div>
                         <br>
                         <div class="row nomar">

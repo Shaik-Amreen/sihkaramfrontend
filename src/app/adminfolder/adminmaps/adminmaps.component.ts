@@ -11,6 +11,7 @@ import * as XLSX from 'xlsx';
 export class AdminmapsComponent implements OnInit {
 
   mapData: FormGroup;
+  prevaddress: FormGroup;
   editMode: any = false;
   err = false;
   submitStatus = false
@@ -45,11 +46,15 @@ export class AdminmapsComponent implements OnInit {
     })
 
 
-
+    this.prevaddress = new FormGroup({
+      dno: new FormControl(''),
+      streetno: new FormControl(''),
+      townorcity: new FormControl('', Validators.required),
+      state: new FormControl('', Validators.required),
+      pincode: new FormControl('', Validators.required),
+    })
 
     this.people = new FormGroup({
-      // slumid: new FormControl('', Validators.required),
-      // image: new FormControl('', Validators.required),
       aadharid: new FormControl('', Validators.required),
       occupation: new FormControl('', Validators.required),
       prevaddress: new FormControl('', Validators.required),
@@ -102,17 +107,36 @@ export class AdminmapsComponent implements OnInit {
 
   searchtext: any = ''
 
+  searchtext01: any = ''
+
   search() {
     if (this.searchtext == '') {
       return this.public;
     } else {
+      console.log(this.public, "this.public")
       let temp = this.public.filter((j: any) => {
-        return (j.occupation.includes(this.searchtext) || j.skills.includes(this.searchtext) || j.presentaddress.includes(this.search))
-
+        return (j.occupation.toLowerCase().includes(this.searchtext) ||
+          j.skills.includes(this.searchtext) ||
+          j.presentaddress.town.toLowerCase().includes(this.searchtext)
+          || j.presentaddress.state.toLowerCase().includes(this.searchtext)
+          || j.prevaddress.town.toLowerCase().includes(this.searchtext) || j.prevaddress.state.toLowerCase().includes(this.searchtext) || j.firstname.toLowerCase().includes(this.searchtext) || j.lastname.toLowerCase().includes(this.searchtext) || j.aadharno.toLowerCase().includes(this.searchtext) || j.gender.toLowerCase().includes(this.searchtext) || j.mobileno.toLowerCase().includes(this.searchtext) || j.dob.toLowerCase().includes(this.searchtext))
       });
-      // let x=temp
-      // temp = temp.push(...x)
-      // console.log(temp,"temp")
+      return temp;
+    }
+  }
+
+  search01() {
+    if (this.searchtext01 == '') {
+      return this.data;
+    } else {
+      console.log(this.data, "this.data")
+      let temp = this.data.filter((j: any) => {
+        return (j.slumid.toLowerCase().includes(this.searchtext01.toLowerCase()) ||
+          j.name.toLowerCase().includes(this.searchtext01.toLowerCase()) ||
+          j.population.toLowerCase().includes(this.searchtext01)
+          || j.located.toLowerCase().includes(this.searchtext01)
+          || j.occupiedarea.toLowerCase().includes(this.searchtext01) )
+      });
       return temp;
     }
   }
@@ -237,6 +261,7 @@ export class AdminmapsComponent implements OnInit {
     this.people.controls['image'].setValue(this.tempimg)
     if (this.people.status === 'VALID') {
       this.mapData.controls.slumid.enable()
+      this.people.controls.prevaddress.setValue(this.prevaddress.value)
       this.httprequest
         .postrequest('/findOrPostPeople', { ...this.people.value, slumname: this.mapData.controls.name, currentlocation: this.mapData.controls.located })
         .subscribe((res: any) => {
